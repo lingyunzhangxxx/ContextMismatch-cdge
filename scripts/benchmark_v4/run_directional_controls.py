@@ -261,8 +261,14 @@ def main() -> None:
         if authorization.get(field) != expected:
             raise ValueError(f"directional-control authorization mismatch: {field}")
     code_root = str(authorization.get("code_root", ""))
-    if code_root != "/workspace/context-mismatch-qwen3-8b/code-v30":
-        raise ValueError("directional controls require exact code-v30")
+    allowed_roots = {
+        "/workspace/context-mismatch-qwen3-8b/code-v30",
+        "/workspace/context-mismatch-qwen3-5-9b/code-v93",
+        "/workspace/context-mismatch-qwen3-5-9b/code-v105",
+        "/workspace/context-mismatch-qwen3-5-9b/code-v106",
+    }
+    if code_root not in allowed_roots:
+        raise ValueError("directional controls require an explicitly authorized immutable bundle")
     bundle = Path(code_root) / "bundle.sha256"
     if authorization.get("immutable_code_bundle_manifest_sha256") != sha256_file(bundle):
         raise ValueError("directional-control immutable bundle SHA mismatch")

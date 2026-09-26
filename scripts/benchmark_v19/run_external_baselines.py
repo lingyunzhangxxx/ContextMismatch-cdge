@@ -40,6 +40,21 @@ RESET_SUFFIX = (
     "from prior turns. Follow only the rule and authority explicitly stated in this task."
 )
 
+# Defaults preserve the frozen v19 behavior.  The v20 official-source-derived
+# wrapper overrides these module-level hooks in a fresh immutable bundle rather
+# than duplicating the 3,072-row evaluation loop.
+STAGE = "qwen3_8b_external_baseline_evaluation"
+IMPLEMENTATION_PROVENANCE = {
+    "method_faithful_adapter": True,
+    "official_code_derived_task_adaptation": False,
+    "unmodified_official_implementation": False,
+}
+
+
+def ADAPTER_FACTORY(checkpoint: dict, method: str, source_root: Path | None):
+    del source_root
+    return adapter_from_checkpoint(checkpoint, method)
+
 
 def _write(path: Path, value: object) -> None:
     atomic_write_text(path, json.dumps(value, indent=2, sort_keys=True) + "\n")
@@ -48,7 +63,7 @@ def _write(path: Path, value: object) -> None:
 def _validate(args, methods: tuple[str, ...]) -> dict:
     authorization = json.loads(args.execution_authorization.read_text())
     required = {
-        "stage": "qwen3_8b_external_baseline_evaluation",
+        "stage": STAGE,
         "group": args.group,
         "methods": list(methods),
         "execution_allowed": True,
@@ -98,6 +113,7 @@ def main() -> None:
     parser.add_argument("--design-audit", type=Path, required=True)
     parser.add_argument("--model-manifest", type=Path, required=True)
     parser.add_argument("--model-path", type=Path, required=True)
+    parser.add_argument("--official-source-root", type=Path)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--attn-implementation", default="eager", choices=["eager", "sdpa"])
@@ -133,7 +149,7 @@ def main() -> None:
         if not finite_checkpoint(checkpoint) or checkpoint.get("contains_base_model_weights") is not False:
             raise ValueError("invalid external baseline checkpoint")
         for method in methods:
-            adapters[method] = adapter_from_checkpoint(checkpoint, method)
+            adapters[method] = ADAPTER_FACTORY(checkpoint, method, args.official_source_root)
             managers[method] = MultiLayerContextOperator({spec: adapters[method]})
 
     device = _device(args.device)
@@ -258,14 +274,14 @@ def main() -> None:
         }
         _write(args.output_dir / f"{method}.identity.json", identity_report)
         environment = {
-            "schema_version": 1, "stage": "qwen3_8b_external_baseline_evaluation",
+            "schema_version": 1, "stage": STAGE,
             "candidate_id": method, "method": method, "group": args.group,
             "authorization_sha256": sha256_file(args.execution_authorization),
             "checkpoint_sha256": sha256_file(args.checkpoint) if args.checkpoint else None,
             "expected_rows": 3072, "planned_rows": 3072,
             "expected_key_sha256": expected_key_sha, "device": str(device),
             "base_model_trainable_parameters": 0,
-            "method_faithful_adapter": True, "unmodified_official_implementation": False,
+            **IMPLEMENTATION_PROVENANCE,
             "final_test_open": False, "final_test_open_count": 0,
             "production_rollout_approved": False,
         }

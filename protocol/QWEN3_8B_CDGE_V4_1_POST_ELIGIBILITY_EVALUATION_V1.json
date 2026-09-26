@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-cdge-v4-1-post-eligibility-evaluation-v1",
+  "created_utc": "2026-07-30T02:45:46Z",
+  "frozen_utc": "2026-07-30T02:45:46Z",
+  "status": "frozen_after_terminal_composite_eligibility_before_fresh_cdge_behavior",
+  "method": "C-DGE-V4.1",
+  "evidence_class": "developmental_post_eligibility_evaluation",
+  "confirmatory": false,
+  "purpose": "fresh SHA-bound evaluation of the unchanged V4 runtime under the corrected composite eligibility rule; prior failed-fit diagnostics are design inputs and are not relabeled",
+  "historical_fit_decision": {
+    "method": "ADSGE-V4",
+    "fit_eligible": false,
+    "preserved_without_modification": true,
+    "superseded_for_candidate_eligibility_only_by_terminal_composite_audit": true
+  },
+  "bound_artifacts": {
+    "v3_contract_sha256": "a531ad1b3cb20b964f240f6eb3c513f6e1a1b7d749c61b79796833193129873d",
+    "v4_contract_sha256": "0f6d33ab67a02fe88f8d14aa092f5993636d3a99b3a939c2339de0fab4eb677a",
+    "v4_1_composite_contract_sha256": "d3c92a4f467c070d5bcba1159d388ea4f714c5b64ce0b7691486e1bd781e8cf3",
+    "v4_checkpoint_sha256": "42e3af0a3501750514c98f70305ac380663cac99ffeb8b26274340e10b7fcaf8",
+    "v4_fit_report_sha256": "f79e133e5cb0910df5a4a5281067571e25e551e5f49f0d0caa7dabf8d6e65c4a",
+    "composite_eligibility_report_sha256": "328634b2d5debd87ea4dac0fe7a3249b52f60f9a3c203a590e203c36a5aff752",
+    "composite_eligibility_authorization_sha256": "70699210d4bf40a5f82aa73b64a133b95f7f8bcd637591a0cbd212f4c314e02d",
+    "composite_eligibility_receipt_sha256": "84807c0ad892e71350f0dbb1ee6b9809aa12ec0ce2eba42d56e64a76ab3c6ad5",
+    "composite_eligibility_archive_sha256": "602ad58c15ae47b3b24cf4de18bc1ba1195edf694cce5656e26bb7a4aba4ccdc",
+    "governance_crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "operator_site_manifest_sha256": "8bf9e43cd3b3597ed47ef1698f8fd46137fd01c04b3ec0ac9ab6ccd21c3659d3",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "benchmark_manifest_report_sha256": "5265c5838cf0eedc22d97b2120376e57ef637179ddb8f254a19844c11431ee0b",
+    "operator_dev_design_audit_sha256": "1e86ff3f7d77ac62a3e7089e95a22e7ef31e08453081cb219d8281aae7c38a8c",
+    "final_test_design_audit_sha256": "440fa95e9fd26a2d570096fccf090d4920fd173f4c3364791a23a94353934722",
+    "v3_operator_dev_analysis_sha256": "b8e34396dab744208c505f92d3f915a8a7107dc73785b378ba7baf7f14aae0e7",
+    "model_manifest_sha256": "815961e69567f2fc4e964aec5e7e61d9c3499a0a05771ea88b20486d27003638"
+  },
+  "composite_prerequisite": {
+    "run_id": "qwen3-8b-cdge-v4-1-composite-eligibility-20260730T012711Z",
+    "job_id": 9267,
+    "candidate_eligible": true,
+    "audit_complete": true,
+    "all_composite_gates_required": true,
+    "slurm_terminal_state": "COMPLETED",
+    "slurm_exit_code": "0:0",
+    "three_copy_archive_required": true
+  },
+  "operator_dev": {
+    "stage": "governance_composite_behavior_selection",
+    "split": "untouched operator_dev selection half",
+    "expected_rows": 3072,
+    "expected_key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+    "same_identity_as_v3_required": true,
+    "all_rows_unique_and_finite_required": true,
+    "external_zero_gate_exact_identity_required": true
+  },
+  "protected_controls": {
+    "stage": "governance_composite_protected_controls",
+    "expected_rows": 2856,
+    "expected_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "control_families": [
+      "fresh_verification",
+      "matched_verification",
+      "matched_delegated_choice",
+      "explicit_governance_reset",
+      "supported_user_authority",
+      "factual_boundary_memory"
+    ],
+    "forced_directions": ["positive", "negative"],
+    "application_gated_identity_required": true,
+    "forced_direction_reference_gates_required": true,
+    "all_rows_unique_and_finite_required": true
+  },
+  "performance": {
+    "stage": "governance_composite_performance",
+    "methods": ["baseline", "DSGE-V3", "C-DGE-V4.1"],
+    "same_model_and_prompt_tokens_required": true,
+    "selection_rule": "lexicographically first operator_dev selection job in each benchmark x task_requirement x label_swap cell",
+    "expected_cells": 24,
+    "batch_size": 1,
+    "warmup_repeats": 3,
+    "timed_repeats": 10,
+    "attn_implementation": "eager",
+    "metrics": ["paired_latency_seconds", "examples_per_second", "suffix_tokens_per_second", "peak_npu_memory_bytes"],
+    "peak_memory_reset_after_model_load_required": true,
+    "finite_measurements_required": true
+  },
+  "pareto_requirements": {
+    "fresh_operator_dev_archive_required": true,
+    "fresh_protected_controls_archive_required": true,
+    "fresh_performance_archive_required": true,
+    "candidate_eligible_required": true,
+    "candidate_may_be_locked_before_lock": false,
+    "immutable_sha_bound_lock_required": true
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false
+}

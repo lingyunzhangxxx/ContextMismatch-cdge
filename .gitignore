@@ -14,10 +14,10 @@ venv/
 *.pth
 *.safetensors
 *.bin
-models/
-checkpoints/
-cache/
-tmp/
-outputs/
-generated/
+/models/
+/checkpoints/
+/cache/
+/tmp/
+/outputs/
+/generated/
 .DS_Store

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-composite-directional-governance-editor-v4-1",
+  "created_utc": "2026-07-30T00:46:00Z",
+  "frozen_utc": "2026-07-30T00:46:00Z",
+  "status": "prospective_composite_eligibility_audit_frozen_before_execution",
+  "method_name": "Composite Directional Governance Editor",
+  "method_short_name": "C-DGE-V4.1",
+  "code_version": 59,
+  "evidence_role": "developmental_protocol_correction_after_terminal_v4_diagnostics",
+  "confirmatory_claim_authorized": false,
+  "scientific_change_from_v4": "evaluate the exact deployed conjunction of the frozen V3 structural route and frozen V4 applicability route; no model, threshold, direction, expert, capture, or split is refit or selected",
+  "deployment_route": {
+    "definition": "composite_active = structural_gate_active AND application_gate_active",
+    "external_zero_gate_precedes_composite_route": true,
+    "continuous_application_scaling_forbidden": true,
+    "forced_direction_controls_bypass_application_veto": true
+  },
+  "frozen_lineage": {
+    "v3_contract_sha256": "a531ad1b3cb20b964f240f6eb3c513f6e1a1b7d749c61b79796833193129873d",
+    "v3_checkpoint_sha256": "ed5262bbd27470047c3379172e58de23e6bb98a542b9fb5101f828138b11d752",
+    "v3_fit_report_sha256": "0cda38b3f3ad44460e6f91278277bc1cd66349a5d34f128890d6bc60f60a5f0c",
+    "v4_contract_sha256": "0f6d33ab67a02fe88f8d14aa092f5993636d3a99b3a939c2339de0fab4eb677a",
+    "v4_checkpoint_sha256": "42e3af0a3501750514c98f70305ac380663cac99ffeb8b26274340e10b7fcaf8",
+    "v4_fit_report_sha256": "f79e133e5cb0910df5a4a5281067571e25e551e5f49f0d0caa7dabf8d6e65c4a",
+    "governance_capture_manifest_sha256": "987b8b9d17c9d723d1ddcbaba61cc28d5b585c31e20b63e1a05c0dc94872735d",
+    "protected_capture_manifest_sha256": "f084c379cf59b5eeffdb67f62ce26d2cbb7418919da5e93a297dea1030a7c690"
+  },
+  "design_inputs_already_observed": {
+    "v4_operator_dev_analysis_sha256": "d4cf5b518c4352f1cbf67e2c52dcc8087c7f8c3067a9cc51fceed8b9202a7146",
+    "v4_protected_controls_analysis_sha256": "dc3991dbc4184b8106ddeb56c89fdff4e5f2f10c03b3911fb87175e698cc85db",
+    "v4_behavior_archive_sha256": "458f3d78b483c18d91438379a9302c5549bf96b5a715f857be0e0c0cc2c7752d",
+    "v4_protected_archive_sha256": "e9f4b2e44676cc8e684435086b5ec2385414a283d1d653db52aa7ea48a769150",
+    "restriction": "these diagnostics justify the corrected deployment-level estimand but make this eligibility audit developmental, not confirmatory"
+  },
+  "audit_inputs": {
+    "governance_capture_rows": 6144,
+    "protected_capture_rows": 4008,
+    "split_rule": "reuse the immutable V4 group-preserving folds without modification",
+    "calibration_fold": 6,
+    "audit_fold": 7,
+    "operator_dev_access_forbidden": true,
+    "protected_behavior_outputs_access_forbidden": true,
+    "final_test_access_forbidden": true
+  },
+  "eligibility_gates": {
+    "calibration_governance_matched_composite_active_fraction_maximum_each_family": 0.0,
+    "calibration_protected_composite_active_fraction_maximum_each_family": 0.0,
+    "calibration_composite_mismatch_true_positive_rate_minimum": 0.95,
+    "calibration_composite_each_direction_true_positive_rate_minimum": 0.95,
+    "calibration_composite_each_label_swap_true_positive_rate_minimum": 0.9,
+    "audit_governance_matched_composite_active_fraction_maximum_each_family": 0.0,
+    "audit_protected_composite_active_fraction_maximum_each_family": 0.0,
+    "audit_composite_mismatch_true_positive_rate_minimum": 0.95,
+    "audit_composite_each_direction_true_positive_rate_minimum": 0.95,
+    "audit_composite_each_label_swap_true_positive_rate_minimum": 0.9,
+    "expected_governance_matched_families": [
+      "matched_verification",
+      "matched_delegated_choice"
+    ],
+    "expected_protected_families": [
+      "fresh_verification",
+      "matched_verification",
+      "explicit_governance_reset",
+      "supported_user_authority",
+      "factual_boundary_memory"
+    ],
+    "v3_embedded_checkpoint_exact_match": true,
+    "v3_frozen_parameter_max_absolute_change": 0.0,
+    "v4_checkpoint_contains_no_base_weights": true,
+    "v4_checkpoint_contains_exactly_one_site": true,
+    "all_metrics_finite": true,
+    "all_source_coverage_exact": true
+  },
+  "post_audit_order": [
+    "developmental operator_dev rerun with frozen C-DGE-V4.1",
+    "developmental six-family protected controls with gated and forced-on evidence",
+    "matched latency throughput and peak-memory measurement",
+    "fresh SHA-bound Pareto lock",
+    "one-time 6144-row final test"
+  ],
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false
+}

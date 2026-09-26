@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "contract_id": "qwen3-8b-cdge-v4-1-composite-eligibility-code-v61-recovery-v1",
+  "created_utc": "2026-07-30T01:08:00Z",
+  "frozen_utc": "2026-07-30T01:08:00Z",
+  "status": "engineering_recovery_frozen_before_code_v61_execution",
+  "base_scientific_contract_sha256": "d3c92a4f467c070d5bcba1159d388ea4f714c5b64ce0b7691486e1bd781e8cf3",
+  "failed_code_version": 60,
+  "recovery_code_version": 61,
+  "failed_job": {
+    "job_id": 9262,
+    "run_id": "qwen3-8b-cdge-v4-1-composite-eligibility-20260730T010218Z",
+    "terminal_state": "FAILED",
+    "exit_code": "1:0",
+    "runtime_seconds": 20,
+    "immutable_code_bundle_manifest_sha256": "30c4af4e27df8ce59adafcfad691dc7be66d7704ad9dec28c1b0bb18cc35b74c",
+    "authorization_sha256": "1132b477547d4b8e8ed45776818290d745c8f6295fe151a616d0d543b5b965b5",
+    "tests_sha256": "a5ee0e602e46b106da39d94256c6b6ffd43968dcba320e7c26e9a1605eac7330",
+    "exit_status_sha256": "e7a2d954e337135a1bd1ddbf7e705907feba388a87f3b68084ce5b4589932ff6",
+    "held_job_record_sha256": "f219875e7236eddaf97a96f9c1a1704e5c6cb4308e6ef160e73bd4ac7c3d0a0e",
+    "diagnostic_report_sha256": "21319f9dc87965bfc67129784d129c3318e0e2610eab6ce89fceb7af2fca6050",
+    "three_copy_failure_archive_sha256": "87c4f9d73382763a931b4abad0ac241a7d8c796dc34f4b9dcbd985eb98e94125",
+    "failure_class": "zero_skip_test_gate_rejected_16_skipped_legacy_v3_tests",
+    "diagnostic_candidate_eligible": true,
+    "formal_scientific_result_accepted": false
+  },
+  "only_authorized_change": {
+    "source_environment": "/usr/local/Ascend/cann/set_env.sh",
+    "torch_device_backend_autoload_disabled": false,
+    "reason": "load the immutable CANN shared libraries so the existing V3 test module imports and all 31 tests execute without skips",
+    "npu_resource_requested": false,
+    "scientific_python_unchanged": true,
+    "scientific_protocol_unchanged": true,
+    "capture_inputs_unchanged": true,
+    "checkpoints_unchanged": true,
+    "thresholds_and_gates_unchanged": true
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false
+}

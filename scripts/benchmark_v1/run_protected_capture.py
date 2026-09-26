@@ -33,6 +33,7 @@ from .run_behavior import (
 )
 from .run_mechanism_discovery import _layers, _load_model, _normalize_output
 from .run_subspace_capture import _margin, _suffix_component_capture
+from .protected_capture_validation import validate_mitigation_controls_binding
 
 
 def _sha256(path: Path) -> str:
@@ -245,12 +246,17 @@ def main() -> None:
             "protected router-audit capture requires both authorization and router contract"
         )
     authorization = None
+    router_contract = None
     if args.execution_authorization is not None:
         authorization = json.loads(args.execution_authorization.read_text())
         router_contract = json.loads(args.router_contract.read_text())
+        if authorization.get("stage") not in {
+            "governance_consensus_router_audit_capture",
+            "governance_consensus_router_capture_recovery",
+        }:
+            raise ValueError("protected capture authorization mismatch: stage")
         required_authorization = {
             "schema_version": 1,
-            "stage": "governance_consensus_router_audit_capture",
             "execution_allowed": True,
             "router_contract_sha256": sha256_file(args.router_contract),
             "benchmark_manifest_sha256": sha256_file(args.manifest),
@@ -271,7 +277,12 @@ def main() -> None:
         if controls.get("identity_disjoint_from_mitigation_controls_v1") is not True:
             raise ValueError("V5 protected controls are not identity-disjoint")
         code_root = authorization.get("code_root", "")
-        if not code_root.startswith("/workspace/context-mismatch-qwen3-8b/code-v"):
+        if not code_root.startswith(
+            (
+                "/workspace/context-mismatch-qwen3-8b/code-v",
+                "/workspace/context-mismatch-qwen3-8b/code-v",
+            )
+        ):
             raise ValueError("protected capture authorization code root is invalid")
         bundle = Path(code_root) / "bundle.sha256"
         if bundle.exists() and authorization.get(
@@ -284,8 +295,13 @@ def main() -> None:
         raise ValueError("execution/operator contract mismatch")
     if operator["benchmark_manifest_sha256"] != sha256_file(args.manifest):
         raise ValueError("operator/benchmark manifest mismatch")
-    if execution["mitigation_controls_sha256"] != sha256_file(args.controls):
-        raise ValueError("execution/mitigation-controls mismatch")
+    validate_mitigation_controls_binding(
+        execution=execution,
+        execution_contract_path=args.execution_contract,
+        controls_path=args.controls,
+        authorization=authorization,
+        router_contract=router_contract,
+    )
     if manifest_report["manifest_sha256"] != sha256_file(args.manifest):
         raise ValueError("manifest report mismatch")
     if not behavior_analysis.get("audit", {}).get("success"):

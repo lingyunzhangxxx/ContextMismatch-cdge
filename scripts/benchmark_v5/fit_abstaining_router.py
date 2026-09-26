@@ -445,10 +445,11 @@ def _validate_inputs(args, contract: dict) -> tuple[dict, dict]:
         raise ValueError("selected V3 fit candidate checkpoint mismatch")
     authorization = json.loads(args.execution_authorization.read_text())
     code_root = str(authorization.get("code_root", ""))
+    qwen35 = code_root.startswith("/workspace/context-mismatch-qwen3-5-9b/code-v")
     required_authorization = {
         "stage": "governance_abstaining_router_fit",
         "execution_allowed": True,
-        "code_root": "/workspace/context-mismatch-qwen3-8b/code-v33",
+        "code_root": code_root if qwen35 else "/workspace/context-mismatch-qwen3-8b/code-v33",
         "immutable_code_bundle_manifest_sha256": sha256_file(Path(code_root) / "bundle.sha256"),
         "editor_contract_sha256": sha256_file(args.editor_contract),
         "v3_contract_sha256": sha256_file(args.v3_contract),

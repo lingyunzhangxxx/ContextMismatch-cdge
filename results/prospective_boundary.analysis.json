@@ -1,0 +1,252 @@
+{
+  "analysis_status": "prospective_preregistered_confirmation",
+  "audit": {
+    "duplicate_job_keys": [],
+    "expected_key_sha256": "bc67de44ee0235793e29b4cb1de9d673e899a79b9a459f6fea427259c63f78cb",
+    "invalid_partitions": [],
+    "invalid_requirements": [],
+    "matched_pairs": 3072,
+    "nonfinite_job_keys": [],
+    "observed_key_sha256": "bc67de44ee0235793e29b4cb1de9d673e899a79b9a459f6fea427259c63f78cb",
+    "planned_rows": 6144,
+    "row_count": 6144,
+    "success": true,
+    "unique_job_keys": 6144
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "final_test_used": false,
+  "input_sha256": "4ad61585037a37cd46e5f37a191122f5108df30612748c08f0183a7931985029",
+  "interpretation_boundary": {
+    "broad_open_ended_deployment_not_tested": true,
+    "difficulty_analysis_is_secondary": true,
+    "primary_claim": "frozen matched-margin bands predict correct-to-wrong mismatch flips"
+  },
+  "postselected_on_model_outputs": false,
+  "preregistered": true,
+  "production_rollout_approved": false,
+  "protocol_sha256": "538b337d206fb8333c565bc42e45e916093b418dc7187660f4ca566430591c88",
+  "requirements": {
+    "delegated_choice": {
+      "bands": {
+        "boundary": {
+          "correct_to_wrong_flip_rate": 0.04772727272727273,
+          "correct_to_wrong_flips": 21,
+          "matched_margin_max": 22.5,
+          "matched_margin_min": 0.25,
+          "mean_mismatch_margin_shift": -2.1323863636363636,
+          "n": 440,
+          "unique_items": 97
+        },
+        "middle": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 27.625,
+          "matched_margin_min": 22.625,
+          "mean_mismatch_margin_shift": -0.9205921938088829,
+          "n": 743,
+          "unique_items": 165
+        },
+        "robust": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 37.5,
+          "matched_margin_min": 27.75,
+          "mean_mismatch_margin_shift": -2.160507246376812,
+          "n": 345,
+          "unique_items": 104
+        }
+      },
+      "benchmark_difficulty_diagnostic": {
+        "benchmarks": [
+          {
+            "accuracy_drop": 0.0234375,
+            "benchmark": "arc_challenge",
+            "difficulty": 0.0,
+            "matched_accuracy": 1.0,
+            "mismatched_accuracy": 0.9765625,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.0234375,
+            "benchmark": "bbh",
+            "difficulty": 0.0,
+            "matched_accuracy": 1.0,
+            "mismatched_accuracy": 0.9765625,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.0,
+            "benchmark": "gsm8k",
+            "difficulty": 0.0,
+            "matched_accuracy": 1.0,
+            "mismatched_accuracy": 1.0,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.0,
+            "benchmark": "math_500",
+            "difficulty": 0.0,
+            "matched_accuracy": 1.0,
+            "mismatched_accuracy": 1.0,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.02734375,
+            "benchmark": "mmlu_pro",
+            "difficulty": 0.0078125,
+            "matched_accuracy": 0.9921875,
+            "mismatched_accuracy": 0.96484375,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.0078125,
+            "benchmark": "musr",
+            "difficulty": 0.0234375,
+            "matched_accuracy": 0.9765625,
+            "mismatched_accuracy": 0.96875,
+            "n": 256
+          }
+        ],
+        "interpretation": "secondary six-benchmark ecological diagnostic only",
+        "permutations": 720,
+        "spearman_difficulty_vs_accuracy_drop": 0.3133397807202561,
+        "two_sided_exact_permutation_p": 0.6
+      },
+      "boundary_minus_robust_flip_rate": {
+        "ci95_two_sided": [
+          0.021504222622179152,
+          0.07640486237181689
+        ],
+        "cluster": "item_id",
+        "estimate": 0.04772727272727273,
+        "one_sided_95_lower_bound": 0.02542275022507535,
+        "replicates": 10000,
+        "seed": 78124
+      },
+      "frozen_thresholds": {
+        "boundary_max": 22.5,
+        "robust_min": 27.75
+      },
+      "matched_correct_pairs": 1528,
+      "orientation": {
+        "matched_history": "obedience",
+        "mismatched_history": "verification"
+      },
+      "pairs": 1536,
+      "success_rule_passed": true
+    },
+    "independent_verification": {
+      "bands": {
+        "boundary": {
+          "correct_to_wrong_flip_rate": 0.44390243902439025,
+          "correct_to_wrong_flips": 91,
+          "matched_margin_max": 3.0,
+          "matched_margin_min": 0.0,
+          "mean_mismatch_margin_shift": -1.3146341463414635,
+          "n": 205,
+          "unique_items": 101
+        },
+        "middle": {
+          "correct_to_wrong_flip_rate": 0.046632124352331605,
+          "correct_to_wrong_flips": 18,
+          "matched_margin_max": 14.625,
+          "matched_margin_min": 3.125,
+          "mean_mismatch_margin_shift": -1.7004533678756477,
+          "n": 386,
+          "unique_items": 118
+        },
+        "robust": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 30.25,
+          "matched_margin_min": 14.75,
+          "mean_mismatch_margin_shift": -1.5657894736842106,
+          "n": 266,
+          "unique_items": 57
+        }
+      },
+      "benchmark_difficulty_diagnostic": {
+        "benchmarks": [
+          {
+            "accuracy_drop": 0.03125,
+            "benchmark": "arc_challenge",
+            "difficulty": 0.1484375,
+            "matched_accuracy": 0.8515625,
+            "mismatched_accuracy": 0.8203125,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.0625,
+            "benchmark": "bbh",
+            "difficulty": 0.55078125,
+            "matched_accuracy": 0.44921875,
+            "mismatched_accuracy": 0.38671875,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.07421875,
+            "benchmark": "gsm8k",
+            "difficulty": 0.40625,
+            "matched_accuracy": 0.59375,
+            "mismatched_accuracy": 0.51953125,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.0703125,
+            "benchmark": "math_500",
+            "difficulty": 0.50390625,
+            "matched_accuracy": 0.49609375,
+            "mismatched_accuracy": 0.42578125,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.0234375,
+            "benchmark": "mmlu_pro",
+            "difficulty": 0.44921875,
+            "matched_accuracy": 0.55078125,
+            "mismatched_accuracy": 0.52734375,
+            "n": 256
+          },
+          {
+            "accuracy_drop": 0.05078125,
+            "benchmark": "musr",
+            "difficulty": 0.59375,
+            "matched_accuracy": 0.40625,
+            "mismatched_accuracy": 0.35546875,
+            "n": 256
+          }
+        ],
+        "interpretation": "secondary six-benchmark ecological diagnostic only",
+        "permutations": 720,
+        "spearman_difficulty_vs_accuracy_drop": 0.08571428571428572,
+        "two_sided_exact_permutation_p": 0.9194444444444444
+      },
+      "boundary_minus_robust_flip_rate": {
+        "ci95_two_sided": [
+          0.3744493392070485,
+          0.5151515151515151
+        ],
+        "cluster": "item_id",
+        "estimate": 0.44390243902439025,
+        "one_sided_95_lower_bound": 0.3854166666666667,
+        "replicates": 10000,
+        "seed": 78123
+      },
+      "frozen_thresholds": {
+        "boundary_max": 3.0,
+        "robust_min": 14.75
+      },
+      "matched_correct_pairs": 857,
+      "orientation": {
+        "matched_history": "verification",
+        "mismatched_history": "obedience"
+      },
+      "pairs": 1536,
+      "success_rule_passed": true
+    }
+  },
+  "schema_version": 1,
+  "success_rule": "The point estimate is positive in both task requirements and each one-sided 95% lower confidence bound is greater than zero.",
+  "success_rule_passed_both_requirements": true
+}

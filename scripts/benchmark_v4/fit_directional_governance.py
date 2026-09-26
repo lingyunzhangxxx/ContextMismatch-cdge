@@ -46,14 +46,39 @@ def _canonical(value: object) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
+def _validate_gradient_site_scope(
+    manifest: dict, site_keys: list[str], *, qwen35: bool
+) -> None:
+    manifest_sites = sorted(
+        f"{int(site['layer'])}:{site['component']}" for site in manifest.get("sites", [])
+    )
+    requested_sites = sorted(site_keys)
+    if requested_sites == manifest_sites:
+        return
+    native_v42_single_site_view = (
+        qwen35
+        and manifest.get("stage") == "qwen35_cdge_v4_2_gradient_capture"
+        and manifest.get("method") == "C-DGE-V4.2"
+        and len(manifest_sites) == 3
+        and len(requested_sites) == 1
+        and set(requested_sites).issubset(manifest_sites)
+    )
+    if not native_v42_single_site_view:
+        raise ValueError("gradient manifest site set mismatch")
+
+
 def _load_gradient_capture(
     manifest_path: Path,
     site_keys: list[str],
     editor_contract_path: Path,
 ) -> dict:
     manifest = json.loads(manifest_path.read_text())
+    gradient_stage = str(manifest.get("stage", ""))
+    qwen35 = gradient_stage.startswith("qwen35_cdge") and gradient_stage.endswith(
+        "gradient_capture"
+    )
     required = {
-        "stage": "governance_gradient_capture_full",
+        "stage": gradient_stage if qwen35 else "governance_gradient_capture_full",
         "partition": "subspace_fit",
         "rows": 6144,
         "unique_job_keys": 6144,
@@ -62,18 +87,15 @@ def _load_gradient_capture(
         "final_test_open": False,
         "final_test_open_count": 0,
         "production_rollout_approved": False,
-        "editor_contract_sha256": sha256_file(editor_contract_path),
     }
+    if not qwen35:
+        required["editor_contract_sha256"] = sha256_file(editor_contract_path)
     for field, expected in required.items():
         if manifest.get(field) != expected:
             raise ValueError(f"gradient manifest mismatch: {field}")
     if manifest.get("observed_key_sha256") != manifest.get("expected_key_sha256"):
         raise ValueError("gradient manifest key SHA is not closed")
-    manifest_sites = sorted(
-        f"{int(site['layer'])}:{site['component']}" for site in manifest.get("sites", [])
-    )
-    if sorted(site_keys) != manifest_sites:
-        raise ValueError("gradient manifest site set mismatch")
+    _validate_gradient_site_scope(manifest, site_keys, qwen35=qwen35)
 
     metadata: list[dict] = []
     gradients = {key: [] for key in site_keys}
@@ -162,7 +184,10 @@ def _validate_authorization(
         if authorization.get(field) != expected:
             raise ValueError(f"directional-fit authorization mismatch: {field}")
     code_root = str(authorization.get("code_root", ""))
-    if not code_root.startswith("/workspace/context-mismatch-qwen3-8b/code-v"):
+    if not code_root.startswith((
+        "/workspace/context-mismatch-qwen3-8b/code-v",
+        "/workspace/context-mismatch-qwen3-5-9b/code-v",
+    )):
         raise ValueError("directional-fit code root is invalid")
     version = int(code_root.rsplit("code-v", 1)[1])
     if version < 29:
@@ -977,6 +1002,8 @@ def _checkpoint(
     record = {
         "layer": int(site["layer"]),
         "component": str(site["component"]),
+        "boundary_rank": int(site["boundary_rank"]),
+        "context_rank": int(site["context_rank"]),
         "positive_output_rank": int(site["positive_output_rank"]),
         "negative_output_rank": int(site["negative_output_rank"]),
         "maximum_relative_correction": float(site["max_relative_correction"]),
@@ -1034,13 +1061,18 @@ def main() -> None:
 
     contract = json.loads(args.editor_contract.read_text())
     required_contract = {
-        "status": "design_locked_after_v2_terminal_failure_audit_before_any_v3_forward",
         "method_short_name": "DSGE-V3",
         "code_version_minimum": 29,
         "final_test_open": False,
         "final_test_open_count": 0,
         "production_rollout_approved": False,
     }
+    allowed_statuses = {
+        "design_locked_after_v2_terminal_failure_audit_before_any_v3_forward",
+        "native_discovery_locked_before_candidate_fit",
+    }
+    if contract.get("status") not in allowed_statuses:
+        raise ValueError("directional contract mismatch: status")
     for field, expected in required_contract.items():
         if contract.get(field) != expected:
             raise ValueError(f"directional contract mismatch: {field}")
@@ -1055,8 +1087,12 @@ def main() -> None:
         if bound_inputs.get(field) != expected:
             raise ValueError(f"directional contract input binding mismatch: {field}")
     capture_manifest_value = json.loads(args.capture_manifest.read_text())
+    capture_stage = str(capture_manifest_value.get("stage", ""))
+    qwen35 = capture_stage.startswith("qwen35_cdge") and capture_stage.endswith(
+        "governance_capture"
+    )
     for field, expected in {
-        "stage": "governance_capture_full",
+        "stage": capture_stage if qwen35 else "governance_capture_full",
         "partition": "subspace_fit",
         "rows": 6144,
         "unique_job_keys": 6144,
@@ -1107,9 +1143,20 @@ def main() -> None:
     metadata = capture["metadata"]
     teacher_indices = _teacher_indices(metadata)
     folds = torch.tensor([_fold(row["item_id"]) for row in metadata], dtype=torch.long)
-    train_indices = torch.nonzero(folds <= 5, as_tuple=False).squeeze(-1)
-    calibration_indices = torch.nonzero(folds == 6, as_tuple=False).squeeze(-1)
-    audit_indices = torch.nonzero(folds == 7, as_tuple=False).squeeze(-1)
+    split = contract.get("fit_split", {})
+    train_folds = set(int(value) for value in split.get("train_folds", range(6)))
+    calibration_fold = int(split.get("calibration_fold", 6))
+    audit_fold = int(
+        split.get("structural_audit_fold", split.get("direct_behavior_audit_fold", 7))
+    )
+    if train_folds & {calibration_fold, audit_fold} or calibration_fold == audit_fold:
+        raise ValueError("directional fit fold roles overlap")
+    train_mask = torch.tensor(
+        [int(value) in train_folds for value in folds.tolist()], dtype=torch.bool
+    )
+    train_indices = torch.nonzero(train_mask, as_tuple=False).squeeze(-1)
+    calibration_indices = torch.nonzero(folds == calibration_fold, as_tuple=False).squeeze(-1)
+    audit_indices = torch.nonzero(folds == audit_fold, as_tuple=False).squeeze(-1)
     if min(len(train_indices), len(calibration_indices), len(audit_indices)) <= 0:
         raise RuntimeError("one or more directional fit folds are empty")
     if any(str(row["partition"]) != "subspace_fit" for row in metadata):
@@ -1351,6 +1398,11 @@ def main() -> None:
             "train": len(train_indices),
             "calibration": len(calibration_indices),
             "audit": len(audit_indices),
+        },
+        "fold_assignment": {
+            "train_folds": sorted(train_folds),
+            "calibration_fold": calibration_fold,
+            "audit_fold": audit_fold,
         },
         "operator_dev_accessed": False,
         "final_test_open": False,

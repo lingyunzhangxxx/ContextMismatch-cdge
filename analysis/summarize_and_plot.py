@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -20,6 +21,8 @@ import reportlab
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from scripts.reproduce_paper import reproduce
 DATA = ROOT / "results"
 GENERATED = ROOT / "generated"
 FIGURES = GENERATED / "figures"
@@ -394,7 +397,11 @@ def main() -> None:
 
     claims = {
         "schema_version": 1,
-        "publication_method_name": "Directional Governance Editing (DGE)",
+        "publication_method_name": "Composite Directional Governance Editing (C-DGE)",
+        "cdge_final": reproduce(),
+        "prospective_boundary": load_json("prospective_boundary.analysis.json"),
+        "cdge_formal_controls": load_json("cdge_v4_1_protected_controls.analysis.json"),
+        "cdge_performance": load_json("cdge_v4_1_performance.analysis.json"),
         "behavior": {
             "full_rows": full["audit"]["row_count"],
             "obedience_minus_verification": full["mismatch_obedience_minus_verification"],
@@ -421,7 +428,8 @@ def main() -> None:
         "interpretation": {
             "dge_held_out_efficacy": "strong",
             "average_accuracy_collateral_observed": "small",
-            "router_selectivity": "incomplete",
+            "legacy_dge_router_selectivity": "incomplete",
+            "cdge_formal_protected_control_identity": "exact on all 2856 released formal control rows",
             "v4_composite_router_diagnostic": "removes all 963 observed V3 protected-control edits while preserving exact V3 operator_dev behavior",
             "v4_evidence_class": "post_fit_failure_diagnostic_not_confirmatory_selection",
             "deployment_safe": False,

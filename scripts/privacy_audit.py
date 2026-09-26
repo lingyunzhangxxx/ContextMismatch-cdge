@@ -15,6 +15,9 @@ TEXT_PATTERNS = {
     "private macOS path": re.compile(r"/Users/[A-Za-z0-9._-]+/"),
     "private home path": re.compile(r"/home/[A-Za-z0-9._-]+/"),
     "root home path": re.compile(r"/root/"),
+    "private cluster path": re.compile(r"/WORK/[A-Za-z0-9._-]+/"),
+    "provider token": re.compile(r"\b(?:gh[pousr]_|github_pat_|hf_|sk-)[A-Za-z0-9_-]{20,}"),
+    "private network address": re.compile(r"\b(?:10\.[0-9]{1,3}|192\.168|172\.(?:1[6-9]|2[0-9]|3[01]))\.[0-9]{1,3}\.[0-9]{1,3}\b"),
     "private key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     "assigned credential": re.compile(
         r"(?i)(?:api[_-]?key|access[_-]?token|password|passwd|secret)"
@@ -44,6 +47,8 @@ def main() -> None:
     findings: list[str] = []
     for path in files_to_scan():
         relative = path.relative_to(ROOT).as_posix()
+        if path.name == ".env" or (path.name.startswith(".env.") and path.name != ".env.example"):
+            findings.append(f"environment credential file: {relative}")
         if path.suffix.lower() in BLOCKED_SUFFIXES:
             findings.append(f"blocked artifact type: {relative}")
             continue

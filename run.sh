@@ -14,7 +14,7 @@ require_modern_python() {
 
 case "$command" in
   demo)
-    "$python_bin" scripts/public_demo.py "$@"
+    PYTHONPATH=. "$python_bin" -m scripts.public_demo "$@"
     ;;
   test)
     require_modern_python
@@ -26,7 +26,7 @@ case "$command" in
     ;;
   all)
     require_modern_python
-    "$python_bin" scripts/public_demo.py
+    PYTHONPATH=. "$python_bin" -m scripts.public_demo
     PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. \
       "$python_bin" -m unittest discover -s tests -v
     "$python_bin" scripts/privacy_audit.py
@@ -39,8 +39,11 @@ case "$command" in
     require_modern_python
     exec "$python_bin" scripts/run_length_scan.py "$@"
     ;;
+  reproduce)
+    PYTHONPATH=. exec "$python_bin" -m scripts.reproduce_paper "$@"
+    ;;
   *)
-    echo "Usage: ./run.sh {demo|test|audit|all|pilot|length-scan} [arguments...]" >&2
+    echo "Usage: ./run.sh {demo|test|audit|all|reproduce|pilot|length-scan} [arguments...]" >&2
     exit 2
     ;;
 esac

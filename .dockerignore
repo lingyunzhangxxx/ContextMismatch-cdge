@@ -9,3 +9,11 @@ checkpoints
 cache
 tmp
 outputs
+generated
+.env
+.env.*
+venv
+*.log
+*.pt
+*.pth
+*.safetensors

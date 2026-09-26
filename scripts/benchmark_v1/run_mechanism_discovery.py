@@ -44,9 +44,13 @@ def _replace_output(output, value):
 
 
 def _layers(model):
-    if not hasattr(model, "model") or not hasattr(model.model, "layers"):
-        raise TypeError(f"unsupported model structure: {type(model).__name__}")
-    return model.model.layers
+    root = getattr(model, "model", None)
+    if root is not None and hasattr(root, "layers"):
+        return root.layers
+    language_model = getattr(root, "language_model", None)
+    if language_model is not None and hasattr(language_model, "layers"):
+        return language_model.layers
+    raise TypeError(f"unsupported model structure: {type(model).__name__}")
 
 
 def _module(model, layer: int, component: str):
@@ -54,7 +58,17 @@ def _module(model, layer: int, component: str):
     if component == "residual":
         return block
     if component == "self_attn":
-        return block.self_attn
+        if hasattr(block, "self_attn"):
+            return block.self_attn
+        if hasattr(block, "linear_attn"):
+            return block.linear_attn
+        raise TypeError(f"layer {layer} has no supported attention/mixer module")
+    if component == "mixer":
+        if hasattr(block, "self_attn"):
+            return block.self_attn
+        if hasattr(block, "linear_attn"):
+            return block.linear_attn
+        raise TypeError(f"layer {layer} has no supported attention/mixer module")
     if component == "mlp":
         return block.mlp
     raise ValueError(component)
@@ -212,11 +226,25 @@ def _load_model(model_path: Path, device: torch.device, attn_implementation: str
         "trust_remote_code": False,
         "attn_implementation": attn_implementation,
     }
+    config_path = model_path / "config.json"
+    architectures = []
+    if config_path.is_file():
+        architectures = json.loads(config_path.read_text()).get("architectures", [])
+    model_class = AutoModelForCausalLM
+    if "Qwen3_5ForConditionalGeneration" in architectures:
+        try:
+            from transformers import Qwen3_5ForConditionalGeneration
+        except ImportError as exc:
+            raise RuntimeError(
+                "the installed transformers runtime does not provide "
+                "Qwen3_5ForConditionalGeneration"
+            ) from exc
+        model_class = Qwen3_5ForConditionalGeneration
     try:
-        model = AutoModelForCausalLM.from_pretrained(model_path, **kwargs)
+        model = model_class.from_pretrained(model_path, **kwargs)
     except TypeError:
         kwargs["torch_dtype"] = kwargs.pop("dtype")
-        model = AutoModelForCausalLM.from_pretrained(model_path, **kwargs)
+        model = model_class.from_pretrained(model_path, **kwargs)
     model = model.to(device)
     model.eval()
     return tokenizer, model

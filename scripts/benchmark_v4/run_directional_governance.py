@@ -110,7 +110,11 @@ def _validate_authorization(
         if authorization.get(field) != expected:
             raise ValueError(f"directional behavior authorization mismatch: {field}")
     code_root = str(authorization.get("code_root", ""))
-    if not code_root.startswith("/workspace/context-mismatch-qwen3-8b/code-v"):
+    allowed_roots = (
+        "/workspace/context-mismatch-qwen3-8b/code-v",
+        "/workspace/context-mismatch-qwen3-5-9b/code-v",
+    )
+    if not code_root.startswith(allowed_roots):
         raise ValueError("directional behavior code root is invalid")
     if int(code_root.rsplit("code-v", 1)[1]) < 29:
         raise ValueError("directional behavior requires code-v29 or newer")

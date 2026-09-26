@@ -1,0 +1,245 @@
+{
+  "audit": {
+    "all_method_repeat_groups_complete": true,
+    "cells": 24,
+    "expected_cell_key_sha256": "007c94197c130c3e154d90160cf0fea3c59643a4a12fbcf76e10815be0c5d16a",
+    "invalid_measurement_keys": [],
+    "measurement_rows": 720,
+    "nonfinite_measurement_keys": [],
+    "observed_cell_key_sha256": "007c94197c130c3e154d90160cf0fea3c59643a4a12fbcf76e10815be0c5d16a",
+    "paired_repeats_complete": true,
+    "same_prompt_and_tokens_within_cells": true,
+    "success": true,
+    "unique_measurement_keys": 720
+  },
+  "candidate_may_be_locked": false,
+  "confirmatory": false,
+  "environment_sha256": "6890fb81a69b10263d10b7a12c0ce42764dec6ead87594352157657fa033363e",
+  "evaluation_contract_sha256": "6dd1841db552aaa94b5da6d71ca6d9dbaf26f0bc89d875484fc1c0fb88fa31f3",
+  "evidence_class": "developmental_post_eligibility_evaluation",
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "input_sha256": "e33e0ee81dfe8fccc2d569ba4e6b0928671cc062958b614df649427abbe52a14",
+  "method": "C-DGE-V4.1",
+  "method_reports": {
+    "C-DGE-V4.1": {
+      "examples_per_second": {
+        "maximum": 1.2911884545211139,
+        "mean": 1.2343286778045373,
+        "median": 1.2839065465603992,
+        "minimum": 0.9712612942334441,
+        "n": 240,
+        "p95": 1.2898105542446852
+      },
+      "incremental_peak_npu_memory_bytes": {
+        "maximum": 4015330816.0,
+        "mean": 4015330816.0,
+        "median": 4015330816.0,
+        "minimum": 4015330816.0,
+        "n": 240,
+        "p95": 4015330816.0
+      },
+      "measurements": 240,
+      "paired_latency_seconds": {
+        "maximum": 1.029589056968689,
+        "mean": 0.8181997950654477,
+        "median": 0.7788728885352612,
+        "minimum": 0.7744802832603455,
+        "n": 240,
+        "p95": 1.0214875360950828
+      },
+      "peak_npu_memory_bytes": {
+        "maximum": 20400732672.0,
+        "mean": 20400731648.0,
+        "median": 20400731648.0,
+        "minimum": 20400730624.0,
+        "n": 240,
+        "p95": 20400732672.0
+      },
+      "suffix_tokens_per_second": {
+        "maximum": 1124.6578227867483,
+        "mean": 371.6547408129761,
+        "median": 237.06288499299166,
+        "minimum": 140.53504262750474,
+        "n": 240,
+        "p95": 1122.8279248070426
+      }
+    },
+    "DSGE-V3": {
+      "examples_per_second": {
+        "maximum": 1.2983339197635402,
+        "mean": 1.2385744116410218,
+        "median": 1.2882641234282592,
+        "minimum": 0.9802006308642119,
+        "n": 240,
+        "p95": 1.2947207773466534
+      },
+      "incremental_peak_npu_memory_bytes": {
+        "maximum": 4015330816.0,
+        "mean": 4015330816.0,
+        "median": 4015330816.0,
+        "minimum": 4015330816.0,
+        "n": 240,
+        "p95": 4015330816.0
+      },
+      "measurements": 240,
+      "paired_latency_seconds": {
+        "maximum": 1.0201993025839329,
+        "mean": 0.8154343360724549,
+        "median": 0.7762383371591568,
+        "minimum": 0.7702178806066513,
+        "n": 240,
+        "p95": 1.018989847227931
+      },
+      "peak_npu_memory_bytes": {
+        "maximum": 20400730112.0,
+        "mean": 20400725184.0,
+        "median": 20400729088.0,
+        "minimum": 20400635392.0,
+        "n": 240,
+        "p95": 20400730112.0
+      },
+      "suffix_tokens_per_second": {
+        "maximum": 1127.8277591084113,
+        "mean": 372.8457985781211,
+        "median": 237.83106934921372,
+        "minimum": 140.94611026489963,
+        "n": 240,
+        "p95": 1126.3470242410147
+      }
+    },
+    "baseline": {
+      "examples_per_second": {
+        "maximum": 1.3049456219944793,
+        "mean": 1.245207475451991,
+        "median": 1.2954175356725313,
+        "minimum": 0.984411186726527,
+        "n": 240,
+        "p95": 1.3001684304892418
+      },
+      "incremental_peak_npu_memory_bytes": {
+        "maximum": 4015330816.0,
+        "mean": 4015330816.0,
+        "median": 4015330816.0,
+        "minimum": 4015330816.0,
+        "n": 240,
+        "p95": 4015330816.0
+      },
+      "measurements": 240,
+      "paired_latency_seconds": {
+        "maximum": 1.0158356726169586,
+        "mean": 0.8111153143302848,
+        "median": 0.7719518784433603,
+        "minimum": 0.7663154564797878,
+        "n": 240,
+        "p95": 1.0143308386206626
+      },
+      "peak_npu_memory_bytes": {
+        "maximum": 20399269888.0,
+        "mean": 20399261141.333332,
+        "median": 20399268864.0,
+        "minimum": 20399084544.0,
+        "n": 240,
+        "p95": 20399269888.0
+      },
+      "suffix_tokens_per_second": {
+        "maximum": 1132.8025950143694,
+        "mean": 374.7924062478772,
+        "median": 239.10714641999667,
+        "minimum": 142.44089870612257,
+        "n": 240,
+        "p95": 1131.1921479582832
+      }
+    }
+  },
+  "paired_reports": {
+    "C-DGE-V4.1": {
+      "latency_overhead_percent": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 0.8781014428227873,
+        "two_sided_95": [
+          0.8100833399448115,
+          0.9490577136614942
+        ]
+      },
+      "latency_ratio_to_baseline": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 1.0087810144282279,
+        "two_sided_95": [
+          1.0081008333994481,
+          1.009490577136615
+        ]
+      },
+      "peak_npu_memory_delta_bytes": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 1470506.6666666667,
+        "two_sided_95": [
+          1462698.6666666667,
+          1485952.0
+        ]
+      },
+      "throughput_ratio_to_baseline": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 0.9913019422052436,
+        "two_sided_95": [
+          0.990611417089756,
+          0.9919610599630616
+        ]
+      }
+    },
+    "DSGE-V3": {
+      "latency_overhead_percent": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 0.534541232482133,
+        "two_sided_95": [
+          0.4569674533255741,
+          0.6157856971970688
+        ]
+      },
+      "latency_ratio_to_baseline": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 1.0053454123248213,
+        "two_sided_95": [
+          1.0045696745332557,
+          1.0061578569719707
+        ]
+      },
+      "peak_npu_memory_delta_bytes": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 1464042.6666666667,
+        "two_sided_95": [
+          1460053.3333333333,
+          1471765.3333333335
+        ]
+      },
+      "throughput_ratio_to_baseline": {
+        "bootstrap_replicates": 10000,
+        "cluster_unit": "performance_cell",
+        "clusters": 24,
+        "estimate": 0.9946901068217833,
+        "two_sided_95": [
+          0.9939069414089916,
+          0.9954697120696813
+        ]
+      }
+    }
+  },
+  "performance_evaluation_complete": true,
+  "production_rollout_approved": false,
+  "schema_version": 1,
+  "stage": "governance_composite_performance"
+}

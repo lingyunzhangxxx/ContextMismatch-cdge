@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "contract_id": "qwen3-8b-cdge-v4-1-composite-eligibility-code-v60-recovery-v1",
+  "created_utc": "2026-07-30T01:02:00Z",
+  "frozen_utc": "2026-07-30T01:02:00Z",
+  "status": "engineering_recovery_frozen_before_code_v60_execution",
+  "base_scientific_contract_sha256": "d3c92a4f467c070d5bcba1159d388ea4f714c5b64ce0b7691486e1bd781e8cf3",
+  "failed_code_version": 59,
+  "recovery_code_version": 60,
+  "failed_job": {
+    "job_id": 9260,
+    "run_id": "qwen3-8b-cdge-v4-1-composite-eligibility-20260730T005512Z",
+    "terminal_state": "FAILED",
+    "exit_code": "1:0",
+    "runtime_seconds": 11,
+    "immutable_code_bundle_manifest_sha256": "bfefc7330344eba8acae8dbb8c3ca285f86ff7b81ed9babc2053ad16f7561ba9",
+    "authorization_sha256": "f448b940899f8c99194721677322d9dc6db926ad88d6fd1e38f846e7db3148ac",
+    "tests_sha256": "d0ffa2e9dd5e3745828107cac654ea8b34895420d90cb3841cf8ec58f1764fd4",
+    "exit_status_sha256": "33ca6147edc362704a1c3ee2c7292aef3246622271bde06a925143de65b0fe84",
+    "held_job_record_sha256": "bc93e419747f1f81173f990832129d45ddaebb90fe69001cfbf11d7d3cc857c6",
+    "three_copy_failure_archive_sha256": "cbf9de07ca17141126afe64642b9e40a6fd127e18e7bf13eed6a2a765478a9a5",
+    "failure_class": "torch_npu_backend_autoload_missing_libhccl_before_any_test_or_capture_audit",
+    "scientific_result_observed": false
+  },
+  "only_authorized_change": {
+    "environment_variable": "TORCH_DEVICE_BACKEND_AUTOLOAD",
+    "value": "0",
+    "reason": "the audit is CPU-only and must not import the optional torch_npu backend",
+    "scientific_python_unchanged": true,
+    "scientific_protocol_unchanged": true,
+    "capture_inputs_unchanged": true,
+    "checkpoints_unchanged": true,
+    "thresholds_and_gates_unchanged": true
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false
+}

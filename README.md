@@ -16,7 +16,19 @@ No model download, GPU, or API key is required for the public smoke test:
 ./run.sh
 ```
 
-This validates every released JSON/JSONL result and prints an auditable summary.
+This validates every released JSON/JSONL result and recomputes the final paper
+values from the original model-output rows:
+
+```text
+final mismatch accuracy: 74.48% -> 75.68% (3072 rows)
+final normalized gap reduction: 30.36%
+rescued mismatch flips: 32 / 135
+protected controls changed: 0 / 2856
+```
+
+It is an offline result-reproduction command. New model inference is described
+below. Python 3.9+ is sufficient for this command; tests require Python 3.10+.
+
 For the complete code test in an isolated Python 3.11 environment:
 
 ```bash
@@ -24,9 +36,12 @@ docker build -t context-mismatch-cdge .
 docker run --rm context-mismatch-cdge
 ```
 
-The container runs the release validator, 141 unit tests, and the privacy
+The container runs the release validator, the unit suite, and the privacy
 audit. Tests that require PyTorch are skipped in the lightweight image; use the
 optional experiment environment below to run them.
+
+The verified full CPU environment passes **192 tests with no skips**. The
+lightweight container explicitly skips 85 tests that need tensor dependencies.
 
 ## Repository layout
 
@@ -35,11 +50,13 @@ optional experiment environment below to run them.
 ├── analysis/       # Paper-result aggregation and figure generation
 ├── artifacts/      # Public benchmark manifests and design audits
 ├── ascend/         # Sanitized terminal verification/archive helpers
+├── docs/           # Reproduction paths and experiment-module map
 ├── protocol/       # Frozen experiment contracts and task definitions
 ├── results/        # Released row-level and summary experiment outputs
 ├── scripts/        # Behavioral, mechanistic, C-DGE, and baseline code
 ├── snapshots/      # Frozen code snapshot used by later diagnostics
 ├── tests/          # Contract and implementation tests
+├── third_party/    # Fixed upstream baseline files and original licenses
 ├── Dockerfile
 └── run.sh          # Single entry point
 ```
@@ -57,10 +74,15 @@ Python 3.10 or newer is required for the full test suite.
 ./run.sh test       # run the unit suite
 ./run.sh audit      # scan tracked files for secrets/private paths
 ./run.sh all        # run all three checks
+./run.sh reproduce  # write recomputed final metrics under generated/
 ```
 
-The behavioral pilot talks to any OpenAI-compatible endpoint. Credentials are
-read only by that endpoint; this repository does not require or store them.
+If your default Python is older than 3.10, select a newer interpreter explicitly
+for tests, for example `PYTHON=python3.11 ./run.sh all`, or use Docker.
+
+The behavioral pilot talks to a local OpenAI-compatible endpoint without an
+authentication header. Model-service credentials belong in your private service
+configuration, not in this repository.
 
 ```bash
 python3 scripts/run_experiment.py \
@@ -106,11 +128,16 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements-experiment.txt
+./run.sh all
 ```
 
 The recorded Ascend environment used Python 3.11.13, PyTorch 2.7.1,
 torch-npu 2.7.1, and Transformers 5.13.1. NPU users should install the wheels
 matching their CANN/runtime image rather than the CUDA requirements file.
+
+See [the reproduction guide](docs/REPRODUCIBILITY.md) for the complete C-DGE
+module map, required capture inputs, and the distinction between offline
+reproduction, CPU implementation tests, and accelerator-scale reruns.
 
 ## Results and integrity
 
@@ -118,7 +145,8 @@ See [RESULTS.md](RESULTS.md) for the released evidence map and interpretation
 limits. `results/MANIFEST.sha256` binds every result file. Run `./run.sh demo`
 to verify the manifest and parse every JSON/JSONL row.
 
-All retained formal evidence has `production_rollout_approved=false`. The code
+All retained formal evidence that declares a production decision has
+`production_rollout_approved=false`. The code
 is a research artifact, not a deployment-safety claim.
 
 ## Citation
@@ -128,6 +156,7 @@ will be added after the anonymous review period.
 
 ## License
 
-Code in this repository is released under the [MIT License](LICENSE). Dataset
+Project code is released under the [MIT License](LICENSE). Vendored comparator
+files retain their [upstream licenses](third_party/README.md). Dataset
 and model licenses remain with their original providers; see the frozen
 protocol manifests for source revisions.

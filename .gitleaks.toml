@@ -1,0 +1,16 @@
+title = "ContextMismatch credential scan"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Only frozen SHA-256 evidence identifiers, timed measurement keys, and one exact model-class import"
+regexTarget = "match"
+regexes = [
+  '''(?i)[a-z_][a-z0-9_]*sha256[a-z0-9_]*["']?\s*[:=]\s*["'][a-f0-9]{64}''',
+  # JSONL scanner chunks may end inside a SHA-256 field; parsed rows verify the full hash.
+  '''(?:prefix|suffix|uffix|fix|_)?_?token_sha256_int32_le["']?\s*:\s*["'][a-f0-9]{16,64}''',
+  '''(?:EXPECTED_KEY(?:_SHA)?|OPERATOR_KEY|CONTROL_KEY|FINAL_KEY)\s*=\s*["'][a-f0-9]{64}''',
+  '''AutoTokenizer, Qwen3_5ForConditionalGeneration''',
+  '''(?:cell_key|measurement_key)["']?\s*:\s*["'](?:arc_challenge|bbh|gsm8k|math_500|mmlu_pro|musr)__(?:independent_verification|delegated_choice)__[01](?:__(?:baseline|C-DGE-V4\.1|DSGE-V3)__r[0-9]{2})?["']''',
+]

@@ -35,8 +35,38 @@ from scripts.benchmark_v2.run_operator_candidate import (
     _key_hash,
     _margins,
 )
-from scripts.benchmark_v3.adaptive_governance import editor_from_checkpoint
+from scripts.benchmark_v3.adaptive_governance import (
+    editor_from_checkpoint as adaptive_editor_from_checkpoint,
+)
+from scripts.benchmark_v5.abstaining_directional_governance import (
+    editor_from_checkpoint as abstaining_editor_from_checkpoint,
+)
+from scripts.benchmark_v4.directional_governance import (
+    editor_from_checkpoint as directional_editor_from_checkpoint,
+)
 from scripts.benchmark_v3.run_governance_capture import _selected_jobs
+
+
+def _editor_from_checkpoint(checkpoint: dict):
+    """Load the frozen editor family named by the checkpoint itself."""
+    if checkpoint.get("method") == "ADSGE-V4":
+        return abstaining_editor_from_checkpoint(checkpoint)
+    if checkpoint.get("method") == "DSGE-V3":
+        return directional_editor_from_checkpoint(checkpoint)
+    return adaptive_editor_from_checkpoint(checkpoint)
+
+
+def _fit_gate_status(fit_report: dict) -> bool:
+    """Normalize the historical fit-report schemas without changing their gates."""
+    if "all_fit_gates_pass" in fit_report:
+        value = fit_report["all_fit_gates_pass"]
+    elif fit_report.get("method") == "ADSGE-V4" and "fit_eligible" in fit_report:
+        value = fit_report["fit_eligible"]
+    else:
+        raise ValueError("fit report does not expose a recognized fit-gate decision")
+    if not isinstance(value, bool):
+        raise ValueError("fit-gate decision must be boolean")
+    return value
 
 
 def _jobs(manifest: list[dict], contract: dict, evaluation_split: str) -> tuple[list[dict], str]:
@@ -44,6 +74,18 @@ def _jobs(manifest: list[dict], contract: dict, evaluation_split: str) -> tuple[
         return _selected_jobs(manifest, contract, "smoke"), "replication"
     if evaluation_split in {"selection", "failed_fit_selection"}:
         return _half_jobs(enumerate_jobs(manifest, contract, "operator_dev"), "selection"), "operator_dev"
+    if evaluation_split == "native_audit":
+        rows = enumerate_jobs(manifest, contract, "replication")
+        selected = [
+            row for row in rows
+            if int.from_bytes(
+                hashlib.sha256(row["item"]["item_id"].encode("utf-8")).digest()[:8],
+                "big",
+            ) % 8 == 7
+        ]
+        if not selected or len({row["item"]["item_id"] for row in selected}) < 2:
+            raise ValueError("native fold-7 behavior audit is empty")
+        return selected, "replication"
     if evaluation_split == "final_test":
         rows = enumerate_jobs(manifest, contract, "final_test")
         if len(rows) != 6144:
@@ -138,6 +180,7 @@ def main() -> None:
             "final_test",
             "failed_fit_smoke",
             "failed_fit_selection",
+            "native_audit",
         ],
         required=True,
     )
@@ -160,6 +203,7 @@ def main() -> None:
     design_audit = json.loads(args.design_audit.read_text())
     model_manifest = json.loads(args.model_manifest.read_text())
     diagnostic = args.evaluation_split.startswith("failed_fit_")
+    fit_gates_passed = _fit_gate_status(fit_report)
     diagnostic_contract = None
     if diagnostic:
         if args.diagnostic_contract is None:
@@ -169,9 +213,9 @@ def main() -> None:
             raise ValueError("diagnostic contract is not a post-failure characterization")
         if diagnostic_contract.get("fit_gates_passed") is not False:
             raise ValueError("diagnostic contract does not preserve fit failure")
-        if fit_report.get("all_fit_gates_pass") is not False:
+        if fit_gates_passed is not False:
             raise ValueError("failed-fit stage requires a failed fit report")
-    elif not fit_report.get("all_fit_gates_pass"):
+    elif not fit_gates_passed:
         raise ValueError("editor fit gates did not pass")
     if fit_report.get("checkpoint_sha256") != sha256_file(args.checkpoint):
         raise ValueError("fit report checkpoint SHA mismatch")
@@ -211,7 +255,7 @@ def main() -> None:
     tokenizer, model = _load_model(args.model_path, device, args.attn_implementation)
     for parameter in model.parameters():
         parameter.requires_grad_(False)
-    adaptive = editor_from_checkpoint(checkpoint).to(device).eval()
+    adaptive = _editor_from_checkpoint(checkpoint).to(device).eval()
     manager = adaptive.hook_manager().to(device)
     specs = list(manager.operators)
     layers = sorted({spec.layer for spec in specs})
@@ -238,7 +282,7 @@ def main() -> None:
         ),
         "editor_trainable_parameters": adaptive.trainable_parameter_count,
         "post_failure_characterization": diagnostic,
-        "fit_gates_passed": bool(fit_report.get("all_fit_gates_pass")),
+        "fit_gates_passed": fit_gates_passed,
         "candidate_eligible": False if diagnostic else None,
         "candidate_may_be_locked": False if diagnostic else None,
         "diagnostic_contract_sha256": (
@@ -370,6 +414,14 @@ def main() -> None:
                             "task_probability",
                             "signed_governance_factor",
                             "trust_scale",
+                            "positive_evidence",
+                            "negative_evidence",
+                            "positive_route",
+                            "negative_route",
+                            "application_logit",
+                            "application_probability",
+                            "application_gate_active",
+                            "v4_gate_active",
                         }
                     }
                 record = {

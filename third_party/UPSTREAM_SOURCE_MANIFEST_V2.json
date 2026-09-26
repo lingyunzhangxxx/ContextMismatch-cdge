@@ -1,0 +1,83 @@
+{
+  "archive_layout": "source_archive and extracted_tree paths are relative to ContextMismatch-DGE-AAAI2027/third_party",
+  "implementation_policy": "ContextMismatch task adaptations are derived from source files at fixed upstream commits. They are not byte-identical official reproductions and are not unmodified official implementations.",
+  "repositories": {
+    "caa": {
+      "archive_top_level": "CAA-5dabbbd9a0bca5f25e174501e959de378806aa48",
+      "commit": "5dabbbd9a0bca5f25e174501e959de378806aa48",
+      "extracted_file_count": 5370,
+      "extracted_tree": "upstream/CAA",
+      "extracted_tree_sha256": "ded055731600b430b714eb973e986156766ebab07a90ff86aa8524944082d8f7",
+      "license": "MIT",
+      "license_relative_path": "CAA/LICENSE",
+      "license_sha256": "4f40800b2b823f96366eb9de7d0113970fab96f724ab535d45badca5735ad74f",
+      "repository": "https://github.com/nrimsky/CAA",
+      "source_archive": "source-archives/CAA.tar.gz",
+      "source_archive_sha256": "20e4adc0e7f526feaeba512a610deb20ddd1577480ed7df2f4907215fba1dd64"
+    },
+    "cast": {
+      "archive_top_level": "activation-steering-52be60235ee309b46c49d6d5877f36e20c52e6ab",
+      "commit": "52be60235ee309b46c49d6d5877f36e20c52e6ab",
+      "extracted_file_count": 26,
+      "extracted_tree": "upstream/activation-steering",
+      "extracted_tree_sha256": "48a3b02854bf4b6fef038620c777a39a03e85fad624ccf1c7cf2a8a479ef237f",
+      "license": "Apache-2.0",
+      "license_relative_path": "activation-steering/LICENSE",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "repository": "https://github.com/IBM/activation-steering",
+      "source_archive": "source-archives/activation-steering.tar.gz",
+      "source_archive_sha256": "e735d8711305e1eb6777333e08c10a16f3bef2223fc49fcb934a29106cabd3b8"
+    },
+    "loreft": {
+      "archive_top_level": "pyreft-dafd0995a366d7b47160a337dcc388eda7431821",
+      "commit": "dafd0995a366d7b47160a337dcc388eda7431821",
+      "extracted_file_count": 74,
+      "extracted_tree": "upstream/pyreft",
+      "extracted_tree_sha256": "63438cd8339e4523ce5bde042e6256e8526309cc2796fbff13c335037017bd64",
+      "license": "Apache-2.0",
+      "license_relative_path": "pyreft/LICENSE",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "repository": "https://github.com/stanfordnlp/pyreft",
+      "source_archive": "source-archives/pyreft.tar.gz",
+      "source_archive_sha256": "69d59a94b889164dd4b6c99040b9dd553339dcd0c9f5cb699d2186f719b5549d"
+    },
+    "reps": {
+      "archive_top_level": "axbench-41c8332543e5a631f9a8c0a9df38799893ace758",
+      "commit": "41c8332543e5a631f9a8c0a9df38799893ace758",
+      "extracted_file_count": 372,
+      "extracted_tree": "upstream/axbench",
+      "extracted_tree_sha256": "5a5410b05d0b2a46742f2f9c23fafc37ecbe5e3fdbec4afdf10378bd36fbc7ae",
+      "license": "Apache-2.0",
+      "license_relative_path": "axbench/LICENSE",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "repository": "https://github.com/stanfordnlp/axbench",
+      "source_archive": "source-archives/axbench.tar.gz",
+      "source_archive_sha256": "4aeced1952de125078473ffafcecffd4342b311d61de1c7e7403fd111282c890"
+    }
+  },
+  "required_files": {
+    "caa": {
+      "relative_path": "CAA/generate_vectors.py",
+      "sha256": "4cbf9aadf53a78b71d152f75aac17968c6b8d427f55a1c72f68cb084bb5b6997"
+    },
+    "cast": {
+      "relative_path": "activation-steering/activation_steering/steering_vector.py",
+      "sha256": "6332e5ed7778a3a0553d2271c933519e5472f65cf7d2498872af1582ce91c074"
+    },
+    "loreft": {
+      "relative_path": "pyreft/pyreft/interventions.py",
+      "sha256": "ecd9f0cdea62bafea68086598fd4797730a4e86794c82a9aeb0be96479b50de5"
+    },
+    "reps_intervention": {
+      "relative_path": "axbench/axbench/models/interventions.py",
+      "sha256": "50ce6e34bc5e30fd9b1ea89d8f060b47d887823417223ad4722c99ef4ec5cf77"
+    },
+    "reps_loss": {
+      "relative_path": "axbench/axbench/models/preference_model.py",
+      "sha256": "5e5b6b9162a8f0cb9ff6825b5fb3a497d345c4dfe0e77e47394de65436d882ef"
+    }
+  },
+  "schema_version": 2,
+  "status": "frozen_official_source_lineage",
+  "terminology": "official-code-derived task adaptations"
+}

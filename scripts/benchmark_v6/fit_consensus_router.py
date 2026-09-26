@@ -477,7 +477,11 @@ def main() -> None:
     parser.add_argument("--train-protected-manifest", type=Path, required=True)
     parser.add_argument("--audit-governance-manifest", type=Path, required=True)
     parser.add_argument("--audit-protected-manifest", type=Path, required=True)
-    parser.add_argument("--capture-authorization", type=Path, required=True)
+    parser.add_argument("--capture-authorization", type=Path)
+    parser.add_argument("--governance-capture-authorization", type=Path)
+    parser.add_argument("--protected-capture-authorization", type=Path)
+    parser.add_argument("--inherited-fit-contract", type=Path)
+    parser.add_argument("--capture-archive-receipt", type=Path)
     parser.add_argument("--execution-authorization", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
@@ -487,6 +491,31 @@ def main() -> None:
     router = json.loads(args.router_contract.read_text())
     fit_contract = json.loads(args.fit_contract.read_text())
     authorization = json.loads(args.execution_authorization.read_text())
+    recovery_mode = any(
+        value is not None
+        for value in (
+            args.governance_capture_authorization,
+            args.protected_capture_authorization,
+            args.inherited_fit_contract,
+            args.capture_archive_receipt,
+        )
+    )
+    if recovery_mode:
+        if args.capture_authorization is not None or any(
+            value is None
+            for value in (
+                args.governance_capture_authorization,
+                args.protected_capture_authorization,
+                args.inherited_fit_contract,
+                args.capture_archive_receipt,
+            )
+        ):
+            raise ValueError(
+                "V5.1 recovery requires exactly the two capture authorizations "
+                "and the inherited fit contract"
+            )
+    elif args.capture_authorization is None:
+        raise ValueError("legacy V5 fit requires --capture-authorization")
     required_router = {
         "status": "frozen_before_any_v5_capture_or_fit",
         "method_short_name": "GRC-DGE-V5",
@@ -497,7 +526,10 @@ def main() -> None:
     for field, expected in required_router.items():
         if router.get(field) != expected:
             raise ValueError(f"V5 router-contract mismatch: {field}")
-    required_fit_contract = {
+    inherited_fit_contract = (
+        json.loads(args.inherited_fit_contract.read_text()) if recovery_mode else fit_contract
+    )
+    required_inherited_fit_contract = {
         "status": "frozen_while_v5_capture_job_9113_pending_before_any_capture_output",
         "method_short_name": "GRC-DGE-V5",
         "capture_outputs_examined_before_freeze": False,
@@ -506,11 +538,50 @@ def main() -> None:
         "epoch_search_forbidden": True,
         "threshold_search_forbidden": True,
     }
-    for field, expected in required_fit_contract.items():
-        if fit_contract.get(field) != expected:
-            raise ValueError(f"V5 fit-contract mismatch: {field}")
-    if fit_contract.get("router_contract_sha256") != sha256_file(args.router_contract):
+    for field, expected in required_inherited_fit_contract.items():
+        if inherited_fit_contract.get(field) != expected:
+            raise ValueError(f"V5 inherited fit-contract mismatch: {field}")
+    if inherited_fit_contract.get("router_contract_sha256") != sha256_file(
+        args.router_contract
+    ):
         raise ValueError("V5 fit/router contract SHA mismatch")
+    if recovery_mode:
+        required_recovery_fit_contract = {
+            "status": "recovery_lineage_frozen_after_protected_forward_started_before_any_protected_output_was_examined",
+            "method_short_name": "GRC-DGE-V5",
+            "recovery_revision": "V5.1",
+            "code_version_minimum": 54,
+            "scientific_hyperparameters_inherited_without_change": True,
+            "protected_recovery_manifest_bound_by_later_fit_authorization": True,
+            "protected_forward_started_before_recovery_lineage_freeze": True,
+            "protected_outputs_examined_before_recovery_lineage_freeze": False,
+            "capture_outputs_examined_before_freeze": False,
+            "architecture_search_forbidden": True,
+            "seed_search_forbidden": True,
+            "epoch_search_forbidden": True,
+            "threshold_search_forbidden": True,
+        }
+        for field, expected in required_recovery_fit_contract.items():
+            if fit_contract.get(field) != expected:
+                raise ValueError(f"V5.1 recovery fit-contract mismatch: {field}")
+        if fit_contract.get("router_contract_sha256") != sha256_file(
+            args.router_contract
+        ):
+            raise ValueError("V5.1 recovery fit/router contract SHA mismatch")
+        if fit_contract.get("inherited_pre_capture_fit_contract_sha256") != sha256_file(
+            args.inherited_fit_contract
+        ):
+            raise ValueError("V5.1 inherited fit-contract SHA mismatch")
+        for section in (
+            "training",
+            "cross_fit",
+            "final_fit",
+            "required_audit_sources",
+            "gates",
+            "safety",
+        ):
+            if fit_contract.get(section) != inherited_fit_contract.get(section):
+                raise ValueError(f"V5.1 scientific contract changed: {section}")
     static = router["bound_static_inputs"]
     for field, path in (
         ("subspace_fit_governance_capture_manifest_sha256", args.train_governance_manifest),
@@ -525,18 +596,92 @@ def main() -> None:
     ):
         if prior.get(field) != sha256_file(path):
             raise ValueError(f"V5 V3 evidence mismatch: {field}")
-    capture_authorization = json.loads(args.capture_authorization.read_text())
-    if capture_authorization.get("stage") != "governance_consensus_router_audit_capture":
-        raise ValueError("V5 capture authorization stage mismatch")
-    if sha256_file(args.capture_authorization) != fit_contract.get(
-        "capture_authorization_sha256"
-    ):
-        raise ValueError("V5 fit contract capture authorization mismatch")
+    if recovery_mode:
+        governance_capture_authorization = json.loads(
+            args.governance_capture_authorization.read_text()
+        )
+        protected_capture_authorization = json.loads(
+            args.protected_capture_authorization.read_text()
+        )
+        governance_authorization_sha = sha256_file(
+            args.governance_capture_authorization
+        )
+        protected_authorization_sha = sha256_file(
+            args.protected_capture_authorization
+        )
+        if governance_capture_authorization.get("stage") != (
+            "governance_consensus_router_audit_capture"
+        ):
+            raise ValueError("V5.1 governance capture authorization stage mismatch")
+        if protected_capture_authorization.get("stage") != (
+            "governance_consensus_router_capture_recovery"
+        ):
+            raise ValueError("V5.1 protected capture authorization stage mismatch")
+        if governance_authorization_sha != fit_contract.get(
+            "source_governance_authorization_sha256"
+        ):
+            raise ValueError("V5.1 source governance authorization SHA mismatch")
+        if protected_authorization_sha != fit_contract.get(
+            "protected_recovery_authorization_sha256"
+        ):
+            raise ValueError("V5.1 protected recovery authorization SHA mismatch")
+        for value, name in (
+            (governance_capture_authorization, "governance"),
+            (protected_capture_authorization, "protected"),
+        ):
+            for field, expected in {
+                "operator_dev_accessed": False,
+                "final_test_open": False,
+                "final_test_open_count": 0,
+                "production_rollout_approved": False,
+            }.items():
+                if value.get(field) != expected:
+                    raise ValueError(f"V5.1 {name} authorization mismatch: {field}")
+        for field, expected in {
+            "source_job_id": 9140,
+            "recompute_governance_forward": False,
+            "engineering_retry_only": True,
+            "scientific_inputs_unchanged": True,
+        }.items():
+            if protected_capture_authorization.get(field) != expected:
+                raise ValueError(f"V5.1 protected recovery mismatch: {field}")
+        capture_receipt = json.loads(args.capture_archive_receipt.read_text())
+        for field, expected in {
+            "schema_version": 1,
+            "job_id": 9203,
+            "run_id": "qwen3-8b-governance-consensus-router-capture-recovery-20260729T134830Z",
+            "archive_sha256": "0f51da9d3960a3e72dcebe9f362287f2795066936bcf5b7534c19a9f4e040c2e",
+            "cluster_shared_copy_verified": True,
+            "host_data_copy_verified": True,
+            "local_copy_verified": True,
+        }.items():
+            if capture_receipt.get(field) != expected:
+                raise ValueError(f"V5.1 capture archive receipt mismatch: {field}")
+        slurm_record = str(capture_receipt.get("slurm_terminal_record", ""))
+        for marker in ("JobId=9203", "JobState=COMPLETED", "ExitCode=0:0"):
+            if marker not in slurm_record:
+                raise ValueError(f"V5.1 capture receipt lacks terminal marker: {marker}")
+    else:
+        capture_authorization = json.loads(args.capture_authorization.read_text())
+        if capture_authorization.get("stage") != (
+            "governance_consensus_router_audit_capture"
+        ):
+            raise ValueError("V5 capture authorization stage mismatch")
+        if sha256_file(args.capture_authorization) != fit_contract.get(
+            "capture_authorization_sha256"
+        ):
+            raise ValueError("V5 fit contract capture authorization mismatch")
+        governance_authorization_sha = sha256_file(args.capture_authorization)
+        protected_authorization_sha = governance_authorization_sha
     code_root = Path(str(authorization.get("code_root", "")))
     required_authorization = {
         "stage": "governance_consensus_router_fit",
         "execution_allowed": True,
-        "code_root": "/workspace/context-mismatch-qwen3-8b/code-v35",
+        "code_root": (
+            "/workspace/context-mismatch-qwen3-8b/code-v54"
+            if recovery_mode
+            else "/workspace/context-mismatch-qwen3-8b/code-v35"
+        ),
         "immutable_code_bundle_manifest_sha256": sha256_file(code_root / "bundle.sha256"),
         "router_contract_sha256": sha256_file(args.router_contract),
         "fit_contract_sha256": sha256_file(args.fit_contract),
@@ -547,12 +692,28 @@ def main() -> None:
         "train_protected_manifest_sha256": sha256_file(args.train_protected_manifest),
         "audit_governance_manifest_sha256": sha256_file(args.audit_governance_manifest),
         "audit_protected_manifest_sha256": sha256_file(args.audit_protected_manifest),
-        "capture_authorization_sha256": sha256_file(args.capture_authorization),
         "operator_dev_accessed": False,
         "final_test_open": False,
         "final_test_open_count": 0,
         "production_rollout_approved": False,
     }
+    if recovery_mode:
+        required_authorization.update(
+            {
+                "inherited_fit_contract_sha256": sha256_file(
+                    args.inherited_fit_contract
+                ),
+                "governance_capture_authorization_sha256": governance_authorization_sha,
+                "protected_capture_authorization_sha256": protected_authorization_sha,
+                "capture_archive_receipt_sha256": sha256_file(
+                    args.capture_archive_receipt
+                ),
+            }
+        )
+    else:
+        required_authorization["capture_authorization_sha256"] = (
+            governance_authorization_sha
+        )
     for field, expected in required_authorization.items():
         if authorization.get(field) != expected:
             raise ValueError(f"V5 fit authorization mismatch: {field}")
@@ -601,11 +762,16 @@ def main() -> None:
     for manifest in (train_governance_manifest, train_protected_manifest):
         if manifest.get("partition") != "subspace_fit":
             raise ValueError("V5 training capture is not subspace_fit")
-    for manifest in (audit_governance_manifest, audit_protected_manifest):
+    for manifest, expected_authorization_sha, name in (
+        (audit_governance_manifest, governance_authorization_sha, "governance"),
+        (audit_protected_manifest, protected_authorization_sha, "protected"),
+    ):
         if manifest.get("partition") != "component_discovery":
             raise ValueError("V5 developmental audit is not component_discovery")
-        if manifest.get("authorization_sha256") != sha256_file(args.capture_authorization):
-            raise ValueError("V5 developmental audit capture authorization mismatch")
+        if manifest.get("authorization_sha256") != expected_authorization_sha:
+            raise ValueError(
+                f"V5 developmental {name} audit capture authorization mismatch"
+            )
         if manifest.get("router_contract_sha256") != sha256_file(args.router_contract):
             raise ValueError("V5 developmental audit router-contract mismatch")
         if manifest.get("final_test_open") is not False:
@@ -800,6 +966,20 @@ def main() -> None:
                 key: value.detach().cpu() for key, value in head.state_dict().items()
             },
         }
+    capture_lineage = (
+        {
+            "inherited_fit_contract_sha256": sha256_file(
+                args.inherited_fit_contract
+            ),
+            "governance_capture_authorization_sha256": governance_authorization_sha,
+            "protected_capture_authorization_sha256": protected_authorization_sha,
+            "capture_archive_receipt_sha256": sha256_file(
+                args.capture_archive_receipt
+            ),
+        }
+        if recovery_mode
+        else {"capture_authorization_sha256": governance_authorization_sha}
+    )
     checkpoint = {
         "schema_version": 1,
         "kind": "group_robust_consensus_directional_governance_editor",
@@ -810,6 +990,7 @@ def main() -> None:
         "v3_checkpoint_sha256": sha256_file(args.v3_checkpoint),
         "v3_fit_report_sha256": sha256_file(args.v3_fit_report),
         "authorization_sha256": sha256_file(args.execution_authorization),
+        **capture_lineage,
         "v3_checkpoint": v3_checkpoint,
         "v3_expert_frozen": True,
         "v3_max_absolute_change": max_v3_change,
@@ -876,7 +1057,7 @@ def main() -> None:
         "train_protected_manifest_sha256": sha256_file(args.train_protected_manifest),
         "audit_governance_manifest_sha256": sha256_file(args.audit_governance_manifest),
         "audit_protected_manifest_sha256": sha256_file(args.audit_protected_manifest),
-        "capture_authorization_sha256": sha256_file(args.capture_authorization),
+        **capture_lineage,
         "authorization_sha256": sha256_file(args.execution_authorization),
         "component_discovery_audit_used_for_tuning": False,
         "operator_dev_accessed": False,

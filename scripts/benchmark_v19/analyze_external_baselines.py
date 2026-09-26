@@ -14,6 +14,14 @@ from scripts.benchmark_v2.analyze_operator_candidate import main as analyze_oper
 from scripts.benchmark_v19.run_external_baselines import GROUPS
 
 
+STAGE = "qwen3_8b_external_baseline_evaluation"
+IMPLEMENTATION_PROVENANCE = {
+    "method_faithful_adapter": True,
+    "official_code_derived_task_adaptation": False,
+    "unmodified_official_implementation": False,
+}
+
+
 def _baseline_digest(rows: list[dict]) -> str:
     payload = [canonical_json({"job_key": row["job_key"], "baseline": row["baseline"]}) for row in sorted(rows, key=lambda row: row["job_key"])]
     return hashlib.sha256((("\n".join(payload)) + "\n").encode()).hexdigest()
@@ -53,8 +61,7 @@ def main() -> None:
         baseline_digests[method] = digest
         report.update({
             "method": method,
-            "method_faithful_adapter": True,
-            "unmodified_official_implementation": False,
+            **IMPLEMENTATION_PROVENANCE,
             "baseline_logits_sha256": digest,
             "final_test_open": False,
             "final_test_open_count": 0,
@@ -73,7 +80,7 @@ def main() -> None:
         raise RuntimeError("baseline logits differ within external baseline shard")
     summary = {
         "schema_version": 1,
-        "stage": "qwen3_8b_external_baseline_evaluation",
+        "stage": STAGE,
         "group": args.group,
         "methods": reports,
         "rows_per_method": 3072,
