@@ -238,28 +238,6 @@ class OperatorFinalAuthorizationTests(unittest.TestCase):
             self.assertIn("already opened", result.stderr)
             self.assertFalse(output.exists())
 
-    def test_final_job_and_archive_repeat_terminal_key_audits(self):
-        job = (ROOT / "ascend/qwen3_8b/operator_final_job.sh").read_text()
-        archive = (ROOT / "ascend/qwen3_8b/archive_operator_evidence_run.sh").read_text()
-        subprocess.run(
-            ["bash", "-n", str(ROOT / "ascend/qwen3_8b/operator_final_job.sh")],
-            check=True,
-        )
-        for required in (
-            '"final_test_open":True',
-            '"final_test_open_count":1',
-            '"production_rollout_approved":False',
-            'audit.get("unique_job_keys") != 6144',
-            'audit.get("observed_key_sha256") != a.get("expected_key_sha256")',
-            'audit.get("nonfinite_job_keys")',
-        ):
-            self.assertIn(required, job)
-        for required in (
-            'audit.get("unique_job_keys") != 6144',
-            'audit.get("observed_key_sha256") != expected_key_sha',
-            'audit.get("nonfinite_job_keys")',
-        ):
-            self.assertIn(required, archive)
 
 
 if __name__ == "__main__":

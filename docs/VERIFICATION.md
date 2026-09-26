@@ -6,10 +6,13 @@ ReportLab 4.4.10, and Datasets 4.8.5.
 
 | Check | Verified result |
 |---|---|
-| Complete CPU unit suite | 192 passed; zero skipped |
-| Lightweight Python 3.11 Docker suite | 107 passed; 85 tensor-dependent tests explicitly skipped |
-| Release checksums | All 46 result files covered |
-| Result parsing | 38 JSON files; 6 JSONL files; 21,792 JSONL rows |
+| Complete CPU unit suite | 191 passed; zero skipped |
+| Lightweight Python 3.11 Docker suite | 106 passed; 85 tensor-dependent tests explicitly skipped |
+| Release checksums | All 34 compact result files covered |
+| Result parsing | 26 JSON files; 6 JSONL files; 21,792 JSONL rows |
+| Final evidence index | 224 distinct source files; 149,600 rows; no repeated source content |
+| Scientific tensor restoration | 101 original tensor files; every archive and member checksum verified |
+| Comparator and ablation reproduction | Six official comparators and seven reported ablations match frozen NGR point estimates |
 | Final C-DGE row reproduction | 74.48% to 75.68% mismatched accuracy; 30.36% NGR; 32/135 flips rescued |
 | Formal controls | 0/2,856 changed across six families |
 | Consolidated claims regeneration | Byte-identical to the released `paper_claims.json` |
@@ -22,7 +25,10 @@ measurement identifiers, and one literal model-class import. `.gitleaks.toml`
 exempts only those specific formats; provider credential detection remains
 enabled. JSONL hash fragments at scanner chunk boundaries are handled by the
 same field-specific exemptions. Public result checks still verify the complete
-files and hashes independently.
+files and hashes independently. The compressed text records were also
+decompressed and scanned separately. Failed experimental outputs and unused
+editor checkpoints are excluded from the final evidence package.
 
 These checks reproduce published outputs and test implementation behavior.
+Raw-output recomputation is limited to the blocks identified in `RESULTS.md`.
 They do not measure new Qwen inference or rerun the full Ascend training job.

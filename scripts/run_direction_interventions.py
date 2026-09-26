@@ -96,9 +96,9 @@ def suffix_with_direction(
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-path", type=Path, default=Path("/opt/hyperchaser/model"))
-    parser.add_argument("--input-dir", type=Path, default=Path("/work/results/mechanistic"))
-    parser.add_argument("--output", type=Path, default=Path("/work/results/mechanistic/direction_interventions.jsonl"))
+    parser.add_argument("--model-path", type=Path, required=True)
+    parser.add_argument("--input-dir", type=Path, default=Path("generated/mechanistic"))
+    parser.add_argument("--output", type=Path, default=Path("generated/mechanistic/direction_interventions.jsonl"))
     parser.add_argument("--layers", nargs="+", type=int, required=True)
     parser.add_argument("--alphas", nargs="+", type=float, default=[0.5, 1.0, 2.0])
     parser.add_argument("--depth", type=int, default=64)

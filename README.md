@@ -16,8 +16,8 @@ No model download, GPU, or API key is required for the public smoke test:
 ./run.sh
 ```
 
-This validates every released JSON/JSONL result and recomputes the final paper
-values from the original model-output rows:
+This validates every released JSON/JSONL result and recomputes the primary
+Qwen3-8B final-test values from released model-output rows:
 
 ```text
 final mismatch accuracy: 74.48% -> 75.68% (3072 rows)
@@ -40,7 +40,7 @@ The container runs the release validator, the unit suite, and the privacy
 audit. Tests that require PyTorch are skipped in the lightweight image; use the
 optional experiment environment below to run them.
 
-The verified full CPU environment passes **192 tests with no skips**. The
+The verified full CPU environment passes **191 tests with no skips**. The
 lightweight container explicitly skips 85 tests that need tensor dependencies.
 
 ## Repository layout
@@ -49,21 +49,23 @@ lightweight container explicitly skips 85 tests that need tensor dependencies.
 .
 ├── analysis/       # Paper-result aggregation and figure generation
 ├── artifacts/      # Public benchmark manifests and design audits
-├── ascend/         # Sanitized terminal verification/archive helpers
 ├── docs/           # Reproduction paths and experiment-module map
 ├── protocol/       # Frozen experiment contracts and task definitions
+├── records/        # Deduplicated final evidence and tensor asset index
 ├── results/        # Released row-level and summary experiment outputs
 ├── scripts/        # Behavioral, mechanistic, C-DGE, and baseline code
-├── snapshots/      # Frozen code snapshot used by later diagnostics
 ├── tests/          # Contract and implementation tests
 ├── third_party/    # Fixed upstream baseline files and original licenses
 ├── Dockerfile
 └── run.sh          # Single entry point
 ```
 
-Large model weights, caches, private credentials, machine-specific receipts,
-and raw cluster archives are intentionally excluded. The released results
-contain the compact claim-bearing rows and summaries needed to audit the paper.
+Final experimental records are indexed in `records/index.json`: unchanged
+row outputs, scientific environment reports, activation/gradient captures,
+and fitted editor checkpoints. Repeated copies, unused candidate checkpoints,
+smoke runs, and unrelated failed attempts are excluded. Large scientific
+tensors are distributed as checksum-bound Release assets; foundation model
+weights and deployment credentials are excluded. See [the evidence map](RESULTS.md).
 
 ## Local commands
 
@@ -71,10 +73,14 @@ Python 3.10 or newer is required for the full test suite.
 
 ```bash
 ./run.sh demo       # validate and summarize released results
+./run.sh review     # offline reviewer check: evidence and publication privacy
 ./run.sh test       # run the unit suite
 ./run.sh audit      # scan tracked files for secrets/private paths
 ./run.sh all        # run all three checks
 ./run.sh reproduce  # write recomputed final metrics under generated/
+./run.sh records metrics   # recompute final, baseline, ablation and native values
+./run.sh records download  # download and verify the original scientific tensors
+./run.sh records restore --asset-dir generated/tensor-assets
 ```
 
 If your default Python is older than 3.10, select a newer interpreter explicitly

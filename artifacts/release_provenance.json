@@ -428,6 +428,6 @@
       "source_sha256": "5806b7dffac9315f129ac91a782023c24b258ae7db8e83a7a1b7d33b1e6f0d84"
     }
   },
-  "sanitization": "Private filesystem prefixes replaced with /workspace; numeric values and job keys unchanged. Source hashes refer to the original private archive; release hashes bind the public copies.",
+  "sanitization": "Personal filesystem paths and archive-copy labels anonymized. Cluster shell launchers, duplicate operational snapshots, and execution diary omitted. Source hashes refer to the original archive; release hashes bind the public copies. Experimental numeric values and job identities are unchanged.",
   "source_snapshot": "source-workspace-20260802"
 }

@@ -16,6 +16,11 @@ case "$command" in
   demo)
     PYTHONPATH=. "$python_bin" -m scripts.public_demo "$@"
     ;;
+  review)
+    PYTHONPATH=. "$python_bin" -m scripts.public_demo
+    PYTHONPATH=. "$python_bin" -m scripts.evidence_records metrics
+    "$python_bin" scripts/privacy_audit.py
+    ;;
   test)
     require_modern_python
     PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. \
@@ -27,6 +32,7 @@ case "$command" in
   all)
     require_modern_python
     PYTHONPATH=. "$python_bin" -m scripts.public_demo
+    PYTHONPATH=. "$python_bin" -m scripts.evidence_records metrics
     PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. \
       "$python_bin" -m unittest discover -s tests -v
     "$python_bin" scripts/privacy_audit.py
@@ -42,8 +48,11 @@ case "$command" in
   reproduce)
     PYTHONPATH=. exec "$python_bin" -m scripts.reproduce_paper "$@"
     ;;
+  records)
+    PYTHONPATH=. exec "$python_bin" -m scripts.evidence_records "$@"
+    ;;
   *)
-    echo "Usage: ./run.sh {demo|test|audit|all|reproduce|pilot|length-scan} [arguments...]" >&2
+    echo "Usage: ./run.sh {demo|review|test|audit|all|reproduce|records|pilot|length-scan} [arguments...]" >&2
     exit 2
     ;;
 esac

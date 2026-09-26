@@ -13,4 +13,5 @@ regexes = [
   '''(?:EXPECTED_KEY(?:_SHA)?|OPERATOR_KEY|CONTROL_KEY|FINAL_KEY)\s*=\s*["'][a-f0-9]{64}''',
   '''AutoTokenizer, Qwen3_5ForConditionalGeneration''',
   '''(?:cell_key|measurement_key)["']?\s*:\s*["'](?:arc_challenge|bbh|gsm8k|math_500|mmlu_pro|musr)__(?:independent_verification|delegated_choice)__[01](?:__(?:baseline|C-DGE-V4\.1|DSGE-V3)__r[0-9]{2})?["']''',
+  '''job_key["']?\s*:\s*["']cdge42__(?:residual|component)__(?:arc_challenge|bbh|gsm8k|math_500|mmlu_pro|musr):[A-Za-z0-9_/.:~-]+__(?:assistant|collaborator)__lexical_matched__[0-9]+__(?:verification|obedience)__[0-9]+__(?:residual|self_attn|mlp)__[01]\.0["']?''',
 ]

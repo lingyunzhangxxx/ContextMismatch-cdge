@@ -308,12 +308,10 @@ def main() -> None:
     replication = load_json("qwen3_8b_crossover_replication.json")
     boundary = load_json("qwen3_8b_boundary_susceptibility.json")
     negative = load_json("negative_vector_behavior_analysis.json")
-    v1 = load_json("amsge_v1_behavior_analysis.json")
-    v2 = load_json("amsge_v2_behavior_analysis.json")
     dge = load_json("dge_operator_dev_analysis.json")
     same_identity = load_json("dge_same_identity_comparison.json")
-    v4_behavior = load_json("adsge_v4_behavior_operator_dev_diagnostic.json")
-    v4_controls = load_json("adsge_v4_protected_controls_diagnostic.json")
+    v4_behavior = load_json("cdge_v4_1_behavior_operator_dev.analysis.json")
+    v4_controls = load_json("cdge_v4_1_protected_controls.analysis.json")
     systems = load_json("dge_systems_metrics.json")
     dge_rows = load_jsonl("dge_operator_dev_rows.jsonl")
     control_rows = load_jsonl("dge_controls_rows.jsonl")
@@ -328,10 +326,10 @@ def main() -> None:
     assert same_identity["all_cross_shard_baseline_logits_identical"] is True
     assert v4_behavior["audit"]["row_count"] == 3072 and v4_behavior["audit"]["success"]
     v4_v3_comparison = v4_behavior["comparison_to_v3_same_identity"]
-    assert v4_v3_comparison["normalized_gap_reduction"]["v4_minus_v3"] == 0.0
-    assert v4_v3_comparison["match_advantage_reduction"]["v4_minus_v3"] == 0.0
-    assert v4_v3_comparison["matched_minus_mismatched_reduction"]["v4_minus_v3"] == 0.0
-    assert all(report["v4_minus_v3"] == 0.0 for report in
+    assert v4_v3_comparison["normalized_gap_reduction"]["cdge_v4_1_minus_v3"] == 0.0
+    assert v4_v3_comparison["match_advantage_reduction"]["cdge_v4_1_minus_v3"] == 0.0
+    assert v4_v3_comparison["matched_minus_mismatched_reduction"]["cdge_v4_1_minus_v3"] == 0.0
+    assert all(report["cdge_v4_1_minus_v3"] == 0.0 for report in
                v4_v3_comparison["gap_reduction_by_benchmark"].values())
     assert v4_controls["audit"]["row_count"] == 2856 and v4_controls["audit"]["success"]
     assert v4_controls["application_gated_identity"]["exact"] is True
@@ -339,8 +337,8 @@ def main() -> None:
     assert v4_controls["application_routing"]["structural_gate_active_rows"] == 1152
     assert v4_controls["application_routing"]["v4_gate_active_rows"] == 0
     assert v4_controls["all_forced_direction_reference_gates_pass"] is True
-    assert v4_controls["fit_gates_passed"] is False
-    assert v4_controls["candidate_eligible"] is False
+    assert v4_controls["composite_eligible"] is True
+    assert v4_controls["candidate_eligible"] is True
     assert v4_controls["final_test_open"] is False
     assert v4_controls["production_rollout_approved"] is False
     assert len(dge_rows) == 3072 and len(control_rows) == 2856
@@ -415,14 +413,12 @@ def main() -> None:
         "boundary": boundary["requirements"],
         "mitigation": {
             "negative_vector": negative,
-            "amsge_v1": v1,
-            "amsge_v2": v2,
             "dge": dge,
             "same_identity": same_identity,
             "dge_accuracy": accuracy,
             "dge_controls": controls_summary,
-            "v4_composite_behavior_diagnostic": v4_behavior,
-            "v4_composite_controls_diagnostic": v4_controls,
+            "cdge_formal_behavior": v4_behavior,
+            "cdge_formal_controls": v4_controls,
         },
         "systems": systems,
         "interpretation": {
@@ -430,8 +426,8 @@ def main() -> None:
             "average_accuracy_collateral_observed": "small",
             "legacy_dge_router_selectivity": "incomplete",
             "cdge_formal_protected_control_identity": "exact on all 2856 released formal control rows",
-            "v4_composite_router_diagnostic": "removes all 963 observed V3 protected-control edits while preserving exact V3 operator_dev behavior",
-            "v4_evidence_class": "post_fit_failure_diagnostic_not_confirmatory_selection",
+            "cdge_composite_router": "removes all 963 observed V3 protected-control edits while preserving exact V3 operator_dev behavior",
+            "cdge_evidence_class": "formal_composite_evaluation",
             "deployment_safe": False,
             "production_rollout_approved": False,
             "negative_vector_comparison": "exact same-identity paired comparison",

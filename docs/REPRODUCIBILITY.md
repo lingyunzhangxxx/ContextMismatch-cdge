@@ -5,6 +5,11 @@
 From a fresh clone, run `./run.sh` to verify checksums, row identities, numeric
 finiteness, paired task construction, and the final paper's primary values.
 This requires only Python 3.9+ and does not contact a model service.
+Run `./run.sh records metrics` to verify the complete selected evidence index
+and recompute the official comparators and reported ablations
+against their frozen reports. Candidate screening
+history is retained as a frozen selection report; unused candidate records are
+excluded. Coverage is listed in `RESULTS.md`.
 
 Run `./run.sh reproduce` to write `generated/final_paper_metrics.json`. It
 recomputes the 6,144-row final test as 3,072 matched/mismatched pairs, checks
@@ -70,9 +75,33 @@ python -m scripts.benchmark_v10.run_cdge_v4_1_final --help
 python -m scripts.benchmark_v13.run_qwen35_cdge_performance --help
 ```
 
-Accelerator-scale reruns need locally obtained model weights, recaptured
-activation/gradient tensors, and newly SHA-bound execution manifests. The
-frozen contracts enforce split isolation, model identity, and one-time final
+Accelerator-scale reruns need locally obtained model weights and newly
+SHA-bound execution manifests. The original saved activation/gradient tensors
+and fitted editor checkpoints can be downloaded and restored with:
+
+```bash
+./run.sh records download
+./run.sh records restore --asset-dir generated/tensor-assets
+```
+
+For an anonymous ZIP containing `tensor-assets/`, use that directory instead.
+Restoration verifies archive hashes and every tensor member, rejects unsafe
+archive paths, and reconstructs the source-relative scientific directory tree
+under `generated/evidence/`. The final editor's checkpoint hash is explicitly
+checked against the final-test environment by `records metrics`.
+
+Load these locally produced files with `torch.load(path, map_location='cpu',
+weights_only=True)`. They contain captured scientific states and learned
+editors, never foundation model weights.
+
+The residual/component mechanism scanner used transient prefix KV caches and
+suffix activation captures in memory. Those full runtime caches were never
+persisted. The release includes the original per-intervention outputs and all
+saved fitting/protected activations and task-margin gradients. Re-running the
+mechanism modules recreates the transient caches; the saved fit captures must
+not be described as those full mechanism-scan KV snapshots.
+
+The frozen contracts enforce split isolation, model identity, and one-time final
 evaluation. Their `/workspace/...` paths are public replacements for historical
 cluster locations; they are not ready-made credentials or runnable job receipts.
 Configure paths for your runtime and rebuild bindings for a new experiment.

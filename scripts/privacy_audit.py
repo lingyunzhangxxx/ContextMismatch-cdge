@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import gzip
 import shutil
 import subprocess
 from pathlib import Path
@@ -16,6 +17,8 @@ TEXT_PATTERNS = {
     "private home path": re.compile(r"/home/[A-Za-z0-9._-]+/"),
     "root home path": re.compile(r"/root/"),
     "private cluster path": re.compile(r"/WORK/[A-Za-z0-9._-]+/"),
+    "personal data-volume path": re.compile(r"/data[0-9]*/[A-Za-z0-9._-]+/"),
+    "AI-tool configuration directory": re.compile(r"(?:\.codex(?:-[A-Za-z0-9_-]+)?|\.claude|\.dsh)[/]"),
     "provider token": re.compile(r"\b(?:gh[pousr]_|github_pat_|hf_|sk-)[A-Za-z0-9_-]{20,}"),
     "private network address": re.compile(r"\b(?:10\.[0-9]{1,3}|192\.168|172\.(?:1[6-9]|2[0-9]|3[01]))\.[0-9]{1,3}\.[0-9]{1,3}\b"),
     "private key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
@@ -34,8 +37,8 @@ def files_to_scan() -> list[Path]:
             cwd=ROOT,
             text=True,
         )
-        return [ROOT / item for item in output.splitlines() if item]
-    excluded = {".git", ".venv", "__pycache__", ".pytest_cache"}
+        return [ROOT / item for item in output.splitlines() if item and (ROOT / item).is_file()]
+    excluded = {".git", ".venv", "generated", "tensor-assets", "__pycache__", ".pytest_cache"}
     return [
         path
         for path in ROOT.rglob("*")
@@ -55,7 +58,8 @@ def main() -> None:
         if path.stat().st_size > 20 * 1024 * 1024:
             findings.append(f"file exceeds 20 MiB: {relative}")
         try:
-            text = path.read_text(encoding="utf-8")
+            text = (gzip.decompress(path.read_bytes()).decode("utf-8")
+                    if path.suffix == ".gz" else path.read_text(encoding="utf-8"))
         except (UnicodeDecodeError, OSError):
             continue
         if relative == "scripts/privacy_audit.py":

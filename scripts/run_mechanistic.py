@@ -492,8 +492,8 @@ def write_environment(args, tokenizer, model):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-path", type=Path, default=Path("/opt/hyperchaser/model"))
-    parser.add_argument("--output-dir", type=Path, default=Path("/work/results/mechanistic"))
+    parser.add_argument("--model-path", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, default=Path("generated/mechanistic"))
     parser.add_argument("--modes", nargs="+", choices=["collect", "cache"], default=["collect"])
     parser.add_argument("--depths", nargs="+", type=int, default=[64])
     parser.add_argument("--realizations", type=int, default=1)

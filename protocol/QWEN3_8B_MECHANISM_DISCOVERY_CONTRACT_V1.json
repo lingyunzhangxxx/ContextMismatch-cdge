@@ -94,7 +94,7 @@
   },
   "durability": {
     "cluster_first_copy": "/workspace/context-mismatch-qwen3-8b",
-    "archive-host_second_copy": "/data/researcher/ContextMismatch/qwen3-8b-v1",
+    "archive-host_second_copy": "/workspace/independent-evidence-copy/qwen3-8b-v1",
     "local_final_copy": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1",
     "overwrite_existing_outputs": false,
     "sha256_tree_manifest_required": true

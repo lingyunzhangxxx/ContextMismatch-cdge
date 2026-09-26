@@ -135,7 +135,7 @@
     "live_slurm_completed_exit_0_0_required": true,
     "three_sha_verified_copies_required_for_every_valid_stage": true,
     "cluster_shared_home_copy_required": true,
-    "data_shang_copy_required": true,
+    "independent_archive_copy_required": true,
     "local_mac_copy_required": true,
     "partial_rows_may_not_support_efficacy_claims": true,
     "valid_negative_results_must_archive": true
