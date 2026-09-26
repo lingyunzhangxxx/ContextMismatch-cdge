@@ -10,6 +10,7 @@ import math
 import shutil
 import tarfile
 import urllib.request
+import urllib.parse
 from collections import Counter, defaultdict
 from pathlib import Path, PurePosixPath
 
@@ -174,7 +175,13 @@ def download(index: dict, asset_dir: Path) -> None:
             continue
         temporary = path.with_suffix(path.suffix + ".partial")
         print(f"Downloading {asset['name']} ({asset['bytes'] / 2**20:.1f} MiB)", flush=True)
-        with urllib.request.urlopen(asset["url"], timeout=60) as response, temporary.open("wb") as stream:
+        # A freshly published or renamed GitHub release may have a cached 404
+        # for its canonical URL. Bind the request query to the immutable hash.
+        url = asset["url"] + ("&" if "?" in asset["url"] else "?") + urllib.parse.urlencode(
+            {"verify_sha256": asset["sha256"]})
+        request = urllib.request.Request(url, headers={
+            "User-Agent": "ContextMismatch-evidence-verifier", "Cache-Control": "no-cache"})
+        with urllib.request.urlopen(request, timeout=60) as response, temporary.open("wb") as stream:
             shutil.copyfileobj(response, stream, length=1024 * 1024)
         if digest(temporary.read_bytes()) != asset["sha256"]:
             raise ValueError("Downloaded tensor archive checksum mismatch")
