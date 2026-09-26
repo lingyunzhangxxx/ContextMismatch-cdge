@@ -1,0 +1,191 @@
+{
+  "schema_version": 2,
+  "contract_id": "context-mismatch-qwen3-8b-adaptive-multisite-governance-editor-v2",
+  "created_utc": "2026-07-28T09:28:39Z",
+  "frozen_utc": "2026-07-28T09:28:39Z",
+  "status": "frozen_before_any_v1_post_failure_operator_dev_forward",
+  "method_name": "Adaptive Multi-Site Governance Editor V2",
+  "method_short_name": "AMSGE-V2",
+  "code_version_minimum": 27,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "scientific_change_from_v1": "replace low-rank inputs to the governance classifiers with normalized full hidden states and train those classifiers before fitting the activation correction; all efficacy and collateral gates remain unchanged",
+  "bound_inputs": {
+    "v1_contract_sha256": "a032728bc005807e48393f3833886ef27dd50b843d28bbba95c46acf872781da",
+    "v1_failed_fit_checkpoint_sha256": "ef2d85ebb7e2832b8ae6a5b2489284df81887e29dbc12cc9fbc3294aa99b9316",
+    "v1_failed_fit_report_sha256": "8662d3b851c3d7af3bba88cac32a4df006947b9d7ef01b6186bde82ddaaf1f5c",
+    "governance_capture_manifest_sha256": "987b8b9d17c9d723d1ddcbaba61cc28d5b585c31e20b63e1a05c0dc94872735d",
+    "protected_capture_manifest_sha256": "f084c379cf59b5eeffdb67f62ce26d2cbb7418919da5e93a297dea1030a7c690",
+    "governance_crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "operator_site_execution_contract_sha256": "299a7c9bc215630ea9e007d336369a55bbc9dc89a1b1e7cc163a947d72ff0305",
+    "operator_site_manifest_sha256": "8bf9e43cd3b3597ed47ef1698f8fd46137fd01c04b3ec0ac9ab6ccd21c3659d3",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "mitigation_controls_sha256": "94423ba0f34abc37428f7531954c25da2d79875a053001a9916ab2da76830eb8"
+  },
+  "scientific_scope": {
+    "v1_diagnosis": "V1 learned counterfactual correction direction but its PCA-coordinate history and task classifiers failed their frozen balanced-accuracy gates and its forced-on protected correction exceeded the frozen limit",
+    "v2_hypothesis": "the governance variables are linearly accessible in the full 4096-dimensional internal states even when a 16/32-dimensional variance PCA projection discards them; supervised head isolation prevents reconstruction loss from corrupting that decision boundary",
+    "base_model_weights_frozen": true,
+    "trainable_parameters": "full-state history/task heads, conditioner, and low-rank output maps only",
+    "activation_and_hidden_state_editing_authorized": true,
+    "permanent_base_weight_edit_authorized": false,
+    "reversible_hooks_required": true,
+    "answer_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "correctness_feature_forbidden": true,
+    "v1_post_failure_behavior_access_forbidden_during_v2_design": true
+  },
+  "capture_reuse": {
+    "allowed": true,
+    "reason": "V2 changes only the learned editor and does not change the model, prompts, capture sites, tensor schema, or split",
+    "governance_rows": 6144,
+    "governance_pairs": 3072,
+    "protected_rows": 4008,
+    "finite_values_required": true,
+    "sha_verified_manifests_required": true,
+    "operator_dev_access_forbidden": true,
+    "final_test_access_forbidden": true
+  },
+  "locked_sites": [
+    {
+      "execution_order": 1,
+      "layer": 23,
+      "component": "self_attn",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "output_rank": 32,
+      "max_relative_correction": 0.10
+    },
+    {
+      "execution_order": 2,
+      "layer": 27,
+      "component": "mlp",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "output_rank": 32,
+      "max_relative_correction": 0.10
+    },
+    {
+      "execution_order": 3,
+      "layer": 31,
+      "component": "mlp",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "output_rank": 32,
+      "max_relative_correction": 0.10
+    }
+  ],
+  "architecture": {
+    "hidden_state_width": 4096,
+    "head_input_mode": "full_state",
+    "head_normalization": "subtract the frozen train-fold center and divide by one frozen scalar RMS scale per state source",
+    "history_head": "linear logistic head over the complete normalized 4096-dimensional task-boundary state",
+    "task_head": "linear logistic head over the complete normalized 4096-dimensional current-task component input",
+    "conditioner_input": "the unchanged standardized 16 boundary PCA coordinates, 32 context PCA coordinates, learned history probability, learned task probability, and their signed difference",
+    "conditioner": "LayerNorm(51) -> Linear(51,96) -> SiLU -> Linear(96,96) -> SiLU",
+    "output_head": "Linear(96,32) correction coordinates in the same protected-residualized output basis as V1",
+    "signed_governance_factor": "tanh((history_logit - task_logit) / 1.0)",
+    "edit_equation": "edited = original + external_gate * signed_governance_factor * clipped(conditioner_output @ output_basis.T)",
+    "external_gate_semantics": "one for governance decisions and exact zero for non-applicable protected controls and the identity audit",
+    "token_scope": "last decision token only",
+    "total_learned_editor_parameter_upper_bound": 100000,
+    "base_model_parameter_gradients_forbidden": true
+  },
+  "fit_split": {
+    "group_unit": "benchmark item; all history, task, role, style, and label cells for an item stay together",
+    "fold_rule": "uint64_be(first_8_bytes(SHA256(item_id_utf8))) mod 8",
+    "train_folds": [0, 1, 2, 3, 4, 5],
+    "calibration_fold": 6,
+    "audit_fold": 7,
+    "operator_dev_screening_reuse_forbidden": true,
+    "operator_dev_selection_access_before_editor_lock_forbidden": true,
+    "final_test_access_forbidden": true
+  },
+  "optimization": {
+    "seed": 271828,
+    "batch_size": 128,
+    "gradient_norm_clip": 1.0,
+    "head_pretraining": {
+      "optimizer": "CPU AdamW",
+      "learning_rate": 0.002,
+      "weight_decay": 0.0001,
+      "maximum_epochs": 80,
+      "early_stopping_patience": 12,
+      "selection_metric": "maximum calibration mean of history and task balanced accuracy with minimum balanced accuracy as deterministic tie-break",
+      "conditioner_and_output_frozen": true
+    },
+    "correction_fit": {
+      "optimizer": "CPU AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "maximum_epochs": 80,
+      "early_stopping_patience": 10,
+      "heads_frozen": true,
+      "loss_weights": {
+        "mismatched_teacher_activation_reconstruction": 1.0,
+        "matched_state_preservation": 2.0,
+        "task_aligned_margin_probe_recovery": 0.5,
+        "label_swap_equivariance": 0.25,
+        "direction_balance": 0.25,
+        "protected_zero_correction": 5.0,
+        "intervention_norm": 0.02
+      },
+      "selection_metric": "calibration normalized activation reconstruction plus five times protected correction penalty"
+    },
+    "nonfinite_gradient_or_loss_fails_closed": true
+  },
+  "fit_gates": {
+    "audit_fold_normalized_teacher_mse_maximum": 0.90,
+    "both_mismatch_direction_teacher_mse_improvement_positive": true,
+    "both_label_swap_teacher_mse_improvement_positive": true,
+    "history_head_balanced_accuracy_minimum": 0.75,
+    "task_head_balanced_accuracy_minimum": 0.90,
+    "protected_forced_on_mean_relative_correction_maximum": 0.02,
+    "protected_gated_exact_identity": true,
+    "maximum_observed_relative_correction_per_site": 0.100001,
+    "checkpoint_and_report_sha_bound": true
+  },
+  "behavior_selection": {
+    "partition": "operator_dev selection half only",
+    "expected_rows": 3072,
+    "single_locked_editor_only": true,
+    "admissibility": {
+      "gap_reduction_lower_95_minimum": 0.25,
+      "normalized_gap_reduction_lower_95_minimum": 0.10,
+      "both_mismatch_direction_point_estimates_positive": true,
+      "both_label_swap_gap_reductions_positive": true,
+      "all_six_benchmark_gap_reductions_nonnegative": true,
+      "matched_cell_margin_loss_upper_95_maximum": 0.25,
+      "matched_cell_binary_kl_upper_95_maximum": 0.02,
+      "zero_gate_exact_identity": true
+    }
+  },
+  "protected_controls": {
+    "partition": "operator_dev selection half only",
+    "families": [
+      "fresh_verification",
+      "matched_verification",
+      "matched_delegated_choice",
+      "explicit_governance_reset",
+      "supported_user_authority",
+      "factual_boundary_memory"
+    ],
+    "expected_rows": 2856,
+    "application_gated_and_forced_on_required": true,
+    "gated_non_applicable_max_error": 0.0,
+    "forced_on_margin_loss_upper_95_maximum": 0.25,
+    "forced_on_binary_kl_upper_95_maximum": 0.02
+  },
+  "lock_and_final": {
+    "fresh_editor_lock_required": true,
+    "fit_gates_must_pass": true,
+    "behavior_selection_must_pass": true,
+    "protected_controls_must_pass": true,
+    "pareto_lock_before_final_test": true,
+    "final_test_rows": 6144,
+    "final_test_open_count_if_authorized": 1,
+    "production_rollout_approved": false,
+    "cross_model_work_before_three_copy_closure_forbidden": true
+  }
+}

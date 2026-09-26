@@ -1,0 +1,266 @@
+{
+  "analysis_status": "posthoc_descriptive_boundary_rescue_analysis",
+  "audit": {
+    "all_finite": true,
+    "key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+    "rows": 3072,
+    "unique_job_keys": 3072
+  },
+  "boundary_report_sha256": "2872b9e55a5859a2efb14976f0d243a4edcc83962d05f1dc0bd9baa3664c46c8",
+  "decision_rule": "task-aligned margin > 0; zero-margin ties count as failures",
+  "estimand": "conditional rescue among matched-correct, raw-mismatch-wrong pairs",
+  "evaluation_split": [
+    "operator_dev"
+  ],
+  "frozen_band_source": "prospective boundary report; thresholds were frozen from discovery",
+  "input_sha256": "3a055c09a1861b2e37144882216c25d043e2ecde1c446983bbff01c7d44c18f3",
+  "interpretation": {
+    "conditional_rescue_is_not_overall_accuracy_gain": true,
+    "margin_band_analysis_is_descriptive": true,
+    "matched_failure_is_floor_population": true
+  },
+  "method": [
+    "DSGE-V3"
+  ],
+  "overall": {
+    "accuracy_gain_pp": 1.3020833333333333,
+    "conditional_rescue_bootstrap": {
+      "ci95": [
+        0.15384615384615385,
+        0.4
+      ],
+      "cluster": "item_id",
+      "estimate": 0.2698412698412698,
+      "replicates": 10000,
+      "seed": 64200
+    },
+    "conditional_rescue_rate": 0.2698412698412698,
+    "edited_mismatch_accuracy": 0.7376302083333334,
+    "edited_mismatch_correct": 1133,
+    "matched_accuracy": 0.7565104166666666,
+    "matched_correct": 1162,
+    "mismatch_induced_flips": 63,
+    "net_correct_decisions": 20,
+    "pairs": 1536,
+    "raw_correct_harmed": 0,
+    "raw_mismatch_accuracy": 0.724609375,
+    "raw_mismatch_correct": 1113,
+    "rescued_flips": 17
+  },
+  "requirements": {
+    "delegated_choice": {
+      "bands": {
+        "boundary": {
+          "accuracy_gain_pp": 2.0725388601036268,
+          "conditional_rescue_bootstrap": {
+            "ci95": [
+              0.0,
+              0.8
+            ],
+            "cluster": "item_id",
+            "estimate": 0.4,
+            "replicates": 10000,
+            "seed": 64311
+          },
+          "conditional_rescue_rate": 0.4,
+          "edited_mismatch_accuracy": 0.9689119170984456,
+          "edited_mismatch_correct": 187,
+          "matched_accuracy": 1.0,
+          "matched_correct": 193,
+          "mismatch_induced_flips": 10,
+          "net_correct_decisions": 4,
+          "pairs": 193,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.9481865284974094,
+          "raw_mismatch_correct": 183,
+          "rescued_flips": 4
+        },
+        "matched_failure": {
+          "accuracy_gain_pp": 0.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 0.0,
+          "edited_mismatch_correct": 0,
+          "matched_accuracy": 0.0,
+          "matched_correct": 0,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 0,
+          "pairs": 4,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.0,
+          "raw_mismatch_correct": 0,
+          "rescued_flips": 0
+        },
+        "middle": {
+          "accuracy_gain_pp": 0.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 1.0,
+          "edited_mismatch_correct": 366,
+          "matched_accuracy": 1.0,
+          "matched_correct": 366,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 0,
+          "pairs": 366,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 1.0,
+          "raw_mismatch_correct": 366,
+          "rescued_flips": 0
+        },
+        "robust": {
+          "accuracy_gain_pp": 0.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 1.0,
+          "edited_mismatch_correct": 205,
+          "matched_accuracy": 1.0,
+          "matched_correct": 205,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 0,
+          "pairs": 205,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 1.0,
+          "raw_mismatch_correct": 205,
+          "rescued_flips": 0
+        }
+      },
+      "overall": {
+        "accuracy_gain_pp": 0.5208333333333334,
+        "conditional_rescue_bootstrap": {
+          "ci95": [
+            0.0,
+            0.8
+          ],
+          "cluster": "item_id",
+          "estimate": 0.4,
+          "replicates": 10000,
+          "seed": 64202
+        },
+        "conditional_rescue_rate": 0.4,
+        "edited_mismatch_accuracy": 0.9869791666666666,
+        "edited_mismatch_correct": 758,
+        "matched_accuracy": 0.9947916666666666,
+        "matched_correct": 764,
+        "mismatch_induced_flips": 10,
+        "net_correct_decisions": 4,
+        "pairs": 768,
+        "raw_correct_harmed": 0,
+        "raw_mismatch_accuracy": 0.9817708333333334,
+        "raw_mismatch_correct": 754,
+        "rescued_flips": 4
+      }
+    },
+    "independent_verification": {
+      "bands": {
+        "boundary": {
+          "accuracy_gain_pp": 11.0,
+          "conditional_rescue_bootstrap": {
+            "ci95": [
+              0.11426948051948053,
+              0.3953488372093023
+            ],
+            "cluster": "item_id",
+            "estimate": 0.24444444444444444,
+            "replicates": 10000,
+            "seed": 64301
+          },
+          "conditional_rescue_rate": 0.24444444444444444,
+          "edited_mismatch_accuracy": 0.66,
+          "edited_mismatch_correct": 66,
+          "matched_accuracy": 1.0,
+          "matched_correct": 100,
+          "mismatch_induced_flips": 45,
+          "net_correct_decisions": 11,
+          "pairs": 100,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.55,
+          "raw_mismatch_correct": 55,
+          "rescued_flips": 11
+        },
+        "matched_failure": {
+          "accuracy_gain_pp": 0.8108108108108109,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 0.04594594594594595,
+          "edited_mismatch_correct": 17,
+          "matched_accuracy": 0.0,
+          "matched_correct": 0,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 3,
+          "pairs": 370,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.03783783783783784,
+          "raw_mismatch_correct": 14,
+          "rescued_flips": 0
+        },
+        "middle": {
+          "accuracy_gain_pp": 0.9852216748768473,
+          "conditional_rescue_bootstrap": {
+            "ci95": [
+              0.0,
+              0.625
+            ],
+            "cluster": "item_id",
+            "estimate": 0.25,
+            "replicates": 10000,
+            "seed": 64302
+          },
+          "conditional_rescue_rate": 0.25,
+          "edited_mismatch_accuracy": 0.9704433497536946,
+          "edited_mismatch_correct": 197,
+          "matched_accuracy": 1.0,
+          "matched_correct": 203,
+          "mismatch_induced_flips": 8,
+          "net_correct_decisions": 2,
+          "pairs": 203,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.9605911330049262,
+          "raw_mismatch_correct": 195,
+          "rescued_flips": 2
+        },
+        "robust": {
+          "accuracy_gain_pp": 0.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 1.0,
+          "edited_mismatch_correct": 95,
+          "matched_accuracy": 1.0,
+          "matched_correct": 95,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 0,
+          "pairs": 95,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 1.0,
+          "raw_mismatch_correct": 95,
+          "rescued_flips": 0
+        }
+      },
+      "overall": {
+        "accuracy_gain_pp": 2.0833333333333335,
+        "conditional_rescue_bootstrap": {
+          "ci95": [
+            0.12962962962962962,
+            0.38
+          ],
+          "cluster": "item_id",
+          "estimate": 0.24528301886792453,
+          "replicates": 10000,
+          "seed": 64201
+        },
+        "conditional_rescue_rate": 0.24528301886792453,
+        "edited_mismatch_accuracy": 0.48828125,
+        "edited_mismatch_correct": 375,
+        "matched_accuracy": 0.5182291666666666,
+        "matched_correct": 398,
+        "mismatch_induced_flips": 53,
+        "net_correct_decisions": 16,
+        "pairs": 768,
+        "raw_correct_harmed": 0,
+        "raw_mismatch_accuracy": 0.4674479166666667,
+        "raw_mismatch_correct": 359,
+        "rescued_flips": 13
+      }
+    }
+  },
+  "schema_version": 1
+}

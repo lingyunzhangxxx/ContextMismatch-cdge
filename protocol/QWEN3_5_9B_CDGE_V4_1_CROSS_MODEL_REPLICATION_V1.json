@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-5-9b-cdge-v4-1-cross-model-replication-v1",
+  "created_utc": "2026-07-30T18:46:00Z",
+  "frozen_utc": "2026-07-30T18:46:00Z",
+  "status": "frozen_before_any_qwen3_5_9b_cdge_forward",
+  "method_name": "Composite Directional Governance Editor",
+  "method_short_name": "C-DGE-V4.1",
+  "evidence_role": "prospective_cross_model_architectural_replication",
+  "base_model": {
+    "repository": "Qwen/Qwen3.5-9B",
+    "revision": "e8885939589b1e032d291a1ceefd21b775e6277e",
+    "architecture": "Qwen3_5ForConditionalGeneration",
+    "parameters": 9409813744,
+    "hidden_size": 4096,
+    "num_hidden_layers": 32,
+    "quantization": "none",
+    "weight_dtype": "BF16"
+  },
+  "frozen_lineage": {
+    "model_contract_sha256": "1716bc9ef0dadb7f2d8438b633cf275b21508c9d9bf533bb80975afca67cb4e6",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "qwen3_8b_confirmatory_archive_sha256": "0c598b2898dd85e426cbdcfed57d83c43faa868c670043b3237b9b8ca9c88bc4",
+    "qwen3_8b_prospective_boundary_protocol_sha256": "538b337d206fb8333c565bc42e45e916093b418dc7187660f4ca566430591c88",
+    "qwen3_8b_prospective_boundary_archive_sha256": "325623a84fb9d4ce0e2bdc8457cfdbefead76ec2a5433944ef92b2fcb03837bf"
+  },
+  "replication_scope": {
+    "same_benchmark_items_and_partitions_as_qwen3_8b": true,
+    "same_factorial_prompts_and_task_targets_as_qwen3_8b": true,
+    "same_editor_architecture_and_routing_semantics_as_qwen3_8b": true,
+    "qwen3_8b_editor_tensors_reused": false,
+    "model_specific_capture_required": true,
+    "model_specific_fit_required": true,
+    "postselect_site_on_qwen3_5_outputs": false,
+    "frozen_site": {
+      "layer": 27,
+      "component": "mlp",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "positive_output_rank": 16,
+      "negative_output_rank": 16,
+      "maximum_relative_correction": 0.05
+    },
+    "site_rationale": "direct architectural replication of the Qwen3-8B selected C-DGE site; prior Qwen3.5 mechanism evidence independently nominates layer 27, but no cross-model C-DGE output is used for selection"
+  },
+  "scientific_scope": {
+    "base_model_weights_frozen": true,
+    "activation_and_hidden_state_editing_authorized": true,
+    "permanent_base_weight_edit_authorized": false,
+    "reversible_hooks_required": true,
+    "checkpoint_may_contain_base_weights": false,
+    "answer_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "correctness_feature_forbidden": true,
+    "operator_dev_access_during_fit_forbidden": true,
+    "final_test_access_forbidden": true
+  },
+  "stages": {
+    "adapter_smoke": {
+      "engineering_only": true,
+      "scientific_effect_inference_forbidden": true,
+      "expected_rows": 1,
+      "exact_zero_hook_identity_required": true
+    },
+    "governance_capture": {
+      "partition": "subspace_fit",
+      "expected_rows": 6144,
+      "expected_matched_counterfactual_pairs": 3072
+    },
+    "gradient_capture": {
+      "partition": "subspace_fit",
+      "expected_rows": 6144,
+      "base_model_parameter_gradients": false
+    },
+    "protected_capture": {
+      "partition": "subspace_fit",
+      "expected_rows": 4008
+    },
+    "directional_fit": {
+      "train_folds": [0, 1, 2, 3, 4, 5],
+      "calibration_fold": 6,
+      "audit_fold": 7,
+      "expected_candidate_count": 1,
+      "operator_dev_accessed": false
+    },
+    "applicability_fit": {
+      "train_folds": [0, 1, 2, 3, 4, 5],
+      "calibration_fold": 6,
+      "audit_fold": 7,
+      "structural_editor_frozen": true,
+      "composite_route_evaluated": true
+    },
+    "behavior_selection": {
+      "partition": "operator_dev",
+      "selection_half": "remaining 16 item_id-sorted items per benchmark",
+      "expected_rows": 3072
+    },
+    "protected_controls": {
+      "expected_rows": 2856,
+      "families": [
+        "fresh_verification",
+        "matched_verification",
+        "matched_delegated_choice",
+        "explicit_governance_reset",
+        "supported_user_authority",
+        "factual_boundary_memory"
+      ]
+    },
+    "performance": {
+      "expected_cells": 24,
+      "methods": ["baseline", "DSGE-V3", "C-DGE-V4.1"],
+      "warmup_repeats": 5,
+      "timed_repeats": 10,
+      "expected_measurements": 720
+    }
+  },
+  "fit_and_behavior_gates": {
+    "calibration_composite_matched_active_fraction_maximum": 0.0,
+    "calibration_composite_protected_active_fraction_maximum_each_family": 0.0,
+    "calibration_composite_mismatch_true_positive_rate_minimum": 0.95,
+    "audit_composite_matched_active_fraction_maximum": 0.0,
+    "audit_composite_protected_active_fraction_maximum_each_family": 0.0,
+    "audit_composite_mismatch_true_positive_rate_minimum": 0.95,
+    "behavior_gap_reduction_lower_95_minimum": 0.25,
+    "behavior_normalized_gap_reduction_lower_95_minimum": 0.10,
+    "both_mismatch_direction_point_estimates_positive": true,
+    "both_label_swap_point_estimates_positive": true,
+    "all_six_benchmark_point_estimates_nonnegative": true,
+    "matched_selected_logit_max_error": 0.0,
+    "protected_application_gated_selected_logit_max_error": 0.0,
+    "all_rows_unique_and_finite": true,
+    "all_metrics_finite": true
+  },
+  "evidence_contract": {
+    "live_slurm_completed_exit_0_0_required": true,
+    "three_sha_verified_copies_required_for_every_valid_stage": true,
+    "cluster_shared_home_copy_required": true,
+    "data_shang_copy_required": true,
+    "local_mac_copy_required": true,
+    "partial_rows_may_not_support_efficacy_claims": true,
+    "valid_negative_results_must_archive": true
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false
+}

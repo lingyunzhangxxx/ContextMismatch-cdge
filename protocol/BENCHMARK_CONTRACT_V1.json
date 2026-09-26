@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-multibench-v1",
+  "frozen_utc": "2026-07-27T11:10:00Z",
+  "status": "frozen_pre_smoke",
+  "production_rollout_approved": false,
+  "base_model": {
+    "repository": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "checkpoint_kind": "official_instruction_tuned",
+    "quantization": "none",
+    "weight_dtype": "BF16",
+    "parameter_count": 8190735360,
+    "architecture": "Qwen3ForCausalLM",
+    "hidden_size": 4096,
+    "num_hidden_layers": 36,
+    "max_position_embeddings": 40960,
+    "license": "apache-2.0",
+    "model_directory": "/workspace/context-mismatch-qwen3-8b/models/Qwen3-8B",
+    "required_model_manifest": "artifacts/model/Qwen3-8B.manifest.json"
+  },
+  "benchmarks": [
+    {
+      "id": "mmlu_pro",
+      "repository": "TIGER-Lab/MMLU-Pro",
+      "revision": "b189ec765aa7ed75c8acfea42df31fdae71f97be",
+      "config": "default",
+      "split": "test",
+      "license": "mit",
+      "adapter": "multiple_choice",
+      "sample_count": 128
+    },
+    {
+      "id": "arc_challenge",
+      "repository": "allenai/ai2_arc",
+      "revision": "210d026faf9955653af8916fad021475a3f00453",
+      "config": "ARC-Challenge",
+      "split": "test",
+      "license": "cc-by-sa-4.0",
+      "adapter": "multiple_choice",
+      "sample_count": 128
+    },
+    {
+      "id": "bbh",
+      "repository": "lukaemon/bbh",
+      "revision": "982bb89fd79532a8ac676a61fc42eb1aeec63f99",
+      "configs": [
+        "logical_deduction_three_objects",
+        "logical_deduction_five_objects",
+        "logical_deduction_seven_objects",
+        "tracking_shuffled_objects_three_objects",
+        "tracking_shuffled_objects_five_objects",
+        "tracking_shuffled_objects_seven_objects",
+        "temporal_sequences",
+        "web_of_lies"
+      ],
+      "split": "test",
+      "license": "apache-2.0-upstream-big-bench",
+      "adapter": "bbh_multiple_choice",
+      "sample_count": 128,
+      "sample_count_per_config": 16
+    },
+    {
+      "id": "gsm8k",
+      "repository": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "config": "main",
+      "split": "test",
+      "license": "mit",
+      "adapter": "numeric_candidate_verification",
+      "sample_count": 128
+    },
+    {
+      "id": "math_500",
+      "repository": "HuggingFaceH4/MATH-500",
+      "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+      "config": "default",
+      "split": "test",
+      "license": "mit-upstream-math",
+      "adapter": "math_candidate_verification",
+      "sample_count": 128
+    },
+    {
+      "id": "musr",
+      "repository": "TAUR-Lab/MuSR",
+      "revision": "7c365b439a222150f317764d4f16ae6c96d7d94a",
+      "config": "default",
+      "splits": ["murder_mysteries", "object_placements", "team_allocation"],
+      "license": "cc-by-4.0",
+      "adapter": "musr_multiple_choice",
+      "sample_count": 128,
+      "sample_count_by_split": {
+        "murder_mysteries": 42,
+        "object_placements": 43,
+        "team_allocation": 43
+      }
+    }
+  ],
+  "non_primary_external_validation": {
+    "repository": "Idavidrein/gpqa",
+    "revision": "633f5ee89ab8ad4522a9f850766b73f62147ffdd",
+    "config": "gpqa_diamond",
+    "license": "cc-by-4.0",
+    "blocked_reason": "Hugging Face auto-gated access was not available when v1 was frozen",
+    "may_replace_a_primary_benchmark": false
+  },
+  "manifest": {
+    "seed": 271828,
+    "selection": "sort all eligible native IDs by SHA256(seed || benchmark || native_id), then take the frozen quota",
+    "postselect_on_model_outputs": false,
+    "partitions": ["component_discovery", "subspace_fit", "operator_dev", "final_test"],
+    "items_per_partition_per_benchmark": 32,
+    "history_realizations": 3,
+    "history_realization_assignment": "SHA256(item_id || history-realization) modulo 3",
+    "foil_assignment": "deterministic before any model forward",
+    "manifest_sha256_required_before_smoke": true
+  },
+  "endpoint": {
+    "name": "pairwise_candidate_verification",
+    "description": "Each official item is converted before inference into a correct candidate and one deterministic foil; this is not standard leaderboard accuracy.",
+    "standard_fresh_baseline_reported_separately": true,
+    "labels": ["A", "B"],
+    "label_swaps": [0, 1],
+    "primary_outcome": "correct_label_logit_minus_foil_label_logit",
+    "secondary_outcomes": [
+      "binary_accuracy",
+      "unsupported_preference_following",
+      "obedience_minus_verification_margin",
+      "reset_minus_obedience_margin"
+    ]
+  },
+  "factorial": {
+    "declared_roles": ["collaborator", "assistant"],
+    "history_depth": 32,
+    "history_styles": ["natural", "lexical_matched"],
+    "governance_conditions": ["fresh", "neutral_length", "verification", "obedience", "obedience_reset"],
+    "main_mismatch_contrast": "obedience minus verification",
+    "reset_contrast": "obedience_reset minus obedience",
+    "role_interaction": "(obedience-verification)_assistant minus (obedience-verification)_collaborator",
+    "same_item_same_foil_across_conditions": true,
+    "same_rendered_task_suffix_across_paired_governance_conditions": true,
+    "history_outcomes_matched": true,
+    "unsupported_final_preference_always_points_to_foil": true
+  },
+  "behavior_stages": {
+    "smoke": {
+      "items_per_benchmark": 2,
+      "partition": "component_discovery",
+      "conditions": ["fresh", "verification", "obedience", "obedience_reset"],
+      "declared_roles": ["collaborator"],
+      "history_styles": ["lexical_matched"],
+      "label_swaps": [0, 1]
+    },
+    "depth_scan": {
+      "items_per_benchmark": 16,
+      "partition": "component_discovery",
+      "depths": [1, 8, 32],
+      "conditions": ["verification", "obedience"],
+      "declared_roles": ["collaborator", "assistant"],
+      "history_styles": ["natural", "lexical_matched"],
+      "label_swaps": [0, 1]
+    },
+    "full_behavior": {
+      "partitions": ["component_discovery", "subspace_fit", "operator_dev", "final_test"],
+      "run_full_factorial": true
+    }
+  },
+  "statistical_analysis": {
+    "unit_of_randomization": "benchmark item",
+    "pairing_key": ["benchmark", "item_id", "declared_role", "history_style", "label_swap"],
+    "cluster_bootstrap": "resample items within benchmark, 10000 replicates, fixed seed 314159",
+    "benchmark_aggregate": "equal-weight mean of six benchmark-level paired effects",
+    "report_per_benchmark": true,
+    "report_label_swap_strata": true,
+    "report_role_strata": true,
+    "fresh_correctness_filter_for_primary_analysis": false,
+    "multiple_comparison_rule": "Holm correction for benchmark-specific secondary tests; primary pooled contrast is singular"
+  },
+  "mechanism_and_mitigation_split": {
+    "component_selection": "component_discovery only",
+    "governance_subspace_fitting": "subspace_fit only",
+    "operator_family_and_coefficient_selection": "operator_dev only",
+    "final_claims": "final_test exactly once after selection lock",
+    "leave_one_benchmark_out_secondary": true,
+    "base_checkpoint_immutable": true,
+    "reversible_hooks_before_adapter_materialization": true
+  },
+  "full_run_gate": {
+    "model_manifest_verified": true,
+    "dataset_manifest_verified": true,
+    "all_label_tokens_single_token": true,
+    "smoke_rows_complete_unique_finite": true,
+    "coefficient_zero_identity_error": 0.0,
+    "queue_count_at_most": 5,
+    "submit_held_then_validate_then_release": true,
+    "current_state": "closed_until_model_and_smoke_artifacts_exist"
+  },
+  "durability": {
+    "cluster_first_copy": "/workspace/context-mismatch-qwen3-8b",
+    "archive-host_second_copy": "/data/researcher/ContextMismatch/qwen3-8b-v1",
+    "local_final_copy": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1",
+    "sha256_tree_manifest_required": true,
+    "overwrite_existing_outputs": false
+  }
+}

@@ -1,0 +1,5 @@
+numpy>=1.26,<3
+torch>=2.7,<3
+transformers>=5.12,<6
+accelerate>=1.0,<2
+reportlab>=4.0,<5

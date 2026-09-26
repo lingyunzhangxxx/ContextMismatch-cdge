@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-adsge-v4-post-fit-behavior-diagnostic-v1",
+  "created_utc": "2026-07-29T16:00:00Z",
+  "frozen_utc": "2026-07-29T16:00:00Z",
+  "status": "frozen_after_v4_fit_audit_before_any_v4_operator_dev_forward",
+  "evidence_class": "post_fit_failure_behavior_diagnostic",
+  "purpose": "measure the already-frozen ADSGE-V4 checkpoint on the same untouched operator_dev selection rows used for DSGE-V3, without relabeling the V4 fit-gate failure as eligibility",
+  "post_failure_characterization": true,
+  "fit_gates_passed": false,
+  "candidate_eligible": false,
+  "candidate_may_be_locked": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false,
+  "design_disclosure": {
+    "v4_fit_audit_observed_before_freeze": true,
+    "v4_operator_dev_outputs_available_at_freeze": false,
+    "diagnostic_is_confirmatory": false,
+    "checkpoint_or_threshold_tuning_authorized": false,
+    "sample_or_label_changes_authorized": false
+  },
+  "bound_artifacts": {
+    "v4_editor_contract_sha256": "0f6d33ab67a02fe88f8d14aa092f5993636d3a99b3a939c2339de0fab4eb677a",
+    "v4_checkpoint_sha256": "42e3af0a3501750514c98f70305ac380663cac99ffeb8b26274340e10b7fcaf8",
+    "v4_fit_report_sha256": "f79e133e5cb0910df5a4a5281067571e25e551e5f49f0d0caa7dabf8d6e65c4a",
+    "v4_fit_archive_sha256": "9fbcc5a34dce9602a687f964397bae158e3f144edb4516179145de74bb7bbcd5",
+    "v3_operator_dev_analysis_sha256": "b8e34396dab744208c505f92d3f915a8a7107dc73785b378ba7baf7f14aae0e7",
+    "governance_crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "operator_dev_design_audit_sha256": "1e86ff3f7d77ac62a3e7089e95a22e7ef31e08453081cb219d8281aae7c38a8c"
+  },
+  "evaluation": {
+    "stage": "governance_failed_fit_selection",
+    "split": "untouched operator_dev selection half",
+    "expected_rows": 3072,
+    "expected_key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+    "same_identity_as_v3_operator_dev": true,
+    "external_zero_gate_exact_identity_required": true,
+    "all_rows_unique_and_finite_required": true,
+    "efficacy_inference_allowed": true,
+    "eligibility_inference_allowed": false
+  },
+  "reporting_rules": {
+    "v4_fit_failure_must_be_repeated": true,
+    "raw_efficacy_and_collateral_metrics_must_be_reported": true,
+    "application_gate_rates_must_be_reported_for_matched_and_mismatched_cells": true,
+    "candidate_eligible_must_remain_false": true,
+    "candidate_may_be_locked_must_remain_false": true,
+    "pareto_lock_forbidden": true,
+    "final_test_forbidden": true,
+    "production_rollout_forbidden": true,
+    "terminal_slurm_completed_0_0_required": true,
+    "three_copy_archive_required": true
+  }
+}

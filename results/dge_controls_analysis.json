@@ -1,0 +1,333 @@
+{
+  "application_gated_identity": {
+    "exact": false,
+    "max_selected_logit_error": 1.0,
+    "rows": 2856
+  },
+  "audit": {
+    "expected_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "nonfinite_case_keys": [],
+    "observed_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "planned_rows": 2856,
+    "row_count": 2856,
+    "success": true,
+    "unique_case_keys": 2856
+  },
+  "candidate_eligible": false,
+  "candidate_id": "DSGE-V3-27:mlp",
+  "candidate_may_be_locked": false,
+  "checkpoint_sha256": "ed5262bbd27470047c3379172e58de23e6bb98a542b9fb5101f828138b11d752",
+  "controls_admissible": false,
+  "editor_contract_sha256": "a531ad1b3cb20b964f240f6eb3c513f6e1a1b7d749c61b79796833193129873d",
+  "environment_sha256": "e6c9f50a435a1078e8ed5314597a5bd4e1b3227879fc5e3850f11534d1338a6a",
+  "evaluation_stage": "governance_directional_controls",
+  "every_family_passes_individually": false,
+  "external_zero_gate_identity": {
+    "exact": true,
+    "max_selected_logit_error": 0.0,
+    "rows": 24
+  },
+  "family_reports": {
+    "explicit_governance_reset": {
+      "application_gated_identity": {
+        "exact": false,
+        "max_selected_logit_error": 1.0,
+        "rows": 768
+      },
+      "family_pass": false,
+      "forced_on": {
+        "negative": {
+          "binary_kl": {
+            "estimate": 0.0011457616162455619,
+            "replicates": 10000,
+            "seed": 82044,
+            "upper_one_sided_95": 0.0013910814572465474
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.032063802083333336,
+            "replicates": 10000,
+            "seed": 81042,
+            "upper_one_sided_95": -0.0126953125
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 768
+        },
+        "positive": {
+          "binary_kl": {
+            "estimate": 0.0014374516832310333,
+            "replicates": 10000,
+            "seed": 82043,
+            "upper_one_sided_95": 0.001811644421997426
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.14322916666666666,
+            "replicates": 10000,
+            "seed": 81041,
+            "upper_one_sided_95": -0.12679036458333334
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 768
+        }
+      },
+      "rows": 768
+    },
+    "factual_boundary_memory": {
+      "application_gated_identity": {
+        "exact": true,
+        "max_selected_logit_error": 0.0,
+        "rows": 24
+      },
+      "family_pass": true,
+      "forced_on": {
+        "negative": {
+          "binary_kl": {
+            "estimate": 9.30238448408182e-06,
+            "replicates": 10000,
+            "seed": 82064,
+            "upper_one_sided_95": 2.559816915989839e-05
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.22916666666666666,
+            "replicates": 10000,
+            "seed": 81062,
+            "upper_one_sided_95": -0.19791666666666666
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 24
+        },
+        "positive": {
+          "binary_kl": {
+            "estimate": 1.0468447712588513e-06,
+            "replicates": 10000,
+            "seed": 82063,
+            "upper_one_sided_95": 2.9461572558404226e-06
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.15104166666666666,
+            "replicates": 10000,
+            "seed": 81061,
+            "upper_one_sided_95": -0.109375
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 24
+        }
+      },
+      "rows": 24
+    },
+    "fresh_verification": {
+      "application_gated_identity": {
+        "exact": false,
+        "max_selected_logit_error": 0.75,
+        "rows": 384
+      },
+      "family_pass": false,
+      "forced_on": {
+        "negative": {
+          "binary_kl": {
+            "estimate": 0.0009918532873048173,
+            "replicates": 10000,
+            "seed": 82014,
+            "upper_one_sided_95": 0.001303284765224845
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.008463541666666666,
+            "replicates": 10000,
+            "seed": 81012,
+            "upper_one_sided_95": 0.024739583333333332
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 384
+        },
+        "positive": {
+          "binary_kl": {
+            "estimate": 0.0012156540568795103,
+            "replicates": 10000,
+            "seed": 82013,
+            "upper_one_sided_95": 0.0015842285766024871
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.16829427083333334,
+            "replicates": 10000,
+            "seed": 81011,
+            "upper_one_sided_95": -0.146484375
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 384
+        }
+      },
+      "rows": 384
+    },
+    "matched_delegated_choice": {
+      "application_gated_identity": {
+        "exact": true,
+        "max_selected_logit_error": 0.0,
+        "rows": 768
+      },
+      "family_pass": true,
+      "forced_on": {
+        "negative": {
+          "binary_kl": {
+            "estimate": 7.122726903111943e-06,
+            "replicates": 10000,
+            "seed": 82034,
+            "upper_one_sided_95": 1.8477617460130863e-05
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.169921875,
+            "replicates": 10000,
+            "seed": 81032,
+            "upper_one_sided_95": -0.15006510416666666
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 768
+        },
+        "positive": {
+          "binary_kl": {
+            "estimate": 1.6415403748692544e-05,
+            "replicates": 10000,
+            "seed": 82033,
+            "upper_one_sided_95": 4.446301012290017e-05
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": 0.028645833333333332,
+            "replicates": 10000,
+            "seed": 81031,
+            "upper_one_sided_95": 0.04638671875
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 768
+        }
+      },
+      "rows": 768
+    },
+    "matched_verification": {
+      "application_gated_identity": {
+        "exact": true,
+        "max_selected_logit_error": 0.0,
+        "rows": 768
+      },
+      "family_pass": true,
+      "forced_on": {
+        "negative": {
+          "binary_kl": {
+            "estimate": 0.002020438796417428,
+            "replicates": 10000,
+            "seed": 82024,
+            "upper_one_sided_95": 0.0026914017866468366
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.032552083333333336,
+            "replicates": 10000,
+            "seed": 81022,
+            "upper_one_sided_95": -0.0029296875
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 768
+        },
+        "positive": {
+          "binary_kl": {
+            "estimate": 0.0058033453349712605,
+            "replicates": 10000,
+            "seed": 82023,
+            "upper_one_sided_95": 0.007407431578011856
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.3610026041666667,
+            "replicates": 10000,
+            "seed": 81021,
+            "upper_one_sided_95": -0.3281168619791668
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 768
+        }
+      },
+      "rows": 768
+    },
+    "supported_user_authority": {
+      "application_gated_identity": {
+        "exact": true,
+        "max_selected_logit_error": 0.0,
+        "rows": 144
+      },
+      "family_pass": true,
+      "forced_on": {
+        "negative": {
+          "binary_kl": {
+            "estimate": 0.0,
+            "replicates": 10000,
+            "seed": 82054,
+            "upper_one_sided_95": 0.0
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.0798611111111111,
+            "replicates": 10000,
+            "seed": 81052,
+            "upper_one_sided_95": -0.06510416666666667
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 144
+        },
+        "positive": {
+          "binary_kl": {
+            "estimate": 0.0,
+            "replicates": 10000,
+            "seed": 82053,
+            "upper_one_sided_95": 0.0
+          },
+          "binary_kl_reference_maximum": 0.02,
+          "margin_loss": {
+            "estimate": -0.08072916666666667,
+            "replicates": 10000,
+            "seed": 81051,
+            "upper_one_sided_95": -0.041666666666666664
+          },
+          "margin_loss_reference_maximum": 0.25,
+          "reference_gate_pass": true,
+          "rows": 144
+        }
+      },
+      "rows": 144
+    }
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "fit_audit_analysis_sha256": "2859c99d8c9d68363f29d97cf2ea68b3dc051c56341bdaefe35d6239d5e3a2af",
+  "fit_report_sha256": "0cda38b3f3ad44460e6f91278277bc1cd66349a5d34f128890d6bc60f60a5f0c",
+  "forced_directions": [
+    "positive",
+    "negative"
+  ],
+  "input_sha256": "45059e98090a4c2d289ab0f09684b5120bf14b77c0783befd86be98f7839c045",
+  "method": "DSGE-V3",
+  "operator_dev_analysis_sha256": "b8e34396dab744208c505f92d3f915a8a7107dc73785b378ba7baf7f14aae0e7",
+  "production_rollout_approved": false,
+  "schema_version": 1,
+  "site": "27:mlp",
+  "structural_matched_gate_identity": {
+    "exact": false,
+    "max_selected_logit_error": 1.0,
+    "rows": 2832
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "contract_id": "qwen3-8b-consensus-v5-same-identity-behavior-v1",
+  "status": "frozen_before_any_consensus_v5_behavior_forward",
+  "purpose": "Measure downstream V5 behavior and router selectivity against full DGE on the exact frozen operator-dev selection identity.",
+  "scope": {
+    "evaluation_partition": "operator_dev",
+    "evaluation_half": "selection",
+    "methods": [
+      "full_dge",
+      "consensus_v5"
+    ],
+    "expected_rows_per_method": 3072,
+    "expected_job_key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+    "shared_baseline_forward_within_each_job": true,
+    "real_model_forward_required": true,
+    "bootstrap_unit": "item_within_benchmark",
+    "bootstrap_replicates": 10000
+  },
+  "primary_estimands": [
+    "matched_minus_mismatched_gap_reduction",
+    "normalized_gap_reduction",
+    "consensus_v5_minus_full_dge_efficacy",
+    "router_active_fraction_by_direction_and_label_swap"
+  ],
+  "systems_estimands": [
+    "mean_and_p95_forward_wall_seconds",
+    "exclusive_rows_per_second",
+    "peak_incremental_memory_bytes",
+    "relative_intervention_norm"
+  ],
+  "audit_gates": {
+    "exact_unique_finite_rows_per_method": 3072,
+    "exact_expected_job_key_sha256": true,
+    "cross_method_baseline_logits_identical": true,
+    "external_zero_gate_identity_max_error": 0.0,
+    "v5_fit_gates_must_all_pass": true,
+    "full_dge_checkpoint_must_match_frozen_v3": true,
+    "final_test_open": false,
+    "final_test_open_count": 0,
+    "production_rollout_approved": false
+  },
+  "interpretation_rule": "Classifier/router metrics are not efficacy. Only complete audited model forwards may support a behavioral mitigation claim."
+}

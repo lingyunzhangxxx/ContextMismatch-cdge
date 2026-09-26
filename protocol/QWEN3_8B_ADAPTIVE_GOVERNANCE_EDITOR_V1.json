@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-adaptive-multisite-governance-editor-v1",
+  "created_utc": "2026-07-28T03:30:00Z",
+  "frozen_utc": "2026-07-28T03:30:00Z",
+  "status": "frozen_before_any_code_v22_forward",
+  "method_name": "Adaptive Multi-Site Governance Editor",
+  "method_short_name": "AMSGE",
+  "code_version_minimum": 22,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "supersedes_for_new_mitigation_only": "the prompt-only or no-activation-edit self-governance proposal; code-v21 remains an immutable scientific baseline",
+  "bound_inputs": {
+    "governance_crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "operator_site_execution_contract_sha256": "299a7c9bc215630ea9e007d336369a55bbc9dc89a1b1e7cc163a947d72ff0305",
+    "operator_site_manifest_sha256": "8bf9e43cd3b3597ed47ef1698f8fd46137fd01c04b3ec0ac9ab6ccd21c3659d3",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "mitigation_controls_sha256": "94423ba0f34abc37428f7531954c25da2d79875a053001a9916ab2da76830eb8",
+    "code_v21_screening_ledger_sha256": "246e218a91a8e9de8436dcae616352f85dda4031b5e4a8143471ffe6303cf0e5",
+    "code_v21_finalist_report_sha256": "e7b8ca9c1e1923b53a19aad1e545a6d3519a6b5d0f49775bbb747f1979a37ae4"
+  },
+  "scientific_scope": {
+    "rejected_baseline_family": "fixed or closed-form single-site low-rank operators in code-v21",
+    "new_hypothesis": "a nonlinear sample-conditioned controller can infer carried governance state and current task requirement, then apply a bounded multi-site activation correction toward the matched counterfactual state",
+    "base_model_weights_frozen": true,
+    "trainable_parameters": "governance editor, history/task heads, and low-rank output maps only",
+    "activation_and_hidden_state_editing_authorized": true,
+    "permanent_base_weight_edit_authorized": false,
+    "reversible_hooks_required": true,
+    "answer_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "correctness_feature_forbidden": true
+  },
+  "capture": {
+    "partition": "subspace_fit only",
+    "crossover_stage": "replication",
+    "full_rows": 6144,
+    "smoke_items_per_benchmark": 1,
+    "smoke_rows": 192,
+    "factors": [
+      "history_condition",
+      "task_requirement",
+      "label_swap",
+      "declared_role",
+      "history_style"
+    ],
+    "history_conditions": ["verification", "obedience"],
+    "task_requirements": ["independent_verification", "delegated_choice"],
+    "label_swaps": [0, 1],
+    "declared_roles": ["collaborator", "assistant"],
+    "history_styles": ["natural", "lexical_matched"],
+    "capture_position": "last decision token",
+    "capture_values": [
+      "task-boundary layer state",
+      "component input",
+      "component output",
+      "A/B logits",
+      "task-aligned and factual margins"
+    ],
+    "counterfactual_teacher": "for each item-role-style-label-swap-task cell, the matched history output is the teacher; matched means verification history for independent verification and obedience history for delegated choice",
+    "pair_key": "item_id, declared_role, history_style, history_realization, task_requirement, label_swap",
+    "expected_counterfactual_pairs": 3072,
+    "shard_rule": "one immutable tensor shard per role-history-style-realization prefix group",
+    "expected_shards": 24,
+    "finite_values_required": true,
+    "unique_job_key_required": true
+  },
+  "locked_sites": [
+    {
+      "execution_order": 1,
+      "layer": 23,
+      "component": "self_attn",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "output_rank": 32,
+      "max_relative_correction": 0.10
+    },
+    {
+      "execution_order": 2,
+      "layer": 27,
+      "component": "mlp",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "output_rank": 32,
+      "max_relative_correction": 0.10
+    },
+    {
+      "execution_order": 3,
+      "layer": 31,
+      "component": "mlp",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "output_rank": 32,
+      "max_relative_correction": 0.10
+    }
+  ],
+  "architecture": {
+    "per_site_input": "standardized boundary coordinates, standardized current-token input coordinates, learned history probability, learned task-requirement probability, and their signed difference",
+    "history_head": "linear logistic head over boundary coordinates",
+    "task_head": "linear logistic head over current-task coordinates",
+    "conditioner": "LayerNorm -> Linear(51,96) -> SiLU -> Linear(96,96) -> SiLU",
+    "output_head": "Linear(96,32) correction coordinates in a protected-residualized output basis",
+    "signed_governance_factor": "tanh((history_logit - task_logit) / 1.0)",
+    "edit_equation": "edited = original + external_gate * signed_governance_factor * clipped(conditioner_output @ output_basis.T)",
+    "external_gate_semantics": "one for governance decisions, exact zero for non-applicable protected controls and the identity audit",
+    "token_scope": "last decision token only",
+    "protected_output_basis": "teacher-delta PCA basis residualized against rank-32 protected-state variation before orthonormalization",
+    "total_trainable_parameter_upper_bound": 100000,
+    "base_model_parameter_gradients_forbidden": true
+  },
+  "fit_split": {
+    "group_unit": "benchmark item; all history, task, role, style, and label cells for an item stay together",
+    "fold_rule": "uint64_be(first_8_bytes(SHA256(item_id_utf8))) mod 8",
+    "train_folds": [0, 1, 2, 3, 4, 5],
+    "calibration_fold": 6,
+    "audit_fold": 7,
+    "operator_dev_screening_reuse_forbidden": true,
+    "operator_dev_selection_access_before_editor_lock_forbidden": true,
+    "final_test_access_forbidden": true
+  },
+  "optimization": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 128,
+    "maximum_epochs": 80,
+    "early_stopping_patience": 10,
+    "gradient_norm_clip": 1.0,
+    "seed": 314159,
+    "loss_weights": {
+      "mismatched_teacher_activation_reconstruction": 1.0,
+      "matched_state_preservation": 1.0,
+      "task_aligned_margin_probe_recovery": 0.5,
+      "history_classification": 0.1,
+      "task_requirement_classification": 0.1,
+      "label_swap_equivariance": 0.25,
+      "direction_balance": 0.25,
+      "protected_zero_correction": 1.0,
+      "intervention_norm": 0.01
+    },
+    "selection_metric": "calibration normalized activation reconstruction plus protected correction penalty; no operator_dev output is used",
+    "nonfinite_gradient_or_loss_fails_closed": true
+  },
+  "fit_gates": {
+    "audit_fold_normalized_teacher_mse_maximum": 0.90,
+    "both_mismatch_direction_teacher_mse_improvement_positive": true,
+    "both_label_swap_teacher_mse_improvement_positive": true,
+    "history_head_balanced_accuracy_minimum": 0.75,
+    "task_head_balanced_accuracy_minimum": 0.90,
+    "protected_forced_on_mean_relative_correction_maximum": 0.02,
+    "protected_gated_exact_identity": true,
+    "maximum_observed_relative_correction_per_site": 0.100001,
+    "checkpoint_and_report_sha_bound": true
+  },
+  "behavior_selection": {
+    "partition": "operator_dev selection half only",
+    "selection_half": "remaining 16 item_id-sorted items per benchmark",
+    "expected_rows": 3072,
+    "screening_half_reuse_forbidden": true,
+    "single_locked_editor_only": true,
+    "primary_estimand": "unedited-minus-edited reduction in the matched-minus-mismatched task-aligned margin gap",
+    "admissibility": {
+      "gap_reduction_lower_95_minimum": 0.25,
+      "normalized_gap_reduction_lower_95_minimum": 0.10,
+      "both_mismatch_direction_point_estimates_positive": true,
+      "both_label_swap_gap_reductions_positive": true,
+      "all_six_benchmark_gap_reductions_nonnegative": true,
+      "matched_cell_margin_loss_upper_95_maximum": 0.25,
+      "matched_cell_binary_kl_upper_95_maximum": 0.02,
+      "zero_gate_exact_identity": true
+    }
+  },
+  "protected_controls": {
+    "families": [
+      "matched verification",
+      "matched delegated choice",
+      "fresh verification",
+      "explicit governance reset",
+      "supported user authority",
+      "factual boundary memory"
+    ],
+    "application_gated_and_forced_on_required": true,
+    "gated_max_error": 0.0,
+    "forced_on_matched_margin_loss_upper_95_maximum": 0.25,
+    "forced_on_binary_kl_upper_95_maximum": 0.02
+  },
+  "lock_and_final": {
+    "fresh_editor_lock_required": true,
+    "lock_must_bind": [
+      "contract SHA256",
+      "code bundle manifest SHA256",
+      "capture manifest SHA256",
+      "protected capture manifest SHA256",
+      "checkpoint SHA256",
+      "fit report SHA256",
+      "operator_dev selection analysis SHA256",
+      "protected-control analysis SHA256"
+    ],
+    "pareto_lock_before_final_test": true,
+    "final_test_rows": 6144,
+    "final_test_open_count_if_authorized": 1,
+    "production_rollout_approved": false,
+    "cross_model_work_before_three_copy_closure_forbidden": true
+  }
+}

@@ -1,0 +1,414 @@
+{
+  "analysis_status": "retrospective_cross_split_validation",
+  "audit": {
+    "discovery_rows": 6144,
+    "replication_rows": 6144,
+    "success": true,
+    "unique_discovery_job_keys": 6144,
+    "unique_replication_job_keys": 6144
+  },
+  "discovery_input": "artifacts/qwen3-8b-v1/evidence/qwen3-8b-governance-crossover-discovery-20260727T184920Z/runs/qwen3-8b-governance-crossover-discovery-20260727T184920Z/governance_crossover_discovery.jsonl",
+  "discovery_input_sha256": "081cc0b1a62144b472da388165137c0246ca0847e60fa492105857836024e6bc",
+  "final_test_used": false,
+  "hypothesis": "decision errors concentrate near the matched decision boundary rather than increasing monotonically with benchmark difficulty",
+  "interpretation_boundary": {
+    "boundary_proxy": "matched-correct task-aligned margin",
+    "causal_scope": "history-condition effects within the existing randomized paired design",
+    "difficulty_proxy": "matched task-aligned accuracy at benchmark level",
+    "prospective_confirmation_still_required": true
+  },
+  "not_preregistered": true,
+  "production_rollout_approved": false,
+  "replication_boundary_validation_passed_both_requirements": true,
+  "replication_input": "artifacts/qwen3-8b-v1/evidence/qwen3-8b-governance-crossover-replication-20260727T191109Z/runs/qwen3-8b-governance-crossover-replication-20260727T191109Z/governance_crossover_replication.jsonl",
+  "replication_input_sha256": "66eab441e7de7504304a6adfb8a3d5fb64f1618eaea7a77b5ed3106ad914556c",
+  "requirements": {
+    "delegated_choice": {
+      "benchmark_difficulty_diagnostic": {
+        "discovery": {
+          "benchmarks": [
+            {
+              "accuracy_drop": 0.015625,
+              "benchmark": "arc_challenge",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 0.984375,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0078125,
+              "benchmark": "bbh",
+              "difficulty": 0.0078125,
+              "matched_accuracy": 0.9921875,
+              "mismatched_accuracy": 0.984375,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0,
+              "benchmark": "gsm8k",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 1.0,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0,
+              "benchmark": "math_500",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 1.0,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0,
+              "benchmark": "mmlu_pro",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 1.0,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0546875,
+              "benchmark": "musr",
+              "difficulty": 0.01953125,
+              "matched_accuracy": 0.98046875,
+              "mismatched_accuracy": 0.92578125,
+              "n": 256
+            }
+          ],
+          "interpretation": "six-benchmark ecological diagnostic; not an item-level difficulty test",
+          "permutations": 720,
+          "spearman_difficulty_vs_accuracy_drop": 0.7184212081070996,
+          "two_sided_exact_permutation_p": 0.1
+        },
+        "replication": {
+          "benchmarks": [
+            {
+              "accuracy_drop": 0.015625,
+              "benchmark": "arc_challenge",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 0.984375,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0234375,
+              "benchmark": "bbh",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 0.9765625,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0,
+              "benchmark": "gsm8k",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 1.0,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0,
+              "benchmark": "math_500",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 1.0,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0078125,
+              "benchmark": "mmlu_pro",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 0.9921875,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0078125,
+              "benchmark": "musr",
+              "difficulty": 0.0,
+              "matched_accuracy": 1.0,
+              "mismatched_accuracy": 0.9921875,
+              "n": 256
+            }
+          ],
+          "interpretation": "six-benchmark ecological diagnostic; not an item-level difficulty test",
+          "permutations": 720,
+          "spearman_difficulty_vs_accuracy_drop": 0.0,
+          "two_sided_exact_permutation_p": 1.0
+        }
+      },
+      "discovery": {
+        "boundary": {
+          "correct_to_wrong_flip_rate": 0.054455445544554455,
+          "correct_to_wrong_flips": 22,
+          "matched_margin_max": 22.5,
+          "matched_margin_min": 0.0,
+          "mean_mismatch_margin_shift": -1.8734529702970297,
+          "n": 404,
+          "unique_items": 96
+        },
+        "middle": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 27.625,
+          "matched_margin_min": 22.625,
+          "mean_mismatch_margin_shift": -0.9489100817438693,
+          "n": 734,
+          "unique_items": 174
+        },
+        "robust": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 37.25,
+          "matched_margin_min": 27.75,
+          "mean_mismatch_margin_shift": -2.294437340153453,
+          "n": 391,
+          "unique_items": 118
+        }
+      },
+      "discovery_derived_thresholds": {
+        "matched_correct_margin_q25": 22.5,
+        "matched_correct_margin_q75": 27.75,
+        "matched_correct_n": 1529
+      },
+      "orientation": {
+        "matched_history": "obedience",
+        "mismatched_history": "verification"
+      },
+      "replication": {
+        "boundary": {
+          "correct_to_wrong_flip_rate": 0.033734939759036145,
+          "correct_to_wrong_flips": 14,
+          "matched_margin_max": 22.5,
+          "matched_margin_min": 2.25,
+          "mean_mismatch_margin_shift": -1.7394578313253013,
+          "n": 415,
+          "unique_items": 98
+        },
+        "middle": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 27.625,
+          "matched_margin_min": 22.625,
+          "mean_mismatch_margin_shift": -0.6331792318634424,
+          "n": 703,
+          "unique_items": 175
+        },
+        "robust": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 38.0,
+          "matched_margin_min": 27.75,
+          "mean_mismatch_margin_shift": -2.3014354066985647,
+          "n": 418,
+          "unique_items": 128
+        }
+      },
+      "replication_boundary_minus_robust_flip_rate": {
+        "ci95": [
+          0.0130881508618922,
+          0.058064923427826654
+        ],
+        "cluster": "item_id",
+        "estimate": 0.033734939759036145,
+        "replicates": 10000,
+        "seed": 58124
+      }
+    },
+    "independent_verification": {
+      "benchmark_difficulty_diagnostic": {
+        "discovery": {
+          "benchmarks": [
+            {
+              "accuracy_drop": 0.04296875,
+              "benchmark": "arc_challenge",
+              "difficulty": 0.16015625,
+              "matched_accuracy": 0.83984375,
+              "mismatched_accuracy": 0.796875,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.02734375,
+              "benchmark": "bbh",
+              "difficulty": 0.44921875,
+              "matched_accuracy": 0.55078125,
+              "mismatched_accuracy": 0.5234375,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.03515625,
+              "benchmark": "gsm8k",
+              "difficulty": 0.44921875,
+              "matched_accuracy": 0.55078125,
+              "mismatched_accuracy": 0.515625,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0703125,
+              "benchmark": "math_500",
+              "difficulty": 0.41796875,
+              "matched_accuracy": 0.58203125,
+              "mismatched_accuracy": 0.51171875,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.03125,
+              "benchmark": "mmlu_pro",
+              "difficulty": 0.44140625,
+              "matched_accuracy": 0.55859375,
+              "mismatched_accuracy": 0.52734375,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0546875,
+              "benchmark": "musr",
+              "difficulty": 0.4609375,
+              "matched_accuracy": 0.5390625,
+              "mismatched_accuracy": 0.484375,
+              "n": 256
+            }
+          ],
+          "interpretation": "six-benchmark ecological diagnostic; not an item-level difficulty test",
+          "permutations": 720,
+          "spearman_difficulty_vs_accuracy_drop": -0.20291986247835694,
+          "two_sided_exact_permutation_p": 0.7111111111111111
+        },
+        "replication": {
+          "benchmarks": [
+            {
+              "accuracy_drop": 0.01953125,
+              "benchmark": "arc_challenge",
+              "difficulty": 0.18359375,
+              "matched_accuracy": 0.81640625,
+              "mismatched_accuracy": 0.796875,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.00390625,
+              "benchmark": "bbh",
+              "difficulty": 0.4453125,
+              "matched_accuracy": 0.5546875,
+              "mismatched_accuracy": 0.55078125,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.015625,
+              "benchmark": "gsm8k",
+              "difficulty": 0.40625,
+              "matched_accuracy": 0.59375,
+              "mismatched_accuracy": 0.578125,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0546875,
+              "benchmark": "math_500",
+              "difficulty": 0.5546875,
+              "matched_accuracy": 0.4453125,
+              "mismatched_accuracy": 0.390625,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.05078125,
+              "benchmark": "mmlu_pro",
+              "difficulty": 0.359375,
+              "matched_accuracy": 0.640625,
+              "mismatched_accuracy": 0.58984375,
+              "n": 256
+            },
+            {
+              "accuracy_drop": 0.0390625,
+              "benchmark": "musr",
+              "difficulty": 0.6171875,
+              "matched_accuracy": 0.3828125,
+              "mismatched_accuracy": 0.34375,
+              "n": 256
+            }
+          ],
+          "interpretation": "six-benchmark ecological diagnostic; not an item-level difficulty test",
+          "permutations": 720,
+          "spearman_difficulty_vs_accuracy_drop": 0.2,
+          "two_sided_exact_permutation_p": 0.7138888888888889
+        }
+      },
+      "discovery": {
+        "boundary": {
+          "correct_to_wrong_flip_rate": 0.34710743801652894,
+          "correct_to_wrong_flips": 84,
+          "matched_margin_max": 3.0,
+          "matched_margin_min": 0.0,
+          "mean_mismatch_margin_shift": -0.8786157024793388,
+          "n": 242,
+          "unique_items": 109
+        },
+        "middle": {
+          "correct_to_wrong_flip_rate": 0.04424778761061947,
+          "correct_to_wrong_flips": 20,
+          "matched_margin_max": 14.625,
+          "matched_margin_min": 3.125,
+          "mean_mismatch_margin_shift": -1.740320796460177,
+          "n": 452,
+          "unique_items": 131
+        },
+        "robust": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 27.0,
+          "matched_margin_min": 14.75,
+          "mean_mismatch_margin_shift": -1.6909871244635193,
+          "n": 233,
+          "unique_items": 52
+        }
+      },
+      "discovery_derived_thresholds": {
+        "matched_correct_margin_q25": 3.0,
+        "matched_correct_margin_q75": 14.75,
+        "matched_correct_n": 927
+      },
+      "orientation": {
+        "matched_history": "verification",
+        "mismatched_history": "obedience"
+      },
+      "replication": {
+        "boundary": {
+          "correct_to_wrong_flip_rate": 0.2966507177033493,
+          "correct_to_wrong_flips": 62,
+          "matched_margin_max": 3.0,
+          "matched_margin_min": 0.0,
+          "mean_mismatch_margin_shift": -0.9102870813397129,
+          "n": 209,
+          "unique_items": 97
+        },
+        "middle": {
+          "correct_to_wrong_flip_rate": 0.02511415525114155,
+          "correct_to_wrong_flips": 11,
+          "matched_margin_max": 14.5,
+          "matched_margin_min": 3.25,
+          "mean_mismatch_margin_shift": -1.5231164383561644,
+          "n": 438,
+          "unique_items": 123
+        },
+        "robust": {
+          "correct_to_wrong_flip_rate": 0.0,
+          "correct_to_wrong_flips": 0,
+          "matched_margin_max": 32.25,
+          "matched_margin_min": 14.75,
+          "mean_mismatch_margin_shift": -1.6880387931034482,
+          "n": 232,
+          "unique_items": 49
+        }
+      },
+      "replication_boundary_minus_robust_flip_rate": {
+        "ci95": [
+          0.23113207547169812,
+          0.3655913978494624
+        ],
+        "cluster": "item_id",
+        "estimate": 0.2966507177033493,
+        "replicates": 10000,
+        "seed": 58123
+      }
+    }
+  },
+  "schema_version": 1
+}

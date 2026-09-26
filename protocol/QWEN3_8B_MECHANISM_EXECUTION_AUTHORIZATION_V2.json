@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "authorization_id": "context-mismatch-qwen3-8b-mechanism-execution-v2",
+  "frozen_utc": "2026-07-27T15:11:26Z",
+  "mechanism_execution_allowed": true,
+  "production_rollout_approved": false,
+  "prior_authorization_sha256": "dc492cb84086837d28f34fe8579a9b626844dfb277437c86addc05ff6e6592f9",
+  "mechanism_contract_sha256": "febc90928cc1bf6fc2d4e05a55183dd16eb7f9951c61fd6940ac013c40d6eda1",
+  "mechanism_contract_erratum_sha256": "29af41a9e0d3cfb5f9a5e523365a9de4277db61b7b2c8fc1086fa9d52824d0bb",
+  "effective_design": {
+    "items_per_benchmark": 16,
+    "residual_full_rows": 27648,
+    "component_full_rows": 18432
+  },
+  "failed_preflight": {
+    "job_id": 8946,
+    "run_dir": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-mechanism-residual-full-20260727T150727Z",
+    "scientific_rows": 0,
+    "exit_code": 1,
+    "reason": "original 32-item field derived 55,296 rows instead of the frozen and authorized 27,648"
+  },
+  "full_behavior_run_dir": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-full-behavior-20260727T121047Z",
+  "full_behavior_rows_sha256": "3151dafcb3d12fbb3dabe3a053ea17e203a05299d27990856707b87a0926675d",
+  "full_behavior_environment_sha256": "46ac0a36cc3915918b889730651747c63cf1564919aed08e5752d1ecc6d65a1b",
+  "full_behavior_analysis_sha256": "77774531d7245fc61d7437038cb08900aa8181b5b0cf70973dd3e0894bdda021",
+  "full_behavior_model_manifest_sha256": "3a9d6bc5ae023694f9e3e54d619dc39c40bbca3f7237de3745e6963fc37ca1b9",
+  "full_behavior_evidence_archive_sha256": "742c7985f068df6092a14d901190df84c88839a454fcc6d8d3729b0938cf95f9",
+  "full_behavior_audit": {
+    "rows": 27648,
+    "unique_rows": 27648,
+    "nonfinite_rows": 0,
+    "mismatch_pairs": 6144,
+    "reset_pairs": 6144,
+    "complete_marker": true,
+    "job_exit_code": 0
+  },
+  "component_manifest_sha256": null,
+  "allowed_stages": {
+    "competence_control": false,
+    "residual_smoke": false,
+    "residual_full": true,
+    "component_smoke": false,
+    "component_full": false
+  },
+  "final_test_open": false
+}

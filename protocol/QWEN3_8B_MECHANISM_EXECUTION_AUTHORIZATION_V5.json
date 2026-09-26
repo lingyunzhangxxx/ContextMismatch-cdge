@@ -1,0 +1,56 @@
+{
+  "schema_version": 5,
+  "authorization_id": "context-mismatch-qwen3-8b-component-smoke-execution-v5",
+  "frozen_utc": "2026-07-27T17:21:36Z",
+  "mechanism_execution_allowed": true,
+  "production_rollout_approved": false,
+  "prior_authorization_sha256": "b7bb7289c79fe416bea468426aa0aeb6ab9c623b72521bfc33e2ccf7677dc1db",
+  "mechanism_contract_sha256": "febc90928cc1bf6fc2d4e05a55183dd16eb7f9951c61fd6940ac013c40d6eda1",
+  "mechanism_contract_erratum_sha256": "29af41a9e0d3cfb5f9a5e523365a9de4277db61b7b2c8fc1086fa9d52824d0bb",
+  "effective_design": {
+    "items_per_benchmark": 16,
+    "component_smoke_rows": 288,
+    "component_full_rows": 18432
+  },
+  "failed_preflight": {
+    "job_id": 8957,
+    "run_dir": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-mechanism-component-smoke-20260727T171922Z",
+    "scientific_rows": 0,
+    "exit_code": 1,
+    "reason": "immutable code-v14 reached the NPU-only tensor tests; a signed-site test incorrectly expected two sequential activation-dependent projections to cancel after the first projection removed the feature seen by the second"
+  },
+  "test_fixture_correction": {
+    "scope": "tests/test_benchmark_v1.py only",
+    "operator_implementation_changed": false,
+    "correction": "use equal and opposite FixedDirectionTranslation sites to isolate signed per-site gate routing independently of sequential activation dynamics"
+  },
+  "residual_prerequisite": {
+    "run_id": "qwen3-8b-mechanism-residual-full-20260727T151721Z",
+    "rows_sha256": "78683f15de1245ac97b8e726071a8835f1b216e8bc9fb17d91aefcda170192c4",
+    "analysis_sha256": "c684434ab8aef9fbc289105d9a5efc6c64ba21af5bffa35c68d906d523dc884a",
+    "component_manifest_sha256": "3a342a300bfe6683ef2fcbdca56dfb3d984dfc6c92173b1659e575684b4a27b1",
+    "rows": 27648,
+    "unique_rows": 27648,
+    "nonfinite_rows": 0,
+    "coefficient_zero_max_error": 0.0,
+    "layer_35_coefficient_one_target_error": 0.0,
+    "complete_marker": true,
+    "job_exit_code": 0,
+    "slurm_completed_verified": false,
+    "durability_archive_sha256": "e885c3d16989b2932a0a9833d17758e51c16e27ed19e932684d21213d60e3410"
+  },
+  "full_behavior_run_dir": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-full-behavior-20260727T121047Z",
+  "full_behavior_rows_sha256": "3151dafcb3d12fbb3dabe3a053ea17e203a05299d27990856707b87a0926675d",
+  "full_behavior_environment_sha256": "46ac0a36cc3915918b889730651747c63cf1564919aed08e5752d1ecc6d65a1b",
+  "full_behavior_analysis_sha256": "77774531d7245fc61d7437038cb08900aa8181b5b0cf70973dd3e0894bdda021",
+  "full_behavior_model_manifest_sha256": "3a9d6bc5ae023694f9e3e54d619dc39c40bbca3f7237de3745e6963fc37ca1b9",
+  "component_manifest_sha256": "3a342a300bfe6683ef2fcbdca56dfb3d984dfc6c92173b1659e575684b4a27b1",
+  "allowed_stages": {
+    "residual_smoke": false,
+    "residual_full": false,
+    "component_smoke": true,
+    "component_full": false
+  },
+  "final_test_open": false,
+  "notes": "V5 corrects only an NPU-only unit-test fixture after another zero-scientific-row preflight. Code-v14 and run 8957 remain immutable."
+}

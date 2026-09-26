@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-operator-site-and-execution-v1",
+  "frozen_utc": "2026-07-27T13:06:24Z",
+  "status": "frozen_before_qwen3_8b_mechanism_forward",
+  "production_rollout_approved": false,
+  "mechanism_contract_sha256": "febc90928cc1bf6fc2d4e05a55183dd16eb7f9951c61fd6940ac013c40d6eda1",
+  "operator_contract_sha256": "867ae627ed247766b184c97e0e5a6f59a6a529159e69ced496ec903310f9e4f1",
+  "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+  "mitigation_controls_sha256": "94423ba0f34abc37428f7531954c25da2d79875a053001a9916ab2da76830eb8",
+  "site_nomination": {
+    "selection_partition": "component_discovery",
+    "source": "the complete locked self_attn-versus-mlp component scan at the three residual-nominated layers",
+    "primary_stratum": "lexical_matched, equally weighted across six benchmarks, two roles, two causal directions, and two label swaps",
+    "eligible_components": [
+      "self_attn",
+      "mlp"
+    ],
+    "per_layer_rule": "select exactly one component at each residual-nominated layer",
+    "score": "mean across benchmark-by-direction cells of abs(component patch effect / paired target gap), clipped to [0,1] within each cell",
+    "diagnostic_sign_rule": "report whether rescue is positive and reverse induction is negative in each label-swap half; do not silently remove a site if the sign rule fails",
+    "tie_break": "prefer self_attn, then lexical order",
+    "locked_output": "QWEN3_8B_OPERATOR_SITE_MANIFEST_V1.json",
+    "operator_dev_may_not_reselect_components": true
+  },
+  "subspace_capture": {
+    "partition": "subspace_fit",
+    "paired_regimes": [
+      "verification",
+      "obedience"
+    ],
+    "benchmark_protected_conditions": [
+      "fresh",
+      "verification",
+      "obedience_reset"
+    ],
+    "external_protected_conditions": [
+      "supported_user_authority",
+      "factual_boundary_memory"
+    ],
+    "history_trigger_basis": "paired obedience-minus-verification differences at all 32 completed-turn endpoints",
+    "correction_basis": "paired obedience-minus-verification component outputs at the final decision token",
+    "task_context_basis": "unsupervised centered component inputs at the final decision token, pooled with exact regime and label balance",
+    "protected_basis": "centered variation and paired task-preserving differences from fresh, verification, reset, supported-authority, and factual-memory captures",
+    "history_gate": "linear, calibrated from boundary state only with leave-one-benchmark-out and cross-style reports",
+    "candidate_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "answer_correctness_filter_forbidden": true,
+    "all_rank_ridge_threshold_and_center_artifacts_retained": true,
+    "operator_coefficient_selected_during_fitting": false
+  },
+  "operator_dev_execution": {
+    "screening_items": "first 16 item_id-sorted operator_dev items per benchmark",
+    "selection_items": "remaining 16 item_id-sorted operator_dev items per benchmark",
+    "screening_and_selection_row_outputs_separate": true,
+    "actual_model_forward_required_for_admissibility": true,
+    "offline_activation_fit_may_not_replace_behavioral_evaluation": true,
+    "batch_size": 1,
+    "single_layer_sites": "exactly the three component-discovery nominated sites",
+    "multilayer_sites": "the deterministic two-site prefixes and complete three-site set ordered by single-site selection score",
+    "zero_gate_bitwise_identity_required_per_site": true,
+    "all_candidate_families_from_operator_contract_required": true
+  },
+  "protected_gate_audit": {
+    "deployment_gate": "history-only mismatch probability multiplied by an answer-blind current-task verification-requirement signal",
+    "application_gated_controls": true,
+    "forced_on_stress_ablation": true,
+    "purpose_of_forced_on": "separate intrinsic protected-subspace selectivity from protection supplied by the application-level gate",
+    "both_results_reported": true
+  },
+  "operator_lock": {
+    "selection_uses_only_operator_dev": true,
+    "locked_fields": [
+      "family",
+      "sites",
+      "history_rank",
+      "context_rank",
+      "correction_rank",
+      "protected_rank",
+      "ridge_penalty",
+      "history_threshold",
+      "gate_calibration",
+      "trust_radius",
+      "token_scope",
+      "tensor_sha256"
+    ],
+    "locked_output": "QWEN3_8B_OPERATOR_MANIFEST_V1.json",
+    "final_test_open_before_lock": false,
+    "final_test_open_count": 1
+  },
+  "interpretation": {
+    "v4_over_v3_supports_task_conditioned_readout_not_parameter_change": true,
+    "forced_on_collateral_failure_rejects_intrinsic_selectivity_even_if_application_gate_passes": true,
+    "exact_patching_success_with_low_rank_failure_supports_nonlinear_distributed_or_cache_mediated_mechanism": true,
+    "cross_model_claims_forbidden_until_qwen3_8b_final_test_and_three_copy_durability_complete": true
+  }
+}

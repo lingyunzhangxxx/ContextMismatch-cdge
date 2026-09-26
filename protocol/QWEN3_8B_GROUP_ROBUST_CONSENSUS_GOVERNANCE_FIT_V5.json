@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-group-robust-consensus-governance-fit-v5",
+  "created_utc": "2026-07-29T02:54:31Z",
+  "frozen_utc": "2026-07-29T02:54:31Z",
+  "status": "frozen_while_v5_capture_job_9113_pending_before_any_capture_output",
+  "method_short_name": "GRC-DGE-V5",
+  "code_version_minimum": 35,
+  "router_contract_sha256": "7829eedebb61de8168cd465afb47def0005339fd333316d5d20d1cdc11f73142",
+  "capture_job_id": 9113,
+  "capture_authorization_sha256": "eef5d69dcf14fb983d44ebeebc230d94be5e6ce4dc421edaef1050b6022d65e0",
+  "capture_outputs_examined_before_freeze": false,
+  "architecture_search_forbidden": true,
+  "seed_search_forbidden": true,
+  "epoch_search_forbidden": true,
+  "threshold_search_forbidden": true,
+  "training": {
+    "allowed_subspace_hash_folds": [0, 1, 2, 3, 4, 5],
+    "forbidden_subspace_hash_folds": [6, 7],
+    "all_negative_head_seed": 57721,
+    "matched_state_head_seed": 57722,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "epochs": 120,
+    "gradient_norm_clip": 1.0,
+    "positive_class_weight": "negative-row-count divided by positive-row-count, recomputed inside each cross-fit training split",
+    "all_negative_source_weights": {
+      "governance_mismatch": 1.0,
+      "governance_matched": 1.0,
+      "fresh_verification": 4.0,
+      "explicit_governance_reset": 4.0,
+      "matched_verification_protected": 2.0,
+      "supported_user_authority": 2.0,
+      "factual_boundary_memory": 2.0
+    },
+    "matched_state_head_source_weights": {
+      "governance_mismatch": 1.0,
+      "governance_matched": 1.0
+    },
+    "feature_normalization": "train-only per-coordinate median and max(1.4826*MAD,1e-4)",
+    "loss": "source-weighted and positive-class-balanced binary cross entropy",
+    "minibatch_order": "fixed torch Generator initialized from the head seed plus 1009 times the held-fold index, or the head seed for final fit",
+    "nonfinite_loss_gradient_feature_or_logit_fails_closed": true
+  },
+  "cross_fit": {
+    "folds": [0, 1, 2, 3, 4, 5],
+    "each_model_trains_on_other_five_allowed_folds": true,
+    "held_fold_never_contributes_to_its_model_normalization_or_gradient": true,
+    "negative_logit_location": "training-negative median",
+    "negative_logit_scale": "max(1.4826 times training-negative MAD,1e-4)",
+    "global_tail": "maximum standardized held-fold negative logit across all six models",
+    "safety_margin_standardized_units": 0.25,
+    "consensus_active": "both standardized held-fold logits are strictly greater than their head-specific global tail plus 0.25"
+  },
+  "final_fit": {
+    "each_head_trains_once_on_all_allowed_folds": true,
+    "threshold": "max(nextafter(maximum final-training negative logit,+infinity), final-training negative median plus final-training negative scale times (cross-fit global tail plus 0.25))",
+    "component_discovery_audit_may_not_change_any_parameter_or_threshold": true
+  },
+  "required_audit_sources": {
+    "governance_matched": [
+      "governance_matched:matched_verification",
+      "governance_matched:matched_delegated_choice"
+    ],
+    "protected": [
+      "protected:fresh_verification",
+      "protected:matched_verification",
+      "protected:explicit_governance_reset",
+      "protected:supported_user_authority",
+      "protected:factual_boundary_memory"
+    ]
+  },
+  "gates": {
+    "cross_fit_consensus_negative_active_fraction_maximum": 0.0,
+    "cross_fit_consensus_mismatch_true_positive_rate_minimum": 0.95,
+    "cross_fit_consensus_each_direction_true_positive_rate_minimum": 0.95,
+    "cross_fit_consensus_each_label_swap_true_positive_rate_minimum": 0.90,
+    "component_audit_consensus_each_governance_matched_family_active_fraction_maximum": 0.0,
+    "component_audit_consensus_each_protected_family_active_fraction_maximum": 0.0,
+    "component_audit_consensus_mismatch_true_positive_rate_minimum": 0.95,
+    "component_audit_consensus_each_direction_true_positive_rate_minimum": 0.95,
+    "component_audit_consensus_each_label_swap_true_positive_rate_minimum": 0.90,
+    "audit_source_coverage_must_be_exact": true,
+    "v3_frozen_parameter_max_absolute_change": 0.0,
+    "checkpoint_contains_no_base_weights": true,
+    "all_gates_required_before_behavior_smoke": true
+  },
+  "safety": {
+    "operator_dev_accessed": false,
+    "final_test_open": false,
+    "final_test_open_count": 0,
+    "production_rollout_approved": false,
+    "gate_or_threshold_weakening_after_audit_forbidden": true
+  }
+}

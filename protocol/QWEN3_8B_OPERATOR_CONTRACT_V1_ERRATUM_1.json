@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "erratum_id": "context-mismatch-qwen3-8b-negative-operator-v1-erratum-1",
+  "frozen_utc": "2026-07-27T13:12:31Z",
+  "status": "frozen_before_qwen3_8b_mechanism_and_subspace_forward",
+  "production_rollout_approved": false,
+  "operator_contract_sha256": "867ae627ed247766b184c97e0e5a6f59a6a529159e69ced496ec903310f9e4f1",
+  "operator_site_execution_contract_sha256": "299a7c9bc215630ea9e007d336369a55bbc9dc89a1b1e7cc163a947d72ff0305",
+  "affected_field": "subspace_fit.history_gate_requirements.leave_one_benchmark_out_auc_minimum",
+  "audit_finding": {
+    "issue": "The history-only boundary state is a deterministic function of declared role, history style, history realization, regime, and turn. The same frozen history is reused across all six benchmark families, so assigning benchmark labels to these repeated states cannot identify leave-one-benchmark-out gate generalization.",
+    "risk_if_unmodified": "Repeated identical histories in train and held-out benchmark folds would yield a nominal cross-benchmark AUC without a genuine domain shift.",
+    "detected_before_affected_forward": true
+  },
+  "replacement_gate_requirements": {
+    "leave_one_history_realization_out_auc_minimum": 0.8,
+    "train_natural_test_lexical_auc_minimum": 0.75,
+    "train_lexical_test_natural_auc_minimum": 0.75,
+    "report_each_declared_role_separately": true,
+    "probabilities_calibrated_on_subspace_fit_only": true,
+    "final_test_calibration_forbidden": true
+  },
+  "cross_benchmark_requirement": {
+    "measured_on": "actual edited-versus-unedited behavioral recovery, not repeated boundary states",
+    "operator_dev_all_six_benchmark_point_estimates_nonnegative": true,
+    "final_test_all_six_benchmark_results_reported": true,
+    "leave_one_benchmark_out_operator_diagnostics_retained": true
+  },
+  "unchanged_fields": {
+    "data_partitions": true,
+    "candidate_ladder": true,
+    "protected_controls": true,
+    "collateral_tolerances": true,
+    "admissibility_and_selection": true,
+    "final_test_once": true,
+    "candidate_labels_may_not_be_features": true,
+    "benchmark_identity_may_not_be_a_feature": true
+  },
+  "interpretation": "This erratum removes a non-identifiable validation claim; it does not relax the gate threshold, open a later split, or use observed mechanism or operator outcomes."
+}

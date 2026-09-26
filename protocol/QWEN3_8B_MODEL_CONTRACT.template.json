@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "contract_id": "qwen3-8b-bf16-official-v1",
+  "repository": "Qwen/Qwen3-8B",
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "license": "apache-2.0",
+  "architecture": "Qwen3ForCausalLM",
+  "parameter_count": 8190735360,
+  "weight_dtype": "BF16",
+  "quantization": "none",
+  "num_hidden_layers": 36,
+  "hidden_size": 4096,
+  "max_position_embeddings": 40960,
+  "weight_shards_expected": 5,
+  "source_directory": null,
+  "files": [],
+  "tree_sha256": null,
+  "verified": false,
+  "production_rollout_approved": false
+}

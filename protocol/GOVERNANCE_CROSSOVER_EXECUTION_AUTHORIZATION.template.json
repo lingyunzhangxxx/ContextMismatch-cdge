@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "authorization_id": "FILL_AFTER_CODE_BUNDLE_IS_IMMUTABLE",
+  "created_utc": "FILL",
+  "stage": "FILL: smoke | discovery | replication | operator_dev | final_test",
+  "code_root": "/workspace/context-mismatch-qwen3-8b/code-vFILL",
+  "execution_allowed": false,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "contract_sha256": "FILL",
+  "manifest_sha256": "FILL",
+  "design_audit_sha256": "FILL",
+  "expected_key_sha256": "FILL",
+  "expected_rows": 0,
+  "immutable_code_bundle_manifest_sha256": "FILL",
+  "prerequisite_artifacts": [],
+  "notes": "A new authorization is required for each stage. Never edit an authorization after the first model forward."
+}

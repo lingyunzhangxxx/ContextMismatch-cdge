@@ -1,0 +1,261 @@
+{
+  "audit": {
+    "expected_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "nonfinite_case_keys": [],
+    "observed_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "planned_rows": 2856,
+    "row_count": 2856,
+    "success": true,
+    "unique_case_keys": 2856
+  },
+  "candidate_eligible": null,
+  "candidate_id": "AMSGE-V2-19844a1e1bd1a720",
+  "candidate_may_be_locked": false,
+  "controls_admissible": true,
+  "controls_would_pass_in_isolation": true,
+  "editor_contract_sha256": "f99840f86fbd6f11e3b2ad2684eabc490003312779e71bda649ff8a38e552400",
+  "environment_sha256": "ee824846db31392bf05402824ac10a90aefe3112404b89f2f9fc43371ee24fd6",
+  "family_reports": {
+    "explicit_governance_reset": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.0020753948528020798,
+          "replicates": 10000,
+          "seed": 72049,
+          "upper_one_sided_95": 0.0028486510317574792
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.011881510416666666,
+          "replicates": 10000,
+          "seed": 71041,
+          "upper_one_sided_95": 0.004557291666666667
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.0020753948528020798,
+          "replicates": 10000,
+          "seed": 72050,
+          "upper_one_sided_95": 0.002862714036239836
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.011881510416666666,
+          "replicates": 10000,
+          "seed": 71042,
+          "upper_one_sided_95": 0.004890950520833215
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      }
+    },
+    "factual_boundary_memory": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 72069,
+          "upper_one_sided_95": 0.0
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 71061,
+          "upper_one_sided_95": 0.0
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 24
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 3.290816009717311e-05,
+          "replicates": 10000,
+          "seed": 72070,
+          "upper_one_sided_95": 9.633256367580597e-05
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.0625,
+          "replicates": 10000,
+          "seed": 71062,
+          "upper_one_sided_95": 0.15625
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 24
+      }
+    },
+    "fresh_verification": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.0012333395378079136,
+          "replicates": 10000,
+          "seed": 72019,
+          "upper_one_sided_95": 0.0015968278977086165
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.037760416666666664,
+          "replicates": 10000,
+          "seed": 71011,
+          "upper_one_sided_95": -0.016276041666666668
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 384
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.0012333395378079136,
+          "replicates": 10000,
+          "seed": 72020,
+          "upper_one_sided_95": 0.0015909981784317032
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.037760416666666664,
+          "replicates": 10000,
+          "seed": 71012,
+          "upper_one_sided_95": -0.016927083333333332
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 384
+      }
+    },
+    "matched_delegated_choice": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 2.6340943644649872e-05,
+          "replicates": 10000,
+          "seed": 72039,
+          "upper_one_sided_95": 7.853252416116643e-05
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.021809895833333332,
+          "replicates": 10000,
+          "seed": 71031,
+          "upper_one_sided_95": 0.047526041666666664
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 2.6340943644649872e-05,
+          "replicates": 10000,
+          "seed": 72040,
+          "upper_one_sided_95": 7.85274516398587e-05
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.021809895833333332,
+          "replicates": 10000,
+          "seed": 71032,
+          "upper_one_sided_95": 0.047526041666666664
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      }
+    },
+    "matched_verification": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.002687327554074637,
+          "replicates": 10000,
+          "seed": 72029,
+          "upper_one_sided_95": 0.00337524448300761
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.09212239583333333,
+          "replicates": 10000,
+          "seed": 71021,
+          "upper_one_sided_95": -0.06363932291666667
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.002687327554074637,
+          "replicates": 10000,
+          "seed": 72030,
+          "upper_one_sided_95": 0.0033687155684693185
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.09212239583333333,
+          "replicates": 10000,
+          "seed": 71022,
+          "upper_one_sided_95": -0.06266276041666667
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      }
+    },
+    "supported_user_authority": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 72059,
+          "upper_one_sided_95": 0.0
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.1284722222222222,
+          "replicates": 10000,
+          "seed": 71051,
+          "upper_one_sided_95": -0.09375
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 144
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 72060,
+          "upper_one_sided_95": 0.0
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.1284722222222222,
+          "replicates": 10000,
+          "seed": 71052,
+          "upper_one_sided_95": -0.09461805555555555
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 144
+      }
+    }
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "fit_gates_passed": true,
+  "forced_on_stress_required": true,
+  "input_sha256": "04adc451c13980e53c94aef008b2fb2ca847071fa8197d6c2dd623d93a526ec0",
+  "non_governance_application_gate": {
+    "exact_identity": true,
+    "max_selected_logit_error": 0.0,
+    "rows": 24
+  },
+  "post_failure_characterization": false,
+  "production_rollout_approved": false,
+  "schema_version": 1
+}

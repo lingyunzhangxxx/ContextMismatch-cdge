@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-mechanism-discovery-v1",
+  "frozen_utc": "2026-07-27T12:18:38Z",
+  "status": "frozen_before_qwen3_8b_mechanism_forward",
+  "production_rollout_approved": false,
+  "base_model": {
+    "repository": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": "none",
+    "weight_dtype": "BF16",
+    "architecture": "Qwen3ForCausalLM",
+    "num_hidden_layers": 36,
+    "hidden_size": 4096
+  },
+  "lineage": {
+    "behavior_contract_sha256": "39119fd0031dc7cb7ee73d6ee00a26406a2b02891551784f38cb20bd199fe19c",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "required_behavior_stage": "full_behavior",
+    "required_behavior_rows": 27648,
+    "required_behavior_mismatch_pairs": 6144,
+    "required_behavior_reset_pairs": 6144,
+    "behavior_gate_must_pass_before_submission": true
+  },
+  "data_split": {
+    "partition": "component_discovery",
+    "items_per_benchmark": 32,
+    "benchmarks": [
+      "arc_challenge",
+      "bbh",
+      "gsm8k",
+      "math_500",
+      "mmlu_pro",
+      "musr"
+    ],
+    "selection_or_fitting_from_later_partitions_forbidden": true
+  },
+  "factorial": {
+    "source_regimes": ["verification", "obedience"],
+    "counterfactual_target": "the exact paired opposite-regime cached-suffix activation",
+    "declared_roles": ["collaborator", "assistant"],
+    "history_styles": ["lexical_matched", "natural"],
+    "history_depth": 32,
+    "history_realization": "the frozen item-level assignment",
+    "label_swaps": [0, 1],
+    "same_item_same_foil_same_suffix": true,
+    "batch_size": 1
+  },
+  "residual_scan": {
+    "layers": [3, 7, 11, 15, 19, 23, 27, 31, 35],
+    "coefficients": [0.0, 1.0],
+    "patch_scope": "all tokens of the new-task suffix",
+    "expected_full_rows": 27648,
+    "last_layer_endpoint_positive_control": 35,
+    "component_nomination_rule": {
+      "eligible_layers": [3, 7, 11, 15, 19, 23, 27, 31],
+      "primary_stratum": "lexical_matched pooled equally across benchmarks, roles, directions, and label swaps",
+      "score": "absolute paired coefficient-one mediation effect divided by the absolute intact opposite-minus-source gap, clipped to [0,1] only for ranking",
+      "select_top_k": 3,
+      "tie_break": "prefer the earlier layer, then the lower numerical layer id",
+      "natural_style_is_replication_not_a_selection_tie_break": true
+    }
+  },
+  "component_scan": {
+    "components": ["self_attn", "mlp"],
+    "layers": "exactly the three layers nominated by the frozen residual rule",
+    "coefficients": [0.0, 1.0],
+    "patch_scope": "all tokens of the new-task suffix",
+    "expected_full_rows": 18432,
+    "ordering_is_exploratory": true
+  },
+  "numerical_gates": {
+    "all_rows_unique": true,
+    "all_logits_and_margins_finite": true,
+    "coefficient_zero_max_absolute_margin_error": 0.0,
+    "residual_layer_35_coefficient_one_max_target_margin_error": 0.0,
+    "exact_suffix_token_match_required": true,
+    "source_and_target_label_token_ids_match": true
+  },
+  "reporting": {
+    "item_is_sampling_unit": true,
+    "equal_weight_six_benchmark_aggregate": true,
+    "report_both_causal_directions": true,
+    "report_per_benchmark": true,
+    "report_role_style_and_label_swap_strata": true,
+    "component_results_are_not_additive_decompositions": true,
+    "qwen3_5_mechanism_may_not_be_relabelled_as_qwen3_8b_evidence": true
+  },
+  "split_lock": {
+    "subspace_fit_may_open_after_component_manifest_is_frozen": true,
+    "operator_dev_may_open_after_subspace_artifacts_are_frozen": true,
+    "final_test_may_open_once_after_operator_manifest_is_frozen": true,
+    "final_test_open": false
+  },
+  "durability": {
+    "cluster_first_copy": "/workspace/context-mismatch-qwen3-8b",
+    "archive-host_second_copy": "/data/researcher/ContextMismatch/qwen3-8b-v1",
+    "local_final_copy": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1",
+    "overwrite_existing_outputs": false,
+    "sha256_tree_manifest_required": true
+  }
+}

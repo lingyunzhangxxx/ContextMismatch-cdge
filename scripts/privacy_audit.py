@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""Reject credentials, private paths, and model-weight artifacts."""
+
+from __future__ import annotations
+
+import re
+import shutil
+import subprocess
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+BLOCKED_SUFFIXES = {".pem", ".key", ".p12", ".pt", ".pth", ".safetensors"}
+TEXT_PATTERNS = {
+    "private macOS path": re.compile(r"/Users/[A-Za-z0-9._-]+/"),
+    "private home path": re.compile(r"/home/[A-Za-z0-9._-]+/"),
+    "root home path": re.compile(r"/root/"),
+    "private key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
+    "assigned credential": re.compile(
+        r"(?i)(?:api[_-]?key|access[_-]?token|password|passwd|secret)"
+        r"\s*[:=]\s*['\"][^'\"\n]{8,}['\"]"
+    ),
+    "bearer token": re.compile(r"(?i)authorization\s*:\s*bearer\s+[A-Za-z0-9._-]{8,}"),
+}
+
+
+def files_to_scan() -> list[Path]:
+    if shutil.which("git") and (ROOT / ".git").exists():
+        output = subprocess.check_output(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+            cwd=ROOT,
+            text=True,
+        )
+        return [ROOT / item for item in output.splitlines() if item]
+    excluded = {".git", ".venv", "__pycache__", ".pytest_cache"}
+    return [
+        path
+        for path in ROOT.rglob("*")
+        if path.is_file() and not excluded.intersection(path.relative_to(ROOT).parts)
+    ]
+
+
+def main() -> None:
+    findings: list[str] = []
+    for path in files_to_scan():
+        relative = path.relative_to(ROOT).as_posix()
+        if path.suffix.lower() in BLOCKED_SUFFIXES:
+            findings.append(f"blocked artifact type: {relative}")
+            continue
+        if path.stat().st_size > 20 * 1024 * 1024:
+            findings.append(f"file exceeds 20 MiB: {relative}")
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            continue
+        if relative == "scripts/privacy_audit.py":
+            continue
+        for label, pattern in TEXT_PATTERNS.items():
+            if pattern.search(text):
+                findings.append(f"{label}: {relative}")
+    if findings:
+        raise SystemExit("Privacy audit failed:\n  - " + "\n  - ".join(sorted(set(findings))))
+    print(f"Privacy audit passed: {len(files_to_scan())} publishable files checked")
+
+
+if __name__ == "__main__":
+    main()

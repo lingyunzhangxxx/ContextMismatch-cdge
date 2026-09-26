@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-negative-operator-v1",
+  "frozen_utc": "2026-07-27T12:32:00Z",
+  "status": "frozen_before_qwen3_8b_mechanism_results",
+  "production_rollout_approved": false,
+  "base_model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "mechanism_contract_sha256": "febc90928cc1bf6fc2d4e05a55183dd16eb7f9951c61fd6940ac013c40d6eda1",
+  "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+  "split_discipline": {
+    "component_selection": "component_discovery only",
+    "basis_and_transport_fitting": "subspace_fit only",
+    "operator_screening": "first 16 item_id-sorted operator_dev items per benchmark",
+    "operator_selection": "remaining 16 item_id-sorted operator_dev items per benchmark",
+    "final_evaluation": "all 32 final_test items per benchmark, opened once",
+    "leave_one_benchmark_out_diagnostics": true,
+    "candidate_labels_may_not_be_features": true,
+    "benchmark_identity_may_not_be_a_feature": true,
+    "final_test_open": false
+  },
+  "subspace_fit": {
+    "history_trigger_samples": "all 32 completed-turn endpoints from paired depth-32 histories",
+    "task_samples": "final decision-token component inputs and outputs",
+    "factors": {
+      "declared_roles": ["collaborator", "assistant"],
+      "history_styles": ["lexical_matched", "natural"],
+      "label_swaps": [0, 1],
+      "regimes": ["verification", "obedience"]
+    },
+    "history_ranks": [1, 2, 4, 8],
+    "task_context_ranks": [0, 1, 2, 4],
+    "correction_ranks": [1, 2, 4, 8],
+    "protected_ranks": [0, 4, 8, 16],
+    "ridge_penalties": [0.0001, 0.001, 0.01, 0.1],
+    "history_gate_requirements": {
+      "leave_one_benchmark_out_auc_minimum": 0.8,
+      "cross_style_auc_minimum": 0.75,
+      "probabilities_calibrated_without_final_test": true
+    }
+  },
+  "candidate_ladder": [
+    {"id": "no_edit", "family": "identity"},
+    {"id": "fixed_translation", "family": "rejected_diagnostic"},
+    {"id": "symmetric_rank1", "family": "projection", "rank": 1},
+    {"id": "one_sided_rank1", "family": "v2", "rank": 1, "protected": false, "gated": false},
+    {"id": "v2_protected_gated", "family": "v2", "ranks": [1, 4, 8]},
+    {"id": "v3_diagonal", "family": "v3", "rank": 4},
+    {"id": "v3_full", "family": "v3", "ranks": [2, 4, 8]},
+    {"id": "v3_full_trust", "family": "v3", "ranks": [2, 4, 8], "trust_radii": [0.01, 0.02, 0.05]},
+    {"id": "v4_bilinear", "family": "v4", "history_ranks": [2, 4], "context_ranks": [1, 2, 4], "correction_ranks": [4, 8], "trust_radii": [0.01, 0.02, 0.05]},
+    {"id": "v4_all_suffix_ablation", "family": "v4", "token_scope": "all_suffix"},
+    {"id": "v4_multilayer", "family": "v4", "layer_counts": [2, 3], "joint_global_budget": true}
+  ],
+  "screening_schedule": {
+    "stage_1": "all single-layer candidate configurations on the screening half",
+    "stage_2": "the best three admissible configurations per family on the selection half",
+    "stage_3": "single-layer versus two- and three-layer versions of the best admissible family",
+    "hyperparameters_may_not_change_after_stage_3_manifest": true
+  },
+  "primary_outcomes": {
+    "mismatch_recovery": "edited minus unedited correct-vs-foil margin under obedience history",
+    "normalized_recovery": "mismatch_recovery divided by verification-minus-obedience baseline gap",
+    "label_swap_balance": "recovery reported separately for both correct-label assignments",
+    "benchmark_aggregate": "equal-weight mean of six benchmark item-cluster effects"
+  },
+  "protected_controls": [
+    "fresh benchmark tasks",
+    "verification histories",
+    "obedience plus explicit governance reset",
+    "supported user authority",
+    "factual boundary memory"
+  ],
+  "collateral_tolerances": {
+    "criterion": "upper one-sided 95% item-cluster confidence bound on loss increase",
+    "fresh_margin_loss": 0.25,
+    "verification_margin_loss": 0.25,
+    "reset_margin_loss": 0.25,
+    "supported_authority_margin_loss": 0.25,
+    "factual_memory_margin_loss": 0.25,
+    "binary_answer_kl": 0.02
+  },
+  "admissibility_and_selection": {
+    "minimum_recovery_lower_95_bound": 0.25,
+    "minimum_normalized_recovery_lower_95_bound": 0.1,
+    "both_label_swap_estimates_must_be_positive": true,
+    "all_six_benchmark_point_estimates_must_be_nonnegative": true,
+    "reject_any_collateral_violation": true,
+    "selection_order": [
+      "maximize equal-weight mismatch recovery",
+      "minimize worst protected-control upper bound",
+      "prefer lower total rank",
+      "prefer fewer edited layers",
+      "prefer smaller mean relative intervention norm"
+    ]
+  },
+  "execution": {
+    "base_checkpoint_immutable": true,
+    "reversible_hooks_only_for_claim_runs": true,
+    "batch_size": 1,
+    "operator_zero_gate_must_be_bitwise_identity": true,
+    "all_candidates_retain_row_level_outputs": true,
+    "interrupted_outputs_are_preserved_not_overwritten": true
+  }
+}

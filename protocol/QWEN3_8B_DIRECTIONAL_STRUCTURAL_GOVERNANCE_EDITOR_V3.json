@@ -1,0 +1,260 @@
+{
+  "schema_version": 3,
+  "contract_id": "context-mismatch-qwen3-8b-directional-structural-governance-editor-v3",
+  "created_utc": "2026-07-28T16:53:40Z",
+  "frozen_utc": "2026-07-28T16:53:40Z",
+  "status": "design_locked_after_v2_terminal_failure_audit_before_any_v3_forward",
+  "method_name": "Directional Structural Governance Editor V3",
+  "method_short_name": "DSGE-V3",
+  "code_version_minimum": 29,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "scientific_change_from_v2": "replace cross-classifier raw-logit subtraction with separately calibrated probability-product routes and a frozen confidence dead zone; fit independent directional experts; select exactly one site by direct held behavior; require true downstream A/B margin-gradient evidence; prohibit naive independent multi-site stacking",
+  "bound_failure_evidence": {
+    "v2_contract_sha256": "f99840f86fbd6f11e3b2ad2684eabc490003312779e71bda649ff8a38e552400",
+    "v2_checkpoint_sha256": "19844a1e1bd1a7203645fbc489995a0fa5315e4dcaa66ec471ff781da6df9a66",
+    "v2_fit_report_sha256": "6a941e57e677f315fbaf348cd23a5d76e1ed38694a66c0329978a3da49975ad3",
+    "v2_fit_slurm_provenance_strictly_closed": false,
+    "v2_selection_rows_sha256": "ac0d2a38692ee43a1f15478560c5b9967e8a549ce061c85df48645f7ec6be9b6",
+    "v2_selection_analysis_sha256": "94bc67f573fa2e1c9576c7af5322bb1c4733e217b4dc784edc7948c8f31130c6",
+    "v2_selection_archive_sha256": "085c0a47a5d8942436ca0b6594cef0700d9406b821eea1185858ae7eeb3933af",
+    "v2_controls_archive_sha256": "f214ae11ab2fa3437404b575d5f091ed3a61c93b5974e5e44d133f238eec94f1",
+    "v2_router_root_cause_audit_sha256": "0f02bb0aa4d39a5f2adc98f76b700cb8f8f0394c6318550f829ebb71996cba4e"
+  },
+  "bound_inputs": {
+    "governance_capture_manifest_sha256": "987b8b9d17c9d723d1ddcbaba61cc28d5b585c31e20b63e1a05c0dc94872735d",
+    "protected_capture_manifest_sha256": "f084c379cf59b5eeffdb67f62ce26d2cbb7418919da5e93a297dea1030a7c690",
+    "governance_crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "operator_site_execution_contract_sha256": "299a7c9bc215630ea9e007d336369a55bbc9dc89a1b1e7cc163a947d72ff0305",
+    "operator_site_manifest_sha256": "8bf9e43cd3b3597ed47ef1698f8fd46137fd01c04b3ec0ac9ab6ccd21c3659d3",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "mitigation_controls_sha256": "94423ba0f34abc37428f7531954c25da2d79875a053001a9916ab2da76830eb8"
+  },
+  "failure_diagnosis": {
+    "router": "V2 subtracts raw scores from independently trained history and task classifiers; their scales and offsets are not commensurate, so all three sites saturate at absolute factor approximately one on every matched and mismatched cell",
+    "multisite": "each V2 site independently reconstructs a complete baseline-to-teacher delta, but inference applies sites 23, 27, and 31 serially; later editors therefore receive inputs shifted away from their baseline capture distribution and can repeat or conflict with earlier correction",
+    "proxy": "V2 selects by matched-teacher activation MSE plus a same-site linear margin probe; all fit directions and label swaps improve under this proxy while terminal downstream behavior reverses in one direction and one label orbit",
+    "direction_sharing": "V2 forces both causal directions through one conditioner and one output map with a signed scalar, an untested inverse-symmetry assumption contradicted by terminal directional and label-swap asymmetry",
+    "aggregate_gate": "V2 averages protected correction across sites; layer 31 exceeded its own 0.02 reference at 0.02087346464395523 while the aggregate gate still passed"
+  },
+  "scientific_scope": {
+    "base_model_weights_frozen": true,
+    "activation_and_hidden_state_editing_authorized": true,
+    "permanent_base_weight_edit_authorized": false,
+    "reversible_hooks_required": true,
+    "checkpoint_may_contain_base_weights": false,
+    "answer_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "correctness_feature_forbidden": true,
+    "task_labels_allowed_only_as_fit_supervision_and_evaluation_targets": true,
+    "posthoc_design_uses_v2_operator_dev_results": true,
+    "operator_dev_results_are_developmental_not_independent_confirmation": true,
+    "final_test_remains_the_only_confirmatory_behavior_split": true
+  },
+  "candidate_sites": [
+    {
+      "layer": 23,
+      "component": "self_attn",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "positive_output_rank": 16,
+      "negative_output_rank": 16,
+      "max_relative_correction": 0.05
+    },
+    {
+      "layer": 27,
+      "component": "mlp",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "positive_output_rank": 16,
+      "negative_output_rank": 16,
+      "max_relative_correction": 0.05
+    },
+    {
+      "layer": 31,
+      "component": "mlp",
+      "boundary_rank": 16,
+      "context_rank": 32,
+      "positive_output_rank": 16,
+      "negative_output_rank": 16,
+      "max_relative_correction": 0.05
+    }
+  ],
+  "router": {
+    "history_probability": "sigmoid((history_raw_logit - history_calibration_location) / history_calibration_scale)",
+    "task_probability": "sigmoid((task_raw_logit - task_calibration_location) / task_calibration_scale)",
+    "calibration_scope": "each head separately on fit calibration fold 6; positive affine rescaling of a raw head and its calibration is route invariant",
+    "positive_evidence": "p_history * (1 - p_task)",
+    "negative_evidence": "(1 - p_history) * p_task",
+    "activation_threshold": 0.5,
+    "route_equation": "relu(evidence - 0.5) / 0.5",
+    "positive_semantics": "obedience history to independent-verification task",
+    "negative_semantics": "verification history to delegated-choice task",
+    "matched_and_ambiguous_semantics": "both routes exactly zero; return the original activation without conversion or addition",
+    "raw_cross_classifier_logit_subtraction_forbidden": true
+  },
+  "architecture": {
+    "history_head": "linear logistic head over normalized full task-boundary hidden state",
+    "task_head": "linear logistic head over normalized full current-task site input",
+    "directional_experts": "two independent LayerNorm-MLP correction experts with independent rank-16 protected-residualized task-margin-gradient output bases",
+    "output_basis_source": "for each direction and site, uncentered PCA of row-L2-normalized true task-aligned margin gradients on fit train folds followed by removal of the frozen protected-state rank-32 subspace; teacher activation deltas are forbidden as the primary output-basis source",
+    "expert_input": "16 boundary coordinates, 32 current-input coordinates, two calibrated probabilities, and two structural route values",
+    "label_swap_is_not_an_input": true,
+    "edit_equation": "edited = original + external_gate * clipped(positive_route * positive_expert + negative_route * negative_expert)",
+    "token_scope": "last decision token only",
+    "maximum_relative_correction_per_candidate": 0.05,
+    "single_selected_site_per_checkpoint": true,
+    "naive_multisite_stacking_forbidden": true,
+    "multisite_extension_requirement": "a later contract may add one residual site only after recapturing that site's inputs and downstream gradients with the selected earlier editor active",
+    "total_learned_editor_parameter_upper_bound": 50000,
+    "base_model_parameter_gradients_forbidden": true
+  },
+  "downstream_gradient_capture": {
+    "required_before_fit": true,
+    "partition": "subspace_fit only",
+    "smoke_rows": 192,
+    "full_rows": 6144,
+    "per_row_targets": [
+      "gradient of task-aligned A/B margin with respect to each candidate component output at the last decision token",
+      "baseline task-aligned margin",
+      "matched counterfactual task-aligned margin"
+    ],
+    "base_model_parameters_require_grad": false,
+    "gradient_values_finite_required": true,
+    "nonzero_gradient_fraction_minimum_per_site": 0.99,
+    "exact_unique_key_and_sha_audit_required": true,
+    "smoke_must_close_with_three_verified_copies_before_full_capture": true
+  },
+  "fit_split": {
+    "group_unit": "benchmark item",
+    "fold_rule": "uint64_be(first_8_bytes(SHA256(item_id_utf8))) mod 8",
+    "train_folds": [0, 1, 2, 3, 4, 5],
+    "calibration_fold": 6,
+    "direct_behavior_audit_fold": 7,
+    "all_cells_for_an_item_stay_together": true,
+    "operator_dev_access_during_fit_forbidden": true,
+    "final_test_access_forbidden": true
+  },
+  "optimization": {
+    "seed": 161803,
+    "batch_size": 128,
+    "gradient_norm_clip": 1.0,
+    "three_single_site_candidates_fit_independently": true,
+    "history_and_task_heads_fit_then_frozen": {
+      "optimizer": "CPU AdamW",
+      "learning_rate": 0.002,
+      "weight_decay": 0.0001,
+      "maximum_epochs": 80,
+      "early_stopping_patience": 12
+    },
+    "head_calibration_fit_then_frozen": {
+      "method": "separate affine Platt scaling per head on fold 6",
+      "optimizer": "CPU Adam",
+      "learning_rate": 0.05,
+      "steps": 200,
+      "minimum_scale": 0.0001
+    },
+    "positive_expert_trained_only_on_positive_direction": true,
+    "negative_expert_trained_only_on_negative_direction": true,
+    "primary_loss": "one-sided hinge on true downstream first-order gain: gradient_task_margin dot correction must recover a positive clipped fraction of the matched-counterfactual margin gap",
+    "primary_target_fraction_of_positive_gap": 0.5,
+    "primary_target_gap_clip": 2.0,
+    "secondary_loss": "direction-specific matched-teacher activation reconstruction",
+    "label_swap_orbit_loss": "penalize differences in true first-order gain between paired label swaps; label identity is never an editor input",
+    "protected_loss": "maximum across positive-forced and negative-forced mean squared relative correction on the frozen protected capture, using direction-consistent canonical probabilities and route bits; structural-router abstention cannot hide expert magnitude",
+    "intervention_norm_loss": true,
+    "matched_soft_preservation_loss": false,
+    "matched_preservation_reason": "matched preservation is structural through the exact-zero router, not delegated to a soft loss",
+    "expert_fit": {
+      "optimizer": "CPU AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "hidden_width": 64,
+      "maximum_epochs": 80,
+      "early_stopping_patience": 10,
+      "loss_weights": {
+        "true_downstream_first_order_gain": 2.0,
+        "directional_teacher_activation_reconstruction": 0.25,
+        "paired_label_swap_orbit": 0.25,
+        "protected_zero_correction": 5.0,
+        "intervention_norm": 0.02
+      }
+    },
+    "nonfinite_loss_or_gradient_fails_closed": true
+  },
+  "fit_gates_per_candidate_without_cross_site_averaging": {
+    "history_head_balanced_accuracy_minimum": 0.95,
+    "task_head_balanced_accuracy_minimum": 0.95,
+    "calibration_fold_matched_route_active_fraction_maximum": 0.0,
+    "calibration_fold_mismatch_route_active_fraction_minimum": 0.95,
+    "audit_fold_matched_route_active_fraction_maximum": 0.0,
+    "audit_fold_mismatch_route_active_fraction_minimum": 0.95,
+    "both_direction_first_order_gain_positive": true,
+    "both_label_swap_first_order_gain_positive": true,
+    "teacher_reconstruction_is_diagnostic_not_an_eligibility_gate": true,
+    "protected_forced_on_stress_directions": [
+      "positive",
+      "negative"
+    ],
+    "protected_forced_on_gate_aggregation": "maximum of the two per-direction mean relative corrections",
+    "protected_forced_on_mean_relative_correction_maximum": 0.02,
+    "maximum_observed_relative_correction": 0.050001,
+    "checkpoint_contains_exactly_one_site": true,
+    "checkpoint_contains_no_base_weights": true,
+    "checkpoint_and_report_sha_bound": true
+  },
+  "direct_behavior_site_selection": {
+    "first_stage_partition": "subspace_fit fold 7 only",
+    "all_three_single_site_candidates_evaluated": true,
+    "fit_gate_failure_does_not_suppress_direct_behavior_characterization": true,
+    "fit_ineligible_candidates_may_be_measured_but_may_not_advance": true,
+    "matched_selected_logit_max_error": 0.0,
+    "both_mismatch_direction_point_estimates_positive": true,
+    "both_label_swap_point_estimates_positive": true,
+    "all_six_benchmark_point_estimates_nonnegative": true,
+    "gap_reduction_lower_95_minimum": 0.25,
+    "normalized_gap_reduction_lower_95_minimum": 0.10,
+    "selection_order": [
+      "largest lower 95 percent bound on gap reduction",
+      "smallest matched binary KL upper bound",
+      "smallest intervention norm",
+      "earliest layer"
+    ],
+    "if_no_candidate_passes": "stop after all three direct behavior evaluations and retain a complete falsifier; do not combine sites or weaken gates"
+  },
+  "developmental_operator_dev_gate": {
+    "partition": "operator_dev only",
+    "interpretation": "developmental because V2 terminal operator_dev results informed V3 design",
+    "gap_reduction_lower_95_minimum": 0.25,
+    "normalized_gap_reduction_lower_95_minimum": 0.10,
+    "both_mismatch_direction_point_estimates_positive": true,
+    "both_label_swap_gap_reductions_positive": true,
+    "all_six_benchmark_gap_reductions_nonnegative": true,
+    "matched_cell_margin_loss_upper_95_maximum": 0.25,
+    "matched_cell_binary_kl_upper_95_maximum": 0.02,
+    "matched_selected_logit_max_error": 0.0,
+    "zero_external_gate_exact_identity": true
+  },
+  "protected_controls": {
+    "all_six_existing_families_required": true,
+    "application_gated_exact_identity": true,
+    "structural_matched_gate_exact_identity": true,
+    "forced_on_margin_loss_upper_95_maximum": 0.25,
+    "forced_on_binary_kl_upper_95_maximum": 0.02,
+    "every_family_passes_individually": true
+  },
+  "lock_and_final": {
+    "direct_behavior_site_selection_must_pass": true,
+    "developmental_operator_dev_gate_must_pass": true,
+    "protected_controls_must_pass": true,
+    "fresh_sha_bound_pareto_lock_required": true,
+    "final_test_rows": 6144,
+    "final_test_open_count_if_authorized": 1,
+    "current_final_test_open": false,
+    "current_final_test_open_count": 0,
+    "production_rollout_approved": false,
+    "no_positive_confirmatory_claim_before_terminal_audited_final_test": true,
+    "cross_model_work_before_three_copy_qwen_closure_forbidden": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "audit": {
+    "expected_key_sha256": "488835b013ebdf7413d29fa3490bf937700e1b542bac9b0539aa31ba966dcd35",
+    "final_test_open": false,
+    "paired_groups": 3072,
+    "problems": [],
+    "production_rollout_approved": false,
+    "row_count": 6144,
+    "success": true,
+    "unique_job_keys": 6144
+  },
+  "contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+  "manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+  "schema_version": 1,
+  "stage": "replication"
+}

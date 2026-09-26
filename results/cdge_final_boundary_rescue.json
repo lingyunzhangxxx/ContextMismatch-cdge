@@ -1,0 +1,266 @@
+{
+  "analysis_status": "posthoc_descriptive_boundary_rescue_analysis",
+  "audit": {
+    "all_finite": true,
+    "key_sha256": "42520481f1fb73449f45c18604a72c32736a8eb3ba238b501f78a0575e4cf6ea",
+    "rows": 6144,
+    "unique_job_keys": 6144
+  },
+  "boundary_report_sha256": "2872b9e55a5859a2efb14976f0d243a4edcc83962d05f1dc0bd9baa3664c46c8",
+  "decision_rule": "task-aligned margin > 0; zero-margin ties count as failures",
+  "estimand": "conditional rescue among matched-correct, raw-mismatch-wrong pairs",
+  "evaluation_split": [
+    "final_test"
+  ],
+  "frozen_band_source": "prospective boundary report; thresholds were frozen from discovery",
+  "input_sha256": "f317b91347e2d17dc7883832e774b921deb62393a3f6e5a82793680592647030",
+  "interpretation": {
+    "conditional_rescue_is_not_overall_accuracy_gain": true,
+    "margin_band_analysis_is_descriptive": true,
+    "matched_failure_is_floor_population": true
+  },
+  "method": [
+    "C-DGE-V4.1"
+  ],
+  "overall": {
+    "accuracy_gain_pp": 1.2044270833333333,
+    "conditional_rescue_bootstrap": {
+      "ci95": [
+        0.16666666666666666,
+        0.3115942028985507
+      ],
+      "cluster": "item_id",
+      "estimate": 0.23703703703703705,
+      "replicates": 10000,
+      "seed": 64200
+    },
+    "conditional_rescue_rate": 0.23703703703703705,
+    "edited_mismatch_accuracy": 0.7568359375,
+    "edited_mismatch_correct": 2325,
+    "matched_accuracy": 0.77734375,
+    "matched_correct": 2388,
+    "mismatch_induced_flips": 135,
+    "net_correct_decisions": 37,
+    "pairs": 3072,
+    "raw_correct_harmed": 0,
+    "raw_mismatch_accuracy": 0.7447916666666666,
+    "raw_mismatch_correct": 2288,
+    "rescued_flips": 32
+  },
+  "requirements": {
+    "delegated_choice": {
+      "bands": {
+        "boundary": {
+          "accuracy_gain_pp": 1.3824884792626728,
+          "conditional_rescue_bootstrap": {
+            "ci95": [
+              0.1,
+              0.5789473684210527
+            ],
+            "cluster": "item_id",
+            "estimate": 0.3157894736842105,
+            "replicates": 10000,
+            "seed": 64311
+          },
+          "conditional_rescue_rate": 0.3157894736842105,
+          "edited_mismatch_accuracy": 0.9700460829493087,
+          "edited_mismatch_correct": 421,
+          "matched_accuracy": 1.0,
+          "matched_correct": 434,
+          "mismatch_induced_flips": 19,
+          "net_correct_decisions": 6,
+          "pairs": 434,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.956221198156682,
+          "raw_mismatch_correct": 415,
+          "rescued_flips": 6
+        },
+        "matched_failure": {
+          "accuracy_gain_pp": 20.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 0.2,
+          "edited_mismatch_correct": 1,
+          "matched_accuracy": 0.0,
+          "matched_correct": 0,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 1,
+          "pairs": 5,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.0,
+          "raw_mismatch_correct": 0,
+          "rescued_flips": 0
+        },
+        "middle": {
+          "accuracy_gain_pp": 0.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 1.0,
+          "edited_mismatch_correct": 710,
+          "matched_accuracy": 1.0,
+          "matched_correct": 710,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 0,
+          "pairs": 710,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 1.0,
+          "raw_mismatch_correct": 710,
+          "rescued_flips": 0
+        },
+        "robust": {
+          "accuracy_gain_pp": 0.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 1.0,
+          "edited_mismatch_correct": 387,
+          "matched_accuracy": 1.0,
+          "matched_correct": 387,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 0,
+          "pairs": 387,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 1.0,
+          "raw_mismatch_correct": 387,
+          "rescued_flips": 0
+        }
+      },
+      "overall": {
+        "accuracy_gain_pp": 0.4557291666666667,
+        "conditional_rescue_bootstrap": {
+          "ci95": [
+            0.1,
+            0.5789473684210527
+          ],
+          "cluster": "item_id",
+          "estimate": 0.3157894736842105,
+          "replicates": 10000,
+          "seed": 64202
+        },
+        "conditional_rescue_rate": 0.3157894736842105,
+        "edited_mismatch_accuracy": 0.9889322916666666,
+        "edited_mismatch_correct": 1519,
+        "matched_accuracy": 0.9967447916666666,
+        "matched_correct": 1531,
+        "mismatch_induced_flips": 19,
+        "net_correct_decisions": 7,
+        "pairs": 1536,
+        "raw_correct_harmed": 0,
+        "raw_mismatch_accuracy": 0.984375,
+        "raw_mismatch_correct": 1512,
+        "rescued_flips": 6
+      }
+    },
+    "independent_verification": {
+      "bands": {
+        "boundary": {
+          "accuracy_gain_pp": 9.29203539823009,
+          "conditional_rescue_bootstrap": {
+            "ci95": [
+              0.1354096283783784,
+              0.29213483146067415
+            ],
+            "cluster": "item_id",
+            "estimate": 0.21,
+            "replicates": 10000,
+            "seed": 64301
+          },
+          "conditional_rescue_rate": 0.21,
+          "edited_mismatch_accuracy": 0.6504424778761062,
+          "edited_mismatch_correct": 147,
+          "matched_accuracy": 1.0,
+          "matched_correct": 226,
+          "mismatch_induced_flips": 100,
+          "net_correct_decisions": 21,
+          "pairs": 226,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.5575221238938053,
+          "raw_mismatch_correct": 126,
+          "rescued_flips": 21
+        },
+        "matched_failure": {
+          "accuracy_gain_pp": 0.5891016200294551,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 0.05743740795287187,
+          "edited_mismatch_correct": 39,
+          "matched_accuracy": 0.0,
+          "matched_correct": 0,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 4,
+          "pairs": 679,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.05154639175257732,
+          "raw_mismatch_correct": 35,
+          "rescued_flips": 0
+        },
+        "middle": {
+          "accuracy_gain_pp": 1.146788990825688,
+          "conditional_rescue_bootstrap": {
+            "ci95": [
+              0.125,
+              0.5625
+            ],
+            "cluster": "item_id",
+            "estimate": 0.3125,
+            "replicates": 10000,
+            "seed": 64302
+          },
+          "conditional_rescue_rate": 0.3125,
+          "edited_mismatch_accuracy": 0.9747706422018348,
+          "edited_mismatch_correct": 425,
+          "matched_accuracy": 1.0,
+          "matched_correct": 436,
+          "mismatch_induced_flips": 16,
+          "net_correct_decisions": 5,
+          "pairs": 436,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 0.963302752293578,
+          "raw_mismatch_correct": 420,
+          "rescued_flips": 5
+        },
+        "robust": {
+          "accuracy_gain_pp": 0.0,
+          "conditional_rescue_bootstrap": null,
+          "conditional_rescue_rate": null,
+          "edited_mismatch_accuracy": 1.0,
+          "edited_mismatch_correct": 195,
+          "matched_accuracy": 1.0,
+          "matched_correct": 195,
+          "mismatch_induced_flips": 0,
+          "net_correct_decisions": 0,
+          "pairs": 195,
+          "raw_correct_harmed": 0,
+          "raw_mismatch_accuracy": 1.0,
+          "raw_mismatch_correct": 195,
+          "rescued_flips": 0
+        }
+      },
+      "overall": {
+        "accuracy_gain_pp": 1.953125,
+        "conditional_rescue_bootstrap": {
+          "ci95": [
+            0.15254237288135594,
+            0.3018867924528302
+          ],
+          "cluster": "item_id",
+          "estimate": 0.22413793103448276,
+          "replicates": 10000,
+          "seed": 64201
+        },
+        "conditional_rescue_rate": 0.22413793103448276,
+        "edited_mismatch_accuracy": 0.5247395833333334,
+        "edited_mismatch_correct": 806,
+        "matched_accuracy": 0.5579427083333334,
+        "matched_correct": 857,
+        "mismatch_induced_flips": 116,
+        "net_correct_decisions": 30,
+        "pairs": 1536,
+        "raw_correct_harmed": 0,
+        "raw_mismatch_accuracy": 0.5052083333333334,
+        "raw_mismatch_correct": 776,
+        "rescued_flips": 26
+      }
+    }
+  },
+  "schema_version": 1
+}

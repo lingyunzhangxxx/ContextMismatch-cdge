@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "authorization_id": "qwen3-8b-full-behavior-v1",
+  "frozen_utc": "2026-07-27T12:08:00Z",
+  "status": "authorized_after_depth_gate",
+  "depth_job_id": 8928,
+  "depth_run_dir": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-behavior-depth-scan-20260727T115207Z",
+  "depth_rows_sha256": "b069abafa90f10580bb4e7174cbb604ea1bb903a1522aab48b5d93880fbd8deb",
+  "depth_environment_sha256": "1085befbc6126fd3fdaa3565d93b2a78d3ecdc04f3534f3a421f561234293588",
+  "depth_gate_sha256": "e9e12666aaa7179d6e00190c40ce9f65a828440e5ec3df5628539fdc5f70d555",
+  "depth_gate_local_path": "artifacts/qwen3-8b-v1/QWEN3_8B_DEPTH_GATE_V1.json",
+  "depth_gate_success": true,
+  "full_behavior_allowed": true,
+  "selected_batch_size": 1,
+  "expected_rows": 27648,
+  "base_final_test_rows_are_measurement_only": true,
+  "operator_selection_may_use_final_test": false,
+  "edited_final_test_allowed_before_operator_lock": false,
+  "production_rollout_approved": false
+}

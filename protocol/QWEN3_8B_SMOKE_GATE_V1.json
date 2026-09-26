@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "gate_id": "qwen3-8b-behavior-smoke-gate-v1",
+  "frozen_utc": "2026-07-27T11:48:00Z",
+  "status": "accepted_scalar_only",
+  "job_id": 8927,
+  "run_dir": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-behavior-smoke-20260727T114422Z",
+  "required_files": {
+    "COMPLETE": "13372d359276e64909037f9cb7d2652e4faa730448d4703229f52ec67a99cdb6",
+    "exit_status.json": "3c3cb5388a3be3fc910ff89d30ea3ab1578fa160e4a9f6cd09fda215c31708cf",
+    "behavior_smoke_scalar_accepted.jsonl": "85adf1914ff40bf7c66c1650c68312338de0296ef984701e102809a410dc3399",
+    "behavior_smoke_scalar_accepted_analysis.json": "1b3415fe5a325df506dba2f7a28d4c54b4c13af6ad564e507e4a4ef88a862a15",
+    "scalar_repeatability_gate.json": "bb9c15d5dffd7bb84090c92870e646f9b8b1f1591c6688649c00557b8c9e9b47",
+    "BENCHMARK_CONTRACT_V1.json": "39119fd0031dc7cb7ee73d6ee00a26406a2b02891551784f38cb20bd199fe19c",
+    "prompt_audit_v2.json": "72cfe3fd882322184553f5c48553ba7c1e630f7000fff85c7a7c225a9c065ce1"
+  },
+  "audit_success": true,
+  "row_count": 96,
+  "scalar_repeatability_success": true,
+  "scalar_semantic_sha256": "413c81364dd521c0ec64d6ddbb3e9e78f47672193d40fa5f958fc93d916096f3",
+  "mismatch_equal_weight_benchmark_mean": -3.2395833333333335,
+  "mismatch_cluster_bootstrap_ci95": [
+    -4.21875,
+    -2.25
+  ],
+  "all_six_benchmark_mismatch_means_negative": true,
+  "reset_equal_weight_benchmark_mean": 4.958333333333333,
+  "reset_cluster_bootstrap_ci95": [
+    3.9583333333333335,
+    5.94817708333333
+  ],
+  "selected_batch_size": 1,
+  "depth_scan_allowed": true,
+  "full_behavior_allowed": false,
+  "full_behavior_blocked_until": "depth scan audit and cross-depth effect gate pass",
+  "production_rollout_approved": false
+}

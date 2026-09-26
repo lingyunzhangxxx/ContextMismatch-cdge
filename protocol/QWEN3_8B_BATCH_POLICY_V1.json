@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "policy_id": "qwen3-8b-ascend-scalar-only-v1",
+  "frozen_utc": "2026-07-27T11:42:00Z",
+  "status": "scalar_only_after_failed_preregistered_parity_gate",
+  "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "device_backend": "Ascend 910B3 BF16 eager attention with cached prefixes",
+  "failed_attempts": [
+    {
+      "job_id": 8925,
+      "batching_strategy": "mixed suffix lengths with left padding",
+      "decision_match_fraction": 0.9791666666666666,
+      "max_logit_error": 1.75,
+      "threshold": 0.125
+    },
+    {
+      "job_id": 8926,
+      "batching_strategy": "exact suffix-length buckets",
+      "decision_match_fraction": 0.9895833333333334,
+      "max_logit_error": 1.5,
+      "threshold": 0.125
+    }
+  ],
+  "scalar_repeat_a_job_id": 8925,
+  "scalar_repeat_b_job_id": 8926,
+  "scalar_repeat_a_path": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-behavior-smoke-20260727T113213Z/behavior_smoke_scalar.jsonl",
+  "scalar_repeat_b_path": "/workspace/context-mismatch-qwen3-8b/runs/qwen3-8b-behavior-smoke-20260727T113837Z/behavior_smoke_scalar.jsonl",
+  "scalar_repeat_a_sha256": "1708076925d4d0b5526c66ca00a6466fdc7c257eaf2a108efe61f2947f8f9cd4",
+  "scalar_repeat_b_sha256": "344853ea42af20c39d40bf10059058ac9885c5d531316b86c5b5457b8099f97a",
+  "scalar_repeat_rows": 96,
+  "scalar_repeat_max_logit_error": 0.0,
+  "scalar_repeat_max_margin_error": 0.0,
+  "scalar_repeat_decision_match_fraction": 1.0,
+  "semantic_comparison_excluded_fields": [
+    "latency_s",
+    "batch_latency_s"
+  ],
+  "selected_batch_size": 1,
+  "batching_allowed_for_claim_runs": false,
+  "production_rollout_approved": false
+}

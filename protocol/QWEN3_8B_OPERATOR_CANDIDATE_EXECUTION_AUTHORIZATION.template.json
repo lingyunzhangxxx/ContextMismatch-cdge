@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "authorization_id": "FILL_AFTER_CANDIDATE_TENSOR_IS_IMMUTABLE",
+  "created_utc": "FILL",
+  "stage": "FILL: operator_dev_screening | operator_dev_selection",
+  "execution_allowed": false,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "candidate_manifest_sha256": "FILL",
+  "candidate_tensor_sha256": "FILL",
+  "crossover_contract_sha256": "FILL",
+  "benchmark_manifest_sha256": "FILL",
+  "design_audit_sha256": "FILL",
+  "expected_key_sha256": "FILL",
+  "expected_rows": 3072,
+  "immutable_code_bundle_sha256": "FILL"
+}

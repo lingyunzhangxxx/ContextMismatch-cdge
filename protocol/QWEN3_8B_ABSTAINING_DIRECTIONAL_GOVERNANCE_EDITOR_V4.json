@@ -1,0 +1,219 @@
+{
+  "schema_version": 4,
+  "contract_id": "context-mismatch-qwen3-8b-abstaining-directional-governance-editor-v4",
+  "created_utc": "2026-07-28T21:49:34Z",
+  "frozen_utc": "2026-07-28T21:49:34Z",
+  "amended_utc": "2026-07-29T00:59:56Z",
+  "status": "design_corrected_after_terminal_code_v32_prefit_workdir_test_failure_before_any_v4_fit",
+  "method_name": "Abstaining Directional Structural Governance Editor V4",
+  "method_short_name": "ADSGE-V4",
+  "code_version_minimum": 33,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "scientific_change_from_v3": "freeze the selected V3 layer-27 MLP directional experts and add one internal applicability veto head trained to distinguish carried mismatch state from matched, fresh, reset, and protected states; the veto is exact and precedes both experts",
+  "bound_v3_evidence": {
+    "v3_contract_sha256": "a531ad1b3cb20b964f240f6eb3c513f6e1a1b7d749c61b79796833193129873d",
+    "selected_candidate_id": "DSGE-V3-27:mlp",
+    "selected_checkpoint_sha256": "ed5262bbd27470047c3379172e58de23e6bb98a542b9fb5101f828138b11d752",
+    "fit_report_sha256": "0cda38b3f3ad44460e6f91278277bc1cd66349a5d34f128890d6bc60f60a5f0c",
+    "operator_dev_analysis_sha256": "b8e34396dab744208c505f92d3f915a8a7107dc73785b378ba7baf7f14aae0e7",
+    "operator_dev_archive_sha256": "99591c8a3dff0ee8d429ed6b1105d7b1d1b1c5564defffc3da67739c35a9e7de",
+    "protected_controls_analysis_sha256": "64b14a100b93754ace0c81c692f82dcfaa2e5fae1a17ee458d0b10f350814432",
+    "protected_controls_archive_sha256": "6242a37c57c26b99728a1f29b11a0ccee0ba344e15953b6f1b9bf9c8e06d936a",
+    "v3_operator_dev_candidate_eligible": true,
+    "v3_controls_admissible": false,
+    "v3_failure_component": "application_router_only"
+  },
+  "code_v31_prefit_failure": {
+    "job_id": 9099,
+    "terminal_state": "FAILED",
+    "exit_code": "1:0",
+    "fit_started": false,
+    "scientific_effect_observed": false,
+    "cause": "the frozen feature-width arithmetic incorrectly declared 56 instead of 54; the zero-skip Torch suite rejected the mismatch before data fitting"
+  },
+  "code_v32_prefit_failure": {
+    "job_id": 9100,
+    "terminal_state": "FAILED",
+    "exit_code": "1:0",
+    "immutable_code_bundle_manifest_sha256": "5f572dda272818ca3570c17b09da0ef97143de0ab6d7f8dad0cdb9f18b3bf1fe",
+    "authorization_sha256": "c9e346367471c444c79a3f0437381182dc798d46a2f6c7bc316e5270127fed02",
+    "v3_tests_passed": 16,
+    "v3_tests_expected": 16,
+    "v4_tests_passed": 10,
+    "v4_tests_expected": 11,
+    "fit_started": false,
+    "scientific_effect_observed": false,
+    "cause": "the zero-skip Torch suite was launched from Slurm WorkDir=/workspace while one test resolved the frozen protocol from a repository-relative path; the harness rejected the missing file before data fitting"
+  },
+  "bound_fit_inputs": {
+    "governance_capture_manifest_sha256": "987b8b9d17c9d723d1ddcbaba61cc28d5b585c31e20b63e1a05c0dc94872735d",
+    "protected_capture_manifest_sha256": "f084c379cf59b5eeffdb67f62ce26d2cbb7418919da5e93a297dea1030a7c690",
+    "governance_capture_partition": "subspace_fit",
+    "governance_capture_rows": 6144,
+    "protected_capture_partition": "subspace_fit",
+    "protected_capture_rows": 4008,
+    "protected_capture_raw_family_rows": {
+      "fresh": 768,
+      "verification": 1536,
+      "obedience_reset": 1536,
+      "supported_user_authority": 144,
+      "factual_boundary_memory": 24
+    },
+    "protected_capture_family_crosswalk": {
+      "fresh": "fresh_verification",
+      "verification": "matched_verification",
+      "obedience_reset": "explicit_governance_reset",
+      "supported_user_authority": "supported_user_authority",
+      "factual_boundary_memory": "factual_boundary_memory"
+    },
+    "small_control_identity_counts": {
+      "supported_user_authority": 6,
+      "factual_boundary_memory": 6
+    }
+  },
+  "scientific_scope": {
+    "base_model_weights_frozen": true,
+    "activation_and_hidden_state_editing_authorized": true,
+    "permanent_base_weight_edit_authorized": false,
+    "reversible_hooks_required": true,
+    "v3_directional_experts_frozen": true,
+    "v3_history_and_task_heads_frozen": true,
+    "only_application_veto_head_trainable": true,
+    "checkpoint_may_contain_base_weights": false,
+    "answer_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "correctness_feature_forbidden": true,
+    "operator_dev_access_during_fit_forbidden": true,
+    "protected_behavior_control_outputs_during_fit_forbidden": true,
+    "final_test_access_forbidden": true,
+    "operator_dev_and_existing_controls_are_developmental_after_v3": true,
+    "final_test_remains_the_only_confirmatory_behavior_split": true
+  },
+  "application_veto": {
+    "site": "27:mlp",
+    "input_features": [
+      "v3_boundary_coordinates_16",
+      "v3_context_coordinates_32",
+      "v3_calibrated_history_probability",
+      "v3_calibrated_task_probability",
+      "v3_positive_evidence",
+      "v3_negative_evidence",
+      "v3_positive_route",
+      "v3_negative_route"
+    ],
+    "input_width": 54,
+    "input_width_derivation": {
+      "boundary_coordinates": 16,
+      "context_coordinates": 32,
+      "history_and_task_probabilities": 2,
+      "positive_and_negative_evidence": 2,
+      "positive_and_negative_routes": 2,
+      "total": 54
+    },
+    "candidate_architectures": [
+      {"name": "linear", "hidden_widths": []},
+      {"name": "mlp32", "hidden_widths": [32]},
+      {"name": "mlp64", "hidden_widths": [64]},
+      {"name": "mlp64x32", "hidden_widths": [64, 32]}
+    ],
+    "fixed_seeds": [271828, 314159, 161803],
+    "normalization": "per-feature train-fold mean and RMS with minimum scale 1e-4",
+    "output": "one scalar applicability logit",
+    "threshold_rule": "smallest float32 value strictly above the maximum calibration-negative logit",
+    "inference_rule": "apply the frozen V3 route only when the V3 structural route is active and application_logit is strictly greater than the frozen threshold",
+    "veto_semantics": "a false applicability decision returns the original activation exactly",
+    "continuous_application_scaling_forbidden": true,
+    "external_zero_gate_still_precedes_internal_inference": true,
+    "forced_direction_controls_bypass_veto": true
+  },
+  "fit_labels": {
+    "positive": "subspace_fit governance-capture rows whose history condition mismatches the task-required matched history",
+    "negative_governance": "subspace_fit governance-capture rows whose history condition matches the task-required matched history",
+    "negative_protected": "all 4,008 subspace_fit protected-capture rows across five raw capture families, canonically mapped to five behavior families",
+    "sixth_behavior_family_source": "matched_delegated_choice is represented by matched delegated-choice rows in the 6,144-row governance capture",
+    "fresh_and_explicit_reset_weight_multiplier": 4.0,
+    "other_protected_weight_multiplier": 2.0,
+    "governance_negative_weight_multiplier": 1.0,
+    "positive_class_balance": "inverse-frequency positive weighting computed on the train fold only"
+  },
+  "split": {
+    "group_unit": "benchmark item or protected-case identity",
+    "fold_rule": "benchmark item identities use uint64_be(first_8_bytes(SHA256(group_id_utf8))) mod 8",
+    "small_control_fold_rule": "within each six-identity protected control family, sort identities by full SHA256 bytes and assign folds [0,1,2,3,6,7] in order; this is fixed without model-output access and guarantees train, calibration, and audit coverage",
+    "small_control_fold_sequence": [0, 1, 2, 3, 6, 7],
+    "train_folds": [0, 1, 2, 3, 4, 5],
+    "calibration_fold": 6,
+    "audit_fold": 7,
+    "all_rows_for_a_group_stay_together": true,
+    "candidate_and_seed_selection_uses_calibration_only": true,
+    "audit_fold_may_not_select_architecture_seed_or_threshold": true
+  },
+  "optimization": {
+    "optimizer": "CPU AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "maximum_epochs": 120,
+    "early_stopping_patience": 15,
+    "gradient_norm_clip": 1.0,
+    "loss": "weighted binary cross entropy on applicability",
+    "selection_order": [
+      "calibration eligible before ineligible",
+      "largest minimum calibration true-positive rate across mismatch directions",
+      "largest minimum calibration true-positive rate across label-swap halves",
+      "largest aggregate calibration true-positive rate",
+      "fewest trainable parameters",
+      "lexicographically earliest architecture name",
+      "smallest seed"
+    ],
+    "nonfinite_loss_or_gradient_fails_closed": true
+  },
+  "fit_gates": {
+    "calibration_negative_active_fraction_maximum": 0.0,
+    "calibration_mismatch_true_positive_rate_minimum": 0.95,
+    "calibration_each_direction_true_positive_rate_minimum": 0.95,
+    "calibration_each_label_swap_true_positive_rate_minimum": 0.90,
+    "audit_governance_matched_active_fraction_maximum": 0.0,
+    "audit_protected_active_fraction_maximum_each_family": 0.0,
+    "audit_mismatch_true_positive_rate_minimum": 0.95,
+    "audit_each_direction_true_positive_rate_minimum": 0.95,
+    "audit_each_label_swap_true_positive_rate_minimum": 0.90,
+    "calibration_expected_negative_source_coverage_required": true,
+    "audit_expected_protected_capture_families": [
+      "fresh_verification",
+      "matched_verification",
+      "explicit_governance_reset",
+      "supported_user_authority",
+      "factual_boundary_memory"
+    ],
+    "audit_expected_governance_matched_families": [
+      "matched_verification",
+      "matched_delegated_choice"
+    ],
+    "v3_frozen_parameter_max_absolute_change": 0.0,
+    "checkpoint_contains_exactly_one_site": true,
+    "checkpoint_contains_no_base_weights": true,
+    "checkpoint_and_report_sha_bound": true
+  },
+  "behavior_order_after_fit": [
+    "fit-audit behavior smoke with exact identity audit",
+    "developmental operator_dev behavior evaluation",
+    "six-family application-gated and forced-positive/forced-negative protected controls",
+    "Pareto lock only if every frozen efficacy and control gate passes",
+    "one-time final test only after a valid SHA-bound lock"
+  ],
+  "lock_and_final": {
+    "fit_gates_must_all_pass": true,
+    "developmental_operator_dev_gate_must_pass": true,
+    "protected_controls_must_pass": true,
+    "fresh_sha_bound_pareto_lock_required": true,
+    "final_test_rows": 6144,
+    "final_test_open_count_if_authorized": 1,
+    "current_final_test_open": false,
+    "current_final_test_open_count": 0,
+    "production_rollout_approved": false,
+    "no_positive_confirmatory_claim_before_terminal_audited_final_test": true
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-amsge-v1-post-failure-characterization",
+  "created_utc": "2026-07-28T09:28:39Z",
+  "frozen_utc": "2026-07-28T09:28:39Z",
+  "status": "frozen_after_v2_design_before_any_post_failure_operator_dev_forward",
+  "evidence_class": "post_failure_characterization",
+  "scientific_success": false,
+  "post_failure_characterization": true,
+  "fit_gates_passed": false,
+  "candidate_eligible": false,
+  "candidate_may_be_locked": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false,
+  "purpose": "complete the behavioral and protected-control characterization of the frozen V1 editor without relabeling a fit-gate failure as an eligible mitigation",
+  "pre_registration_order": {
+    "v2_contract_frozen_first": true,
+    "v2_contract_sha256": "f99840f86fbd6f11e3b2ad2684eabc490003312779e71bda649ff8a38e552400",
+    "v1_operator_dev_results_available_at_freeze": false,
+    "reason": "prevent V1 operator_dev outcomes from influencing the V2 design"
+  },
+  "bound_artifacts": {
+    "v1_editor_contract_sha256": "a032728bc005807e48393f3833886ef27dd50b843d28bbba95c46acf872781da",
+    "v1_checkpoint_sha256": "ef2d85ebb7e2832b8ae6a5b2489284df81887e29dbc12cc9fbc3294aa99b9316",
+    "v1_fit_report_sha256": "8662d3b851c3d7af3bba88cac32a4df006947b9d7ef01b6186bde82ddaaf1f5c",
+    "v1_failure_archive_sha256": "a9013d55e3980eb4811318b9065f38e7378bb50558a538125800b47f278c5eae",
+    "v1_fit_code_bundle_manifest_sha256": "8cfe9b3f334c4d51fb8d60b4c82bb0044af332a7d0f09ff9c73cad863a0ed92b",
+    "governance_crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "mitigation_controls_sha256": "94423ba0f34abc37428f7531954c25da2d79875a053001a9916ab2da76830eb8"
+  },
+  "stages": [
+    {
+      "stage": "governance_failed_fit_smoke",
+      "split": "replication smoke",
+      "expected_rows": 192,
+      "purpose": "execution and exact-zero-gate validation only",
+      "efficacy_inference_allowed": false
+    },
+    {
+      "stage": "governance_failed_fit_selection",
+      "split": "untouched operator_dev selection half",
+      "expected_rows": 3072,
+      "purpose": "complete post-failure behavioral characterization",
+      "efficacy_inference_allowed": true
+    },
+    {
+      "stage": "governance_failed_fit_controls",
+      "split": "operator_dev selection half controls",
+      "expected_rows": 2856,
+      "purpose": "complete application-gated and forced-on collateral characterization",
+      "efficacy_inference_allowed": true
+    }
+  ],
+  "protected_control_design": {
+    "families": [
+      "fresh_verification",
+      "matched_verification",
+      "matched_delegated_choice",
+      "explicit_governance_reset",
+      "supported_user_authority",
+      "factual_boundary_memory"
+    ],
+    "row_count_derivation": "the frozen 2,088-row operator selection-half control grid plus 768 matched delegated-choice rows",
+    "expected_rows": 2856,
+    "application_gated_and_forced_on_required": true,
+    "factual_memory_application_gate": 0.0,
+    "governance_decision_application_gate": 1.0,
+    "non_applicable_gate_exact_identity_required": true,
+    "forced_on_margin_loss_upper_95_reference": 0.25,
+    "forced_on_binary_kl_upper_95_reference": 0.02
+  },
+  "reporting_rules": {
+    "fit_failure_must_be_repeated_in_every_analysis": true,
+    "behavior_gate_values_may_be_computed_for_diagnosis": true,
+    "behavior_gate_values_cannot_override_fit_failure": true,
+    "protected_control_values_may_be_computed_for_diagnosis": true,
+    "candidate_eligible_must_remain_false": true,
+    "candidate_may_be_locked_must_remain_false": true,
+    "pareto_lock_forbidden": true,
+    "final_test_forbidden": true,
+    "production_rollout_forbidden": true,
+    "terminal_slurm_completed_0_0_required_for_each_successful_characterization_stage": true,
+    "three_copy_archive_required_for_each_terminal_stage": true
+  }
+}

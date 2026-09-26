@@ -1,0 +1,11 @@
+.git
+.github
+__pycache__
+*.pyc
+.pytest_cache
+.venv
+models
+checkpoints
+cache
+tmp
+outputs

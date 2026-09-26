@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-group-robust-consensus-governance-editor-v5",
+  "created_utc": "2026-07-29T02:41:37Z",
+  "frozen_utc": "2026-07-29T02:41:37Z",
+  "status": "frozen_before_any_v5_capture_or_fit",
+  "method_name": "Group-Robust Consensus Directional Governance Editor V5",
+  "method_short_name": "GRC-DGE-V5",
+  "code_version_minimum": 34,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "scientific_change_from_v4": "retain the frozen V3 directional expert, replace the single calibration-maximum veto with two fixed linear heads that must agree, and set both thresholds from worst-fold output-blind cross-fitted negative tails plus a frozen safety margin",
+  "bound_prior_evidence": {
+    "v3_selected_candidate_id": "DSGE-V3-27:mlp",
+    "v3_checkpoint_sha256": "ed5262bbd27470047c3379172e58de23e6bb98a542b9fb5101f828138b11d752",
+    "v3_fit_report_sha256": "0cda38b3f3ad44460e6f91278277bc1cd66349a5d34f128890d6bc60f60a5f0c",
+    "v4_contract_sha256": "0f6d33ab67a02fe88f8d14aa092f5993636d3a99b3a939c2339de0fab4eb677a",
+    "v4_fit_report_sha256": "f79e133e5cb0910df5a4a5281067571e25e551e5f49f0d0caa7dabf8d6e65c4a",
+    "v4_checkpoint_sha256": "42e3af0a3501750514c98f70305ac380663cac99ffeb8b26274340e10b7fcaf8",
+    "v4_archive_sha256": "9fbcc5a34dce9602a687f964397bae158e3f144edb4516179145de74bb7bbcd5",
+    "v4_terminal_falsifier": "the fixed V4 linear veto met mismatch and protected-family gates but violated exact abstention on held matched governance states",
+    "v4_six_error_identities_may_be_used_for_v5_training_or_thresholding": false
+  },
+  "bound_static_inputs": {
+    "governance_crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "capture_editor_contract_sha256": "a032728bc005807e48393f3833886ef27dd50b843d28bbba95c46acf872781da",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "operator_site_manifest_sha256": "8bf9e43cd3b3597ed47ef1698f8fd46137fd01c04b3ec0ac9ab6ccd21c3659d3",
+    "subspace_fit_governance_capture_manifest_sha256": "987b8b9d17c9d723d1ddcbaba61cc28d5b585c31e20b63e1a05c0dc94872735d",
+    "subspace_fit_protected_capture_manifest_sha256": "f084c379cf59b5eeffdb67f62ce26d2cbb7418919da5e93a297dea1030a7c690",
+    "component_discovery_design_audit_sha256": "7315078df1c4644ed9e96b666dba8e2ed757857f2eadc5b4ed9ef4235867d665",
+    "v5_audit_controls_filename": "mitigation_controls_v5_audit.json",
+    "v5_audit_controls_sha256": "b24794c6ce2e79b93c095f5a45d543a0e36dfb866b202c86ccf53e3320348c08"
+  },
+  "scientific_scope": {
+    "base_model_weights_frozen": true,
+    "activation_and_hidden_state_editing_authorized": true,
+    "permanent_base_weight_edit_authorized": false,
+    "reversible_hooks_required": true,
+    "v3_directional_expert_frozen": true,
+    "only_two_application_heads_trainable": true,
+    "checkpoint_may_contain_base_weights": false,
+    "answer_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "correctness_feature_forbidden": true,
+    "model_output_and_logit_feature_forbidden": true,
+    "operator_dev_access_during_capture_or_fit_forbidden": true,
+    "final_test_access_forbidden": true
+  },
+  "fit_data": {
+    "source_partition": "subspace_fit",
+    "allowed_hash_folds": [0, 1, 2, 3, 4, 5],
+    "forbidden_consumed_hash_folds": [6, 7],
+    "fold_rule": "uint64_be(first_8_bytes(SHA256(group_id_utf8))) mod 8",
+    "group_unit": "benchmark item or protected-case identity",
+    "all_rows_for_a_group_stay_together": true,
+    "v4_calibration_or_audit_rows_may_not_be_loaded": true,
+    "v4_error_identities_may_not_be_loaded": true
+  },
+  "developmental_audit_capture": {
+    "partition": "component_discovery",
+    "governance_rows": 6144,
+    "governance_expected_key_sha256": "4e6301fce193060c68bb284f7b3349aec61766eb1daa60ff85d200ef9d981900",
+    "protected_rows": 4008,
+    "protected_family_rows": {
+      "fresh": 768,
+      "verification": 1536,
+      "obedience_reset": 1536,
+      "supported_user_authority": 144,
+      "factual_boundary_memory": 24
+    },
+    "new_small_control_identities_per_family": 6,
+    "small_control_identity_disjointness_required": true,
+    "item_disjoint_from_subspace_fit": true,
+    "prior_use_disclosure": "component_discovery items were previously used for site nomination and crossover discovery, but not for V4 applicability fitting; this capture is developmental rather than globally untouched confirmatory evidence",
+    "audit_may_select_architecture_seed_epoch_or_threshold": false,
+    "audit_may_trigger_gate_weakening": false,
+    "capture_outputs_may_not_be_examined_before_fit_contract_and_threshold_rule_are_frozen": true
+  },
+  "application_features": {
+    "site": "27:mlp",
+    "input_width": 54,
+    "fields": [
+      "v3_boundary_coordinates_16",
+      "v3_context_coordinates_32",
+      "v3_calibrated_history_probability",
+      "v3_calibrated_task_probability",
+      "v3_positive_evidence",
+      "v3_negative_evidence",
+      "v3_positive_route",
+      "v3_negative_route"
+    ],
+    "normalization": "per-head train-only median and 1.4826*MAD with minimum scale 1e-4"
+  },
+  "consensus_router": {
+    "architecture_selection": "none; two linear heads are fixed before V5 capture",
+    "all_negative_head": {
+      "positive_rows": "mismatch governance rows",
+      "negative_rows": "matched governance plus all five protected families",
+      "seed": 57721
+    },
+    "matched_state_head": {
+      "positive_rows": "mismatch governance rows",
+      "negative_rows": "matched verification plus matched delegated-choice governance rows only",
+      "seed": 57722
+    },
+    "inference_rule": "apply the frozen V3 edit only when its structural route is active and both V5 head logits are strictly greater than their frozen thresholds",
+    "veto_semantics": "if either head abstains, return the original activation bit-identically",
+    "continuous_application_scaling_forbidden": true,
+    "external_zero_gate_precedes_internal_inference": true,
+    "forced_direction_controls_bypass_consensus_router": true
+  },
+  "optimization": {
+    "optimizer": "CPU AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "epochs": 120,
+    "gradient_norm_clip": 1.0,
+    "loss": "weighted binary cross entropy",
+    "cross_fit_folds": [0, 1, 2, 3, 4, 5],
+    "early_stopping_forbidden": true,
+    "architecture_or_seed_search_forbidden": true,
+    "nonfinite_loss_or_gradient_fails_closed": true
+  },
+  "threshold_rule": {
+    "negative_location": "median negative logit",
+    "negative_scale": "max(1.4826*MAD negative logit, 1e-4)",
+    "cross_fitted_tail": "for each allowed fold, train on the other five folds and standardize held-fold negative logits by that model's training-negative location and scale; take the maximum standardized negative logit over every held fold",
+    "safety_margin_standardized_units": 0.25,
+    "final_threshold": "max(nextafter(maximum final-train negative logit,+infinity), final negative location + final negative scale * (cross_fitted_tail + 0.25))",
+    "computed_independently_for_each_head": true,
+    "audit_outputs_may_change_threshold": false
+  },
+  "fit_and_audit_gates": {
+    "cross_fit_negative_active_fraction_maximum": 0.0,
+    "cross_fit_mismatch_true_positive_rate_minimum": 0.95,
+    "cross_fit_each_direction_true_positive_rate_minimum": 0.95,
+    "cross_fit_each_label_swap_true_positive_rate_minimum": 0.90,
+    "component_audit_each_governance_matched_family_active_fraction_maximum": 0.0,
+    "component_audit_each_protected_family_active_fraction_maximum": 0.0,
+    "component_audit_mismatch_true_positive_rate_minimum": 0.95,
+    "component_audit_each_direction_true_positive_rate_minimum": 0.95,
+    "component_audit_each_label_swap_true_positive_rate_minimum": 0.90,
+    "v3_frozen_parameter_max_absolute_change": 0.0,
+    "checkpoint_contains_exactly_one_site": true,
+    "checkpoint_contains_no_base_weights": true,
+    "all_gates_must_pass_before_behavior_smoke": true,
+    "threshold_weakening_after_failure_forbidden": true
+  },
+  "behavior_order_after_fit": [
+    "fit-audit behavior smoke with exact identity audit",
+    "untouched operator_dev developmental behavior selection",
+    "application-gated and forced-direction protected controls",
+    "SHA-bound Pareto lock only if every frozen gate passes",
+    "one-time final_test only after a valid lock"
+  ],
+  "lock_and_final": {
+    "current_final_test_open": false,
+    "current_final_test_open_count": 0,
+    "final_test_rows_if_later_authorized": 6144,
+    "production_rollout_approved": false,
+    "no_positive_confirmatory_claim_before_terminal_audited_final_test": true
+  }
+}

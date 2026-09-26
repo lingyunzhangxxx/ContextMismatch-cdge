@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "contract_id": "context-mismatch-qwen3-8b-external-baselines-official-derived-v2",
+  "status": "frozen_before_official-derived_fit_or_evaluation",
+  "terminology": "official-code-derived task adaptations",
+  "base_model": {
+    "repository": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+  },
+  "training_partition": "subspace_fit",
+  "evaluation_partition": "operator_dev",
+  "evaluation_half": "selection",
+  "evaluation_rows_per_method": 3072,
+  "expected_evaluation_key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+  "site": {"layer": 27, "component": "mlp", "hidden_size": 4096},
+  "methods": {
+    "caa": {"source_commit": "5dabbbd9a0bca5f25e174501e959de378806aa48", "fit": "paired positive-minus-negative mean"},
+    "cast": {"source_commit": "52be60235ee309b46c49d6d5877f36e20c52e6ab", "fit": "PCA-pairwise behavior and condition vectors with official projector score"},
+    "loreft": {"source_commit": "dafd0995a366d7b47160a337dcc388eda7431821", "fit": "two task-specific official LoreftIntervention modules"},
+    "reps": {"source_commit": "41c8332543e5a631f9a8c0a9df38799893ace758", "fit": "official PreferenceVectorIntervention and reference-free DPO preference_loss"}
+  },
+  "fit": {
+    "uses_operator_dev": false,
+    "seed": 20260801,
+    "strength_grid": [0.25, 0.5, 1.0, 1.5, 2.0],
+    "loreft_rank": 4,
+    "loreft_steps": 320,
+    "loreft_batch_size": 256,
+    "loreft_learning_rate": 0.001,
+    "reps_beta": 0.1,
+    "reps_steps": 320,
+    "reps_batch_size": 256,
+    "reps_learning_rate": 0.02,
+    "maximum_relative_correction": 0.15
+  },
+  "reporting": {
+    "paired_same_identity_required": true,
+    "bit_identical_baseline_logits_across_methods_required": true,
+    "cluster_bootstrap_replicates": 10000,
+    "official_code_derived_task_adaptation": true,
+    "adapter_only": false,
+    "unmodified_official_implementation": false
+  },
+  "safety": {
+    "base_weights_modified": false,
+    "final_test_open": false,
+    "final_test_open_count": 0,
+    "production_rollout_approved": false
+  }
+}

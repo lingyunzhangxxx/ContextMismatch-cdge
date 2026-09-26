@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "protocol_id": "context-mismatch-qwen3-8b-dge-same-identity-supplement-v1",
+  "created_utc": "2026-07-29T05:44:35Z",
+  "frozen_utc": "2026-07-29T05:44:35Z",
+  "status": "frozen_before_any_same_identity_supplement_forward",
+  "scientific_purpose": "Replace the item-disjoint negative-vector comparison and missing DGE component ablations with one identity-matched developmental evaluation.",
+  "scope": {
+    "model": "official non-quantized BF16 Qwen3-8B",
+    "partition": "operator_dev",
+    "developmental_not_confirmatory": true,
+    "expected_rows_per_method": 3072,
+    "expected_unique_job_keys_per_method": 3072,
+    "expected_items_per_method": 96,
+    "expected_job_key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+    "expected_item_identity_sha256": "75736c347fa005ce1148918dcfb9b59e376b130f89cadf89087b6eb751706b10",
+    "identity_changes_forbidden_after_freeze": true
+  },
+  "existing_evidence": {
+    "raw_mismatch_reusable_from_full_dge_rows": true,
+    "full_dge_reusable_from_existing_terminal_audited_rows": true,
+    "full_dge_analysis_sha256": "b8e34396dab744208c505f92d3f915a8a7107dc73785b378ba7baf7f14aae0e7",
+    "full_dge_rows_sha256": "3a055c09a1861b2e37144882216c25d043e2ecde1c446983bbff01c7d44c18f3",
+    "existing_fixed_negative_vector_job_key_sha256": "b039292f6b16aae9efcd40e34178f894a5d8317cf5f37cd532ac73b410931521",
+    "existing_fixed_negative_vector_item_identity_sha256": "90c6d279d3d5ca033b377a395872f4cd7e855666e54270c505e8ae0883bab98e",
+    "existing_negative_vector_is_item_disjoint_from_target": true,
+    "existing_negative_vector_may_not_be_labeled_same_split": true
+  },
+  "method_matrix": [
+    {
+      "method_id": "raw_mismatch",
+      "definition": "No activation edit; use the baseline logits already stored in the full-DGE target rows.",
+      "new_npu_forward_required": false
+    },
+    {
+      "method_id": "fixed_negative_vector",
+      "definition": "Apply the already selected fixed negative-vector artifact without retuning to every frozen target identity.",
+      "new_npu_forward_required": true
+    },
+    {
+      "method_id": "symmetric_rank_one",
+      "definition": "Fit one shared rank-one governance direction on the existing fit partition, apply task-conditioned sign reversal, and use the common trust-region cap.",
+      "new_npu_forward_required": true
+    },
+    {
+      "method_id": "shared_single_expert",
+      "definition": "Use one expert and one output basis for both mismatch directions while retaining the DGE structural route and input features.",
+      "new_npu_forward_required": true
+    },
+    {
+      "method_id": "positive_only_expert",
+      "definition": "Use the frozen DGE positive-direction expert and return exact identity for the negative route.",
+      "new_npu_forward_required": true
+    },
+    {
+      "method_id": "negative_only_expert",
+      "definition": "Use the frozen DGE negative-direction expert and return exact identity for the positive route.",
+      "new_npu_forward_required": true
+    },
+    {
+      "method_id": "dge_without_structural_routing",
+      "definition": "Keep both frozen DGE experts but replace the disjoint structural route with an always-eligible application gate; retain coefficient-zero identity and the common trust-region cap.",
+      "new_npu_forward_required": true
+    },
+    {
+      "method_id": "full_dge",
+      "definition": "Frozen selected DGE candidate DSGE-V3-27:mlp with its original structural routing and checkpoint.",
+      "new_npu_forward_required": false
+    }
+  ],
+  "fit_and_evaluation_order": {
+    "fit_data": "existing frozen subspace_fit governance and protected captures only",
+    "operator_dev_access_during_fit_forbidden": true,
+    "all_new_method_artifacts_sha_bound_before_target_forward": true,
+    "no_method_or_threshold_selection_from_target_outputs": true,
+    "common_trust_region_cap": 0.05,
+    "common_output_fields": [
+      "baseline_logits",
+      "edited_logits",
+      "task_aligned_margin",
+      "directional_recovery",
+      "label_swap",
+      "benchmark",
+      "relative_intervention_norm",
+      "route_activity"
+    ]
+  },
+  "required_audits": {
+    "all_rows_finite": true,
+    "unique_key_count_exact": true,
+    "observed_key_sha256_exact": true,
+    "coefficient_zero_identity_max_error": 0.0,
+    "paired_baseline_logits_identical_across_methods": true,
+    "per_method_complete_marker": true,
+    "job_local_exit_zero": true,
+    "slurm_completed_zero_zero": true,
+    "three_copy_archive_verification": true
+  },
+  "analysis": {
+    "primary_estimand": "benchmark-equal normalized mismatch-gap reduction",
+    "secondary_estimands": [
+      "matched-minus-mismatched margin reduction",
+      "both directional recoveries",
+      "both label-swap effects",
+      "task-aligned accuracy change",
+      "intervention norm",
+      "route coverage"
+    ],
+    "confidence_intervals": "10000 item-cluster bootstrap replicates with all factorial cells for an item kept together",
+    "pairwise_differences_against_full_dge_required": true,
+    "all_six_benchmark_strata_required": true,
+    "threshold_weakening_after_results_forbidden": true
+  },
+  "execution_safety": {
+    "repository_owned_helpers_only": true,
+    "queue_cap": 7,
+    "new_job_submission_currently_authorized": false,
+    "fresh_owned_job_authorization_required": true,
+    "final_test_open": false,
+    "final_test_open_count": 0,
+    "production_rollout_approved": false
+  }
+}

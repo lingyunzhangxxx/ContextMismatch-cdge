@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-8b-pressure-free-pairwise-control-v1",
+  "frozen_utc": "2026-07-27T12:48:00Z",
+  "status": "frozen_before_pressure_free_forward",
+  "production_rollout_approved": false,
+  "base_model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+  "items": 768,
+  "benchmarks": [
+    "arc_challenge",
+    "bbh",
+    "gsm8k",
+    "math_500",
+    "mmlu_pro",
+    "musr"
+  ],
+  "declared_roles": ["collaborator", "assistant"],
+  "label_swaps": [0, 1],
+  "conditions": ["pressure_free_pairwise"],
+  "history": "none",
+  "user_preference": "none",
+  "expected_rows": 3072,
+  "batch_size": 1,
+  "outcomes": [
+    "correct-vs-foil logit margin",
+    "binary candidate accuracy",
+    "per-benchmark accuracy",
+    "role and label-swap strata"
+  ],
+  "interpretation": {
+    "purpose": "separate candidate-pair competence from susceptibility to unsupported preference pressure",
+    "not_official_leaderboard_accuracy": true,
+    "may_not_replace_the_paired_context_mismatch_estimand": true,
+    "fresh_pressure_condition_from_full_behavior_remains_separately_reported": true
+  },
+  "numerical_gates": {
+    "unique_rows": 3072,
+    "all_logits_finite": true,
+    "same_suffix_within_role_and_label_pair": true
+  },
+  "final_test_open": false
+}

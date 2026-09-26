@@ -1,0 +1,687 @@
+{
+  "audited": [
+    {
+      "candidate_id": "10954063c78a9630",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/10954063c78a9630/operator_candidate_10954063c78a9630.manifest.json",
+      "candidate_manifest_sha256": "a7ebcf4900b9320adedae5911e44fc3593e86ade4a457ac68edb81da3fa34edb",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/10954063c78a9630/operator_candidate_10954063c78a9630.pt",
+      "candidate_tensor_sha256": "7140dc4a611e5beb77a7102bf69d8af6ef2b163bc0cd98ce56caa33a2d4719ab",
+      "family": "v4_bilinear",
+      "gap_reduction": 0.0,
+      "mean_relative_intervention_norm": 0.012591303079413288,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/10954063c78a9630/operator_screening_analysis.json",
+      "screening_analysis_sha256": "0f6d3ee6e82841e9f1f13c1c2b71f0519e5adbe407e767964232d98df1c77fd5",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "237b1257eea89717",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/237b1257eea89717/operator_candidate_237b1257eea89717.manifest.json",
+      "candidate_manifest_sha256": "ca260600374498c62b247d34a6cb814a69cb0ff334965ffb3910d5f9ee6df9b0",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/237b1257eea89717/operator_candidate_237b1257eea89717.pt",
+      "candidate_tensor_sha256": "87e07e76d5ecfc6198c08bffd818786034e4abb24f7b55286bf57dab35f49722",
+      "family": "symmetric_rank1",
+      "gap_reduction": 0.0028483072916666665,
+      "mean_relative_intervention_norm": 0.007824933391475497,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/237b1257eea89717/operator_screening_analysis.json",
+      "screening_analysis_sha256": "38ec6d3b616d533da09e9ddee13733b63f5c3fc0385aaf31da19a423b20b5107",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "23ae6b3c95be57ff",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/23ae6b3c95be57ff/operator_candidate_23ae6b3c95be57ff.manifest.json",
+      "candidate_manifest_sha256": "cefe2d03297b7203e9f210d69592fcbe254fd218aa4403f600d6be13c237ef76",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/23ae6b3c95be57ff/operator_candidate_23ae6b3c95be57ff.pt",
+      "candidate_tensor_sha256": "0686e5e2352836d8d10585773f5ab7bb65b6adb34fd4daae318f8705fd02dc53",
+      "family": "v4_bilinear",
+      "gap_reduction": 0.0017903645833333333,
+      "mean_relative_intervention_norm": 0.00036283076120363633,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/23ae6b3c95be57ff/operator_screening_analysis.json",
+      "screening_analysis_sha256": "b9c2d8a7cc291900c6accd3b9cb3e8905305c9582ad3d059e04393538a0ef642",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "2753bdc2e0616d2e",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/2753bdc2e0616d2e/operator_candidate_2753bdc2e0616d2e.manifest.json",
+      "candidate_manifest_sha256": "ad11cf95c8d8d737383f24d32cd8a91787806d65af25ef6451a5374fe552931e",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/2753bdc2e0616d2e/operator_candidate_2753bdc2e0616d2e.pt",
+      "candidate_tensor_sha256": "58d20eeee8bb86d98cf63672fd62fa1b4c619bd83a4e7d614c130c19c40d93d0",
+      "family": "v5_signed",
+      "gap_reduction": 0.038330078125,
+      "mean_relative_intervention_norm": 0.0019229266264530291,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/2753bdc2e0616d2e/operator_screening_analysis.json",
+      "screening_analysis_sha256": "52c934f42730322ad430d7d02d6010f1c11e451f76d0a94d65121bc75c77eb7d",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "2cd60ba639cef01f",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/2cd60ba639cef01f/operator_candidate_2cd60ba639cef01f.manifest.json",
+      "candidate_manifest_sha256": "5b8d7062c834561f1c3ea8ca7ef8589b80967a75f92b76e94895dc7ff93e9351",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/2cd60ba639cef01f/operator_candidate_2cd60ba639cef01f.pt",
+      "candidate_tensor_sha256": "b88e32c792e3d06e60417e7ceb7e7001ed7a382e5bb58303121fa08c36113b25",
+      "family": "v4_bilinear",
+      "gap_reduction": -0.00146484375,
+      "mean_relative_intervention_norm": 0.00036283120053557755,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/2cd60ba639cef01f/operator_screening_analysis.json",
+      "screening_analysis_sha256": "672a9b5c8c6462a2fdcd17528c63981b1cdc6771592166d6edc8991ced88f532",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "310edab9cd52189c",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/310edab9cd52189c/operator_candidate_310edab9cd52189c.manifest.json",
+      "candidate_manifest_sha256": "bbb37c7e241ce41ba9a37fdf04845305f9d3c074642aefa2015ec49b5f0fbfe9",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/310edab9cd52189c/operator_candidate_310edab9cd52189c.pt",
+      "candidate_tensor_sha256": "4b576a9034737c27375022cd5950caa8b731e4987cdab244afa19f165ac7b76c",
+      "family": "v5_signed",
+      "gap_reduction": 0.011149088541666666,
+      "mean_relative_intervention_norm": 0.001500063140099428,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/310edab9cd52189c/operator_screening_analysis.json",
+      "screening_analysis_sha256": "f06ce67f02b5b8b32ec61ae9fe00c24204a4ef60328d92e6497ea0cb103b33d6",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "31eca824130393df",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/31eca824130393df/operator_candidate_31eca824130393df.manifest.json",
+      "candidate_manifest_sha256": "6e8941c0b71a88e98486e2a5850319f019dac2b96ce9851c9862164ae6dfc36d",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/31eca824130393df/operator_candidate_31eca824130393df.pt",
+      "candidate_tensor_sha256": "382dddc153e250df1e7fad1ba6bd6ad8f50c6907dc7fdd38c622d0dedcafc875",
+      "family": "v5_signed",
+      "gap_reduction": 0.004720052083333333,
+      "mean_relative_intervention_norm": 0.0012596367273237281,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/31eca824130393df/operator_screening_analysis.json",
+      "screening_analysis_sha256": "a16336a6b67b2d573e0e7a80b4b48606405aa2e2395c3270e05bd7739203d5b0",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "346998a8570394ab",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/346998a8570394ab/operator_candidate_346998a8570394ab.manifest.json",
+      "candidate_manifest_sha256": "5da64d1466e87dfef727227fcf7dcf62e71a032c2836443b42e974ec3c48efd8",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/346998a8570394ab/operator_candidate_346998a8570394ab.pt",
+      "candidate_tensor_sha256": "64870c99488652c397c56acb43572d10d9f006c20de38279e3c41f912127ded9",
+      "family": "v5_signed",
+      "gap_reduction": 0.027018229166666668,
+      "mean_relative_intervention_norm": 0.02492577565241542,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/346998a8570394ab/operator_screening_analysis.json",
+      "screening_analysis_sha256": "be90f0f79de9596e18e235aef380c94873b7b7db8d17a278fd88da7d46af0173",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "35f244bc2e981bca",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/35f244bc2e981bca/operator_candidate_35f244bc2e981bca.manifest.json",
+      "candidate_manifest_sha256": "b5a4c6d3989fb2b1e1a45f72e7aa5f35aab50dc1519ff55879a96dafba1d64c0",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/35f244bc2e981bca/operator_candidate_35f244bc2e981bca.pt",
+      "candidate_tensor_sha256": "ac30f35fb8a97e82b920eb09044fbef3fa9e7df032c338069d61ce0de827d0dd",
+      "family": "v4_bilinear",
+      "gap_reduction": 0.034749348958333336,
+      "mean_relative_intervention_norm": 0.011179442263255623,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/35f244bc2e981bca/operator_screening_analysis.json",
+      "screening_analysis_sha256": "a52473f0856674e2cabc1e2d48ad211a5b04bddb8775a44e930c45b342476ab2",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "42841bec1c23c275",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/42841bec1c23c275/operator_candidate_42841bec1c23c275.manifest.json",
+      "candidate_manifest_sha256": "81ffab3097147671b2f96efdfdcbca6c0d664aa94cd8f695fe2c9a0ed03144bc",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/42841bec1c23c275/operator_candidate_42841bec1c23c275.pt",
+      "candidate_tensor_sha256": "46502fe6647f63b26ca46dd8e4f918c8ccdb680cf004465e70bc717ec11dc5e1",
+      "family": "v5_signed",
+      "gap_reduction": 0.015543619791666666,
+      "mean_relative_intervention_norm": 0.002162167616736118,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/42841bec1c23c275/operator_screening_analysis.json",
+      "screening_analysis_sha256": "1d8ba978a5e7c486cb7425d6ac07c27846e0c786389e09d68497191ed90c1c5d",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "44446bc4183f1b2a",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/44446bc4183f1b2a/operator_candidate_44446bc4183f1b2a.manifest.json",
+      "candidate_manifest_sha256": "00f254a58d645ff327837c90ccf6c4d40b62f1a7ebc2259387dcbda4d51be4ed",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/44446bc4183f1b2a/operator_candidate_44446bc4183f1b2a.pt",
+      "candidate_tensor_sha256": "592d262a483e089f5210ba62b9f30f5559302498096f5a8da5a998d10a58eb7c",
+      "family": "fixed_translation",
+      "gap_reduction": -0.000244140625,
+      "mean_relative_intervention_norm": 0.0031970216196744636,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/44446bc4183f1b2a/operator_screening_analysis.json",
+      "screening_analysis_sha256": "81ba331a4e25a1b89e5f45ec261edc4f13580dc729962a5bd85315b528decbc8",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "4e55a6d0ae425419",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/4e55a6d0ae425419/operator_candidate_4e55a6d0ae425419.manifest.json",
+      "candidate_manifest_sha256": "eabaa14bed219e183287989538ae1db8a58686cee513385a1b244188ae679a57",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/4e55a6d0ae425419/operator_candidate_4e55a6d0ae425419.pt",
+      "candidate_tensor_sha256": "09dead98563edebc82cb3877738413e96771a044bc50b11d326602f5ae81afe7",
+      "family": "v2_one_sided",
+      "gap_reduction": 0.002685546875,
+      "mean_relative_intervention_norm": 0.0007719643398189646,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/4e55a6d0ae425419/operator_screening_analysis.json",
+      "screening_analysis_sha256": "61baa743e20254132ec878985c51cffbae66a7a6ffea88456e1c9572e24db563",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "4f01b883e59490d3",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/4f01b883e59490d3/operator_candidate_4f01b883e59490d3.manifest.json",
+      "candidate_manifest_sha256": "1f6cb186b9fc8d22f1d43e1d49b889e9b0209b5321e77082ac4796ca9a6539c0",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/4f01b883e59490d3/operator_candidate_4f01b883e59490d3.pt",
+      "candidate_tensor_sha256": "7d1328d8d982042c05cdce45ab66ecffcc45707fc4897b07da4006dd5471efc1",
+      "family": "v3_full",
+      "gap_reduction": 0.041666666666666664,
+      "mean_relative_intervention_norm": 0.0008195695496281038,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/4f01b883e59490d3/operator_screening_analysis.json",
+      "screening_analysis_sha256": "abc0bce3fb2c11ab79812857a2413b3e9ae4d4fe3b13c3800d70e413fb1c70ae",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "5460ac171439b64b",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/5460ac171439b64b/operator_candidate_5460ac171439b64b.manifest.json",
+      "candidate_manifest_sha256": "3dc50f317364c04aff46792b3d4eea959465ffc67290c0ee32d891838057a0b1",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/5460ac171439b64b/operator_candidate_5460ac171439b64b.pt",
+      "candidate_tensor_sha256": "02d69ef7513b11565887e2a9a4a923661614796e2f33985d82a5774f738c6061",
+      "family": "v5_signed",
+      "gap_reduction": 0.02490234375,
+      "mean_relative_intervention_norm": 0.022154442759794318,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/5460ac171439b64b/operator_screening_analysis.json",
+      "screening_analysis_sha256": "3196cdd0ecee9857208e2c29b466876d9465895c9bade72ca13e2ff551adb8ed",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "5840cfd54a4e5327",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/5840cfd54a4e5327/operator_candidate_5840cfd54a4e5327.manifest.json",
+      "candidate_manifest_sha256": "3383e2577d8812ebe7a41221614fd3b95de0947d1d77069f05a3b1c913cbb412",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/5840cfd54a4e5327/operator_candidate_5840cfd54a4e5327.pt",
+      "candidate_tensor_sha256": "ded95c093832fd15c313be878794ec6aa7dc5326045be0ee73dd72fd0373668b",
+      "family": "fixed_translation",
+      "gap_reduction": -0.0027669270833333335,
+      "mean_relative_intervention_norm": 0.001647207115884915,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/5840cfd54a4e5327/operator_screening_analysis.json",
+      "screening_analysis_sha256": "a1529b0d5f52479c2e24e088a349c1a7787a3922a485ac6dc7b67f180681428b",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "59a356a3920c7a42",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/59a356a3920c7a42/operator_candidate_59a356a3920c7a42.manifest.json",
+      "candidate_manifest_sha256": "2576fb9e893d37f49a19454f71ef04ac6905f1a711e456c7cab3171f50b27b30",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/59a356a3920c7a42/operator_candidate_59a356a3920c7a42.pt",
+      "candidate_tensor_sha256": "e1bb7c84976f468909dc2dc9b5b077d8b9b4eaccdd21dfa6b3245a6208786002",
+      "family": "v5_signed",
+      "gap_reduction": 0.00016276041666666666,
+      "mean_relative_intervention_norm": 0.02181881012120357,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/59a356a3920c7a42/operator_screening_analysis.json",
+      "screening_analysis_sha256": "d6b22351a82bd04366f436fa00623d766033563caa3568cf4b6319fec81f7c7e",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "62914c8680cb292c",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/62914c8680cb292c/operator_candidate_62914c8680cb292c.manifest.json",
+      "candidate_manifest_sha256": "46f6b021413f8266211b34ac17d3f78646bc64fd4ea438c04c66c86ed1516001",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/62914c8680cb292c/operator_candidate_62914c8680cb292c.pt",
+      "candidate_tensor_sha256": "ee8dd6ee501cf1557e52e9adf1be2031477ef54a74e7dcc6c3cbb8c1465e8116",
+      "family": "v2_one_sided",
+      "gap_reduction": -0.0008951822916666666,
+      "mean_relative_intervention_norm": 0.008114107343772048,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/62914c8680cb292c/operator_screening_analysis.json",
+      "screening_analysis_sha256": "fdabc618f885dfd09b91618d3b9f762bb308a7a1b81a92d10357ae25c6e5a4aa",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "636ec84aeca89ee9",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/636ec84aeca89ee9/operator_candidate_636ec84aeca89ee9.manifest.json",
+      "candidate_manifest_sha256": "dc3d2b53cd253e6918d97627f7d2af18a9af84e17a14e4bc6f6e6d7ad17a2fa0",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/636ec84aeca89ee9/operator_candidate_636ec84aeca89ee9.pt",
+      "candidate_tensor_sha256": "3135e472bc8e9168a445de75edd9b42f58586171bd4a270318dc1d5cf71fb23d",
+      "family": "v3_full",
+      "gap_reduction": -0.004557291666666667,
+      "mean_relative_intervention_norm": 0.0007537728754603753,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/636ec84aeca89ee9/operator_screening_analysis.json",
+      "screening_analysis_sha256": "8f75a644712bab41cc74cab63c8d3510877f8dd614fbe7be7abe72f7ebf2c620",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "686aecb527628b60",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/686aecb527628b60/operator_candidate_686aecb527628b60.manifest.json",
+      "candidate_manifest_sha256": "94ca38517481b84b2fb24349bfdc26e98f2016debcfa03fd0db72a3c85c02a9a",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/686aecb527628b60/operator_candidate_686aecb527628b60.pt",
+      "candidate_tensor_sha256": "045830c3bcfec11674fcc4b7e692463eee634d618365ced7f6fda1172db637d7",
+      "family": "v2_one_sided",
+      "gap_reduction": -0.001953125,
+      "mean_relative_intervention_norm": 0.0009528804396268242,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/686aecb527628b60/operator_screening_analysis.json",
+      "screening_analysis_sha256": "c2df82d3deefc78d00b9c88c5c70b60ec695a57cabf1c9561df608538bc6156b",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "715a1236b1dcbfb8",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/715a1236b1dcbfb8/operator_candidate_715a1236b1dcbfb8.manifest.json",
+      "candidate_manifest_sha256": "d6b226ab00bd41dabc324e39261287e3b540c8756f2968f0ae5f183119a03e1f",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/715a1236b1dcbfb8/operator_candidate_715a1236b1dcbfb8.pt",
+      "candidate_tensor_sha256": "6be5e41b60d98706e1d87d4b6ffd5b6d288c3ba493934c75c157b0600f413bc1",
+      "family": "v4_bilinear",
+      "gap_reduction": -0.00439453125,
+      "mean_relative_intervention_norm": 0.0007027573352213304,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/715a1236b1dcbfb8/operator_screening_analysis.json",
+      "screening_analysis_sha256": "8e6e9687af0496f56d96c58ff0bba98d913f3701d126726a259ff44fddfd2eb3",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "8d43574fe45feaa6",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/8d43574fe45feaa6/operator_candidate_8d43574fe45feaa6.manifest.json",
+      "candidate_manifest_sha256": "9e563281f49491261acf957a5a1931941a930e2f98d21183a5986452f2f95935",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/8d43574fe45feaa6/operator_candidate_8d43574fe45feaa6.pt",
+      "candidate_tensor_sha256": "763206c32a2dcb47661f6dcfe7d01c884f542a7b1a219923ecdbf1bb7ab90cfb",
+      "family": "v5_signed",
+      "gap_reduction": 0.010091145833333334,
+      "mean_relative_intervention_norm": 0.0011487486863970275,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/8d43574fe45feaa6/operator_screening_analysis.json",
+      "screening_analysis_sha256": "4b18af8594213ffac22a71aac57ad31c9c635afc9231b48c25b9e66b7bb6562f",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "995f2cd39f2d9281",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/995f2cd39f2d9281/operator_candidate_995f2cd39f2d9281.manifest.json",
+      "candidate_manifest_sha256": "45501498eac24dcedc02f703be0e0793702e698c06a85b7f4b2fc31915dc9240",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/995f2cd39f2d9281/operator_candidate_995f2cd39f2d9281.pt",
+      "candidate_tensor_sha256": "0dfcb5c6d9584e416b73ac7c41a5e728c4acd8f522a4196f5a94a39ba4c60f23",
+      "family": "v5_signed",
+      "gap_reduction": -0.00634765625,
+      "mean_relative_intervention_norm": 0.018873510913711773,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/995f2cd39f2d9281/operator_screening_analysis.json",
+      "screening_analysis_sha256": "adb1f199cb87cbcd8a30436873a4c06cd239cf4cae285acca6bb4474a8f7796e",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "9dc639157fa70415",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/9dc639157fa70415/operator_candidate_9dc639157fa70415.manifest.json",
+      "candidate_manifest_sha256": "0da7fc99d9648ae344bde91651a7ca76cd50c27ccab7aeaa97d9b9452c9dcdec",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/9dc639157fa70415/operator_candidate_9dc639157fa70415.pt",
+      "candidate_tensor_sha256": "f683e9917492dd5dac13ce82776e4422e233a61d349ae6871d278b340ce24ba8",
+      "family": "v5_signed",
+      "gap_reduction": -0.008138020833333334,
+      "mean_relative_intervention_norm": 0.0009720054709983957,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/9dc639157fa70415/operator_screening_analysis.json",
+      "screening_analysis_sha256": "59f7d178f2101aad396ed1be86a7524881a479d30e043c276fa36ff25a72c78d",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "9f1950ecd972baef",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/9f1950ecd972baef/operator_candidate_9f1950ecd972baef.manifest.json",
+      "candidate_manifest_sha256": "e27b45ec8fa27e754dfef77391c6f390b363ee4086d28f0689137b7ff20051be",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/9f1950ecd972baef/operator_candidate_9f1950ecd972baef.pt",
+      "candidate_tensor_sha256": "ed7d41ac3b05bd25812f837dc64527147ab161d5564d59496c11aeeda1872a10",
+      "family": "v3_full",
+      "gap_reduction": -0.004557291666666667,
+      "mean_relative_intervention_norm": 0.0007537730164225801,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/9f1950ecd972baef/operator_screening_analysis.json",
+      "screening_analysis_sha256": "5f962c7c462e70d9139cc16f7e7bf0bf9ab7713956cb910ffbf886a47c6ea10c",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "a55976dec1088852",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/a55976dec1088852/operator_candidate_a55976dec1088852.manifest.json",
+      "candidate_manifest_sha256": "1a1b4bf7b49d7e68245bf1b06fd43df65ca6049e4c6f2211b89fb1bbc09d5b4c",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/a55976dec1088852/operator_candidate_a55976dec1088852.pt",
+      "candidate_tensor_sha256": "e2d6aa13af52c40ab83c5bbbc3379045a32ceb82bd3f0d5a417f9a773db6cf99",
+      "family": "v5_signed",
+      "gap_reduction": 0.0018717447916666667,
+      "mean_relative_intervention_norm": 0.024543653770403278,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/a55976dec1088852/operator_screening_analysis.json",
+      "screening_analysis_sha256": "92a281db7dcfe3f6c4f3fd03d220917d75eaa76038d9eef00f193fcf4812e643",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "a7a3acba90aa8259",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/a7a3acba90aa8259/operator_candidate_a7a3acba90aa8259.manifest.json",
+      "candidate_manifest_sha256": "870f813ccda2dd8295f1e4096320b316f2ef2d5e91bec0c49c8906bc5bab1584",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/a7a3acba90aa8259/operator_candidate_a7a3acba90aa8259.pt",
+      "candidate_tensor_sha256": "1aa2cc613e0e22b616f5d5b562347f97eb7ef052f5fd97eb676062dbc7f9e906",
+      "family": "v4_bilinear",
+      "gap_reduction": 0.038981119791666664,
+      "mean_relative_intervention_norm": 0.011179488105578153,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/a7a3acba90aa8259/operator_screening_analysis.json",
+      "screening_analysis_sha256": "004bc30cf2fbe17e6ee42946ba7000893317d350bbe1fbe066cec5410e36df0d",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "a7b607052aade2ae",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/a7b607052aade2ae/operator_candidate_a7b607052aade2ae.manifest.json",
+      "candidate_manifest_sha256": "9b156310d6d93af5f1c67bc85c27317ea1b5ae47fcdf703a8d1e2f4027ca16e7",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/a7b607052aade2ae/operator_candidate_a7b607052aade2ae.pt",
+      "candidate_tensor_sha256": "6d3ea35c48267e763cf31cd821575bf41047bd09670868413babfe9cc517e9f4",
+      "family": "v3_full",
+      "gap_reduction": -0.0029296875,
+      "mean_relative_intervention_norm": 0.0004467539209196403,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/a7b607052aade2ae/operator_screening_analysis.json",
+      "screening_analysis_sha256": "66146560705e605f15cfb5fb73301e990c2784ba701c1848df71bacbe79b14a6",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "aaef90286bd48936",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/aaef90286bd48936/operator_candidate_aaef90286bd48936.manifest.json",
+      "candidate_manifest_sha256": "0e222e31a458fe72149d5ad89141e982656a52ed56fae85ff9ad7d58fde57777",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/aaef90286bd48936/operator_candidate_aaef90286bd48936.pt",
+      "candidate_tensor_sha256": "e69768b1e25e1cc119d5a8b3b7f22660148207e10a7f0b42998c3b27de470ffc",
+      "family": "v2_one_sided",
+      "gap_reduction": 0.0017903645833333333,
+      "mean_relative_intervention_norm": 0.0018625405411777745,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/aaef90286bd48936/operator_screening_analysis.json",
+      "screening_analysis_sha256": "eaa27e13a7c01a9713100c8f83796efdfa6ac109241ebd6bae44e5b48f07d9da",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "b079d98a0ac8b7d1",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/b079d98a0ac8b7d1/operator_candidate_b079d98a0ac8b7d1.manifest.json",
+      "candidate_manifest_sha256": "563adfe858f1c23cae1c9871948cf0a9c27a36868e04bea3d01c98c8d19b7062",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/b079d98a0ac8b7d1/operator_candidate_b079d98a0ac8b7d1.pt",
+      "candidate_tensor_sha256": "d4dc0248c29e88dd0ad40d10bad9132e161dc515075c3c8d58231165efe0a434",
+      "family": "v5_signed",
+      "gap_reduction": 0.012288411458333334,
+      "mean_relative_intervention_norm": 0.019103202027433024,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/b079d98a0ac8b7d1/operator_screening_analysis.json",
+      "screening_analysis_sha256": "4449fe71dad0b6d776c19b918471cb50f31f8154bfbe22875fae04bc4cc842fd",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "b5dabc6130f2d09a",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/b5dabc6130f2d09a/operator_candidate_b5dabc6130f2d09a.manifest.json",
+      "candidate_manifest_sha256": "6b4d1b8ed32d3431798dffe99fa4ca952e9500873e0565a4afa0573e6ab03d36",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/b5dabc6130f2d09a/operator_candidate_b5dabc6130f2d09a.pt",
+      "candidate_tensor_sha256": "40aed453afe61a71801814d7972fb39cafb2b1cc5b89a29cf28418db682cedbd",
+      "family": "v5_signed",
+      "gap_reduction": 0.039632161458333336,
+      "mean_relative_intervention_norm": 0.022152157980722603,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/b5dabc6130f2d09a/operator_screening_analysis.json",
+      "screening_analysis_sha256": "5adb5566388d453ff2c4b50457f6879cc05af784b542bf12620af4dc0120a5a4",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "b9e2ebe78d3d0b75",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/b9e2ebe78d3d0b75/operator_candidate_b9e2ebe78d3d0b75.manifest.json",
+      "candidate_manifest_sha256": "a3424f570ecef58fb7c1714735d2a021cbeffc0a37bc32f7bd6aab10d38deb5d",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/b9e2ebe78d3d0b75/operator_candidate_b9e2ebe78d3d0b75.pt",
+      "candidate_tensor_sha256": "1b3f9c81c4db64e904885eb3c9e7cbcf2266661f6e1c978c035b2d497d341ee8",
+      "family": "v5_signed",
+      "gap_reduction": 0.014485677083333334,
+      "mean_relative_intervention_norm": 0.001333580465782802,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/b9e2ebe78d3d0b75/operator_screening_analysis.json",
+      "screening_analysis_sha256": "db54015894ffde03db45da666cb55da5b19ddc4ffd184a5656ed1103940c4d57",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "c193a281bcd108d5",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/c193a281bcd108d5/operator_candidate_c193a281bcd108d5.manifest.json",
+      "candidate_manifest_sha256": "0f332d2e83fd607f79298dfb9df38a6d656ad9ba3d11434e5d80c48ee4c07c97",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/c193a281bcd108d5/operator_candidate_c193a281bcd108d5.pt",
+      "candidate_tensor_sha256": "92ce5b563a53f30abd846b5b3eaa85b2eb6b803553f5813dd60f9bb1650f9ef2",
+      "family": "symmetric_rank1",
+      "gap_reduction": -0.001953125,
+      "mean_relative_intervention_norm": 0.008104765306597983,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/c193a281bcd108d5/operator_screening_analysis.json",
+      "screening_analysis_sha256": "8d979a1e20a42e37c1875107e70ca39f1db66a43ae59fb4c863c4105e279d028",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "c2d7511256e1891a",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/c2d7511256e1891a/operator_candidate_c2d7511256e1891a.manifest.json",
+      "candidate_manifest_sha256": "8d09ced1ccb1925449bc635f2815f28e1f38b7eedd4a8250051bdb577828c7bd",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/c2d7511256e1891a/operator_candidate_c2d7511256e1891a.pt",
+      "candidate_tensor_sha256": "a1c0934b483eebc26b4c5fd4c1be83f6f51145c2e32c72eba17c414bdd89fbe4",
+      "family": "v5_signed",
+      "gap_reduction": 0.028238932291666668,
+      "mean_relative_intervention_norm": 0.0016597535947984927,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/c2d7511256e1891a/operator_screening_analysis.json",
+      "screening_analysis_sha256": "8edb6c65e00fc70223395a950a660e5d883b76dddca7c0bad5e5b801fd3d45c0",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "c92de8f340f01b5a",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/c92de8f340f01b5a/operator_candidate_c92de8f340f01b5a.manifest.json",
+      "candidate_manifest_sha256": "6c2866858e1081e67c0c1967eff5cc958c0681acedb2ebc1e97287d9c2c1c0e4",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/c92de8f340f01b5a/operator_candidate_c92de8f340f01b5a.pt",
+      "candidate_tensor_sha256": "2ee761835c5cada882cad72fe6f6fe25c765b1ab6eec828b5977033bb457959a",
+      "family": "v4_bilinear",
+      "gap_reduction": -0.0016276041666666667,
+      "mean_relative_intervention_norm": 0.008033301686208935,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/c92de8f340f01b5a/operator_screening_analysis.json",
+      "screening_analysis_sha256": "714df0fe30547b597c8632aade95c3350f5bd1972087864df078c0a094b5f938",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    },
+    {
+      "candidate_id": "cdd01a7686b67eee",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/cdd01a7686b67eee/operator_candidate_cdd01a7686b67eee.manifest.json",
+      "candidate_manifest_sha256": "8e7f3d8c6e74cfdf3c381b370460fdd7604115cf388a7abd10fe5522580528be",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/cdd01a7686b67eee/operator_candidate_cdd01a7686b67eee.pt",
+      "candidate_tensor_sha256": "97f14b972f921f1f5d5e0a2bf33663cf240d1919122332fd971793b47f761945",
+      "family": "v2_one_sided",
+      "gap_reduction": 0.0048828125,
+      "mean_relative_intervention_norm": 0.005212051657357127,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/cdd01a7686b67eee/operator_screening_analysis.json",
+      "screening_analysis_sha256": "fa8e90916188f6894aecd37233c1b2eb8096fe797f2e3ffdc5062d59f7ebb3fd",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "cf53417cddd6f4db",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/cf53417cddd6f4db/operator_candidate_cf53417cddd6f4db.manifest.json",
+      "candidate_manifest_sha256": "774e886b97ec65a115ebd1e0f37ea09e8814c244b408b6cfda511f0b3b8f750a",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/cf53417cddd6f4db/operator_candidate_cf53417cddd6f4db.pt",
+      "candidate_tensor_sha256": "5dd3bb261b7ae537dac6c4b5dc993061296f084db713b8821b6e40cfcf8416cf",
+      "family": "v3_full",
+      "gap_reduction": 0.046793619791666664,
+      "mean_relative_intervention_norm": 0.0008194603992848215,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/cf53417cddd6f4db/operator_screening_analysis.json",
+      "screening_analysis_sha256": "6dc3ffa5935e8f90ed6b0122ba52e83b60505415c21d8650d5d07713ba5633c0",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "d08f09058bbcce1f",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/d08f09058bbcce1f/operator_candidate_d08f09058bbcce1f.manifest.json",
+      "candidate_manifest_sha256": "b8ee25f2c237711cc9292c466e15741103ea7dbe5120bafed38be7dd774d60ec",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/d08f09058bbcce1f/operator_candidate_d08f09058bbcce1f.pt",
+      "candidate_tensor_sha256": "83d7a1000a6fdfc0e183a3812d18e58d6cf1e872fd030daa97627b91dd909e24",
+      "family": "fixed_translation",
+      "gap_reduction": 0.013590494791666666,
+      "mean_relative_intervention_norm": 0.00759271569449993,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/d08f09058bbcce1f/operator_screening_analysis.json",
+      "screening_analysis_sha256": "7f85c1d83fa84e1adb6550568f8c0d6aaf028943df6b6a465938413ee9e1a995",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "d23b9bee12b385a0",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/d23b9bee12b385a0/operator_candidate_d23b9bee12b385a0.manifest.json",
+      "candidate_manifest_sha256": "87a57a45856ae46734fc8a93cf3ac21eca905982ac2e8311da1e84ea8dbd3fad",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/d23b9bee12b385a0/operator_candidate_d23b9bee12b385a0.pt",
+      "candidate_tensor_sha256": "00da3dfc90b628d70db8b5edd166cb663e6fe2e73173b314877b90646cc7f60a",
+      "family": "symmetric_rank1",
+      "gap_reduction": -0.033854166666666664,
+      "mean_relative_intervention_norm": 0.00896186086705105,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/d23b9bee12b385a0/operator_screening_analysis.json",
+      "screening_analysis_sha256": "897db5f2a8485a73983fcb1efaa6b7962f4f481167b1e6e9fd4de92f40650275",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "d6f03cbcb996be0f",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/d6f03cbcb996be0f/operator_candidate_d6f03cbcb996be0f.manifest.json",
+      "candidate_manifest_sha256": "1d8ff85b2bb15b51298fc3fb5438f823db5fe6e56ed4ddc83011645b47f70c2b",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/source_candidates/d6f03cbcb996be0f/operator_candidate_d6f03cbcb996be0f.pt",
+      "candidate_tensor_sha256": "07105f5e3d7b22c1c4dcda03a5cf6a1190879b27a2795db78cf68c1f445cc2c1",
+      "family": "v4_bilinear",
+      "gap_reduction": 0.041748046875,
+      "mean_relative_intervention_norm": 0.0009785395851433047,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204832Z/runs/qwen3-8b-operator-behavior-screening-20260727T204832Z/results/d6f03cbcb996be0f/operator_screening_analysis.json",
+      "screening_analysis_sha256": "76efb525ae10e01cff52c615df07e1f136a2d5ef5ce89f840e86732bf47595e5",
+      "screening_eligible": false,
+      "site_order": [
+        "23:self_attn"
+      ]
+    },
+    {
+      "candidate_id": "dd0e112f919c2909",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/dd0e112f919c2909/operator_candidate_dd0e112f919c2909.manifest.json",
+      "candidate_manifest_sha256": "e46de213f2bd2f6e8935c30c8df8c262a60f6ad614d9ba4870d13ddb258d46eb",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/source_candidates/dd0e112f919c2909/operator_candidate_dd0e112f919c2909.pt",
+      "candidate_tensor_sha256": "ae75d2bb968ac26814d6849eae73ef4fd6a118628dd6bae597f2a19ff8b15f42",
+      "family": "v2_one_sided",
+      "gap_reduction": 0.00537109375,
+      "mean_relative_intervention_norm": 0.0011001473676420421,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-20260727T204833Z/runs/qwen3-8b-operator-behavior-screening-20260727T204833Z/results/dd0e112f919c2909/operator_screening_analysis.json",
+      "screening_analysis_sha256": "a5703c07b33e9f876d439441d463dddc57064931adf1e8f907089ec9c39bd47f",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "e34883ca4d940b1d",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/e34883ca4d940b1d/operator_candidate_e34883ca4d940b1d.manifest.json",
+      "candidate_manifest_sha256": "6f8ecedd505a4132a6816d1f1bc4821934b3999c67bb41e5b607b9913a0a3b20",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/source_candidates/e34883ca4d940b1d/operator_candidate_e34883ca4d940b1d.pt",
+      "candidate_tensor_sha256": "c93120b9de97e96ee64ed833ad843242c4f714cc1656211d7f5f2e69b83c4616",
+      "family": "v4_bilinear",
+      "gap_reduction": -0.007568359375,
+      "mean_relative_intervention_norm": 0.000702698183900452,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204830Z/runs/qwen3-8b-operator-behavior-screening-20260727T204830Z/results/e34883ca4d940b1d/operator_screening_analysis.json",
+      "screening_analysis_sha256": "7d50ab6e2acfe29f39689257b02588af40cb76a5528b2f9c7125fce0a644ae5c",
+      "screening_eligible": false,
+      "site_order": [
+        "27:mlp"
+      ]
+    },
+    {
+      "candidate_id": "ea6bf656fc25fb59",
+      "candidate_manifest": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/ea6bf656fc25fb59/operator_candidate_ea6bf656fc25fb59.manifest.json",
+      "candidate_manifest_sha256": "f26982ff51ce236045cd532b7bd2113cece336906eddb4d59fd89932a6d8255f",
+      "candidate_tensor": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/source_candidates/ea6bf656fc25fb59/operator_candidate_ea6bf656fc25fb59.pt",
+      "candidate_tensor_sha256": "f20a36fcb30e34e2f4e1f218c79ae3000bf272c827e68ec957f9f2335bb0424e",
+      "family": "v3_full",
+      "gap_reduction": 0.0020345052083333335,
+      "mean_relative_intervention_norm": 0.0004461341118169315,
+      "screening_analysis": "/workspace/context-mismatch-paper/artifacts/qwen3-8b-v1/evidence/qwen3-8b-operator-behavior-screening-runlocal-exception-20260727T204831Z/runs/qwen3-8b-operator-behavior-screening-20260727T204831Z/results/ea6bf656fc25fb59/operator_screening_analysis.json",
+      "screening_analysis_sha256": "a0844c482484337d1561b0c9ee2772560f2992a9211b38905c3964b5e97b04ed",
+      "screening_eligible": false,
+      "site_order": [
+        "31:mlp"
+      ]
+    }
+  ],
+  "audited_candidates": 42,
+  "eligible_candidates": 0,
+  "extension_contract_sha256": "e0c2d0346be0a937af31a5809fd76bfc3bc7c90f198fef8b64495695ba769930",
+  "final_test_open": false,
+  "finalist_count": 0,
+  "finalists": [],
+  "ledger_sha256": "246e218a91a8e9de8436dcae616352f85dda4031b5e4a8143471ffe6303cf0e5",
+  "production_rollout_approved": false,
+  "protected_controls_still_required": true,
+  "schema_version": 1,
+  "selection_partition": "operator_dev screening half only"
+}

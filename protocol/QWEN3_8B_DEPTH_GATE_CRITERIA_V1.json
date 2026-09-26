@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "criteria_id": "qwen3-8b-depth-to-full-gate-v1",
+  "frozen_utc": "2026-07-27T11:59:00Z",
+  "required_row_count": 4608,
+  "required_depths": [
+    1,
+    8,
+    32
+  ],
+  "required_pairs_per_depth": 768,
+  "max_bootstrap_ci95_upper": 0.0,
+  "min_negative_benchmark_means_per_depth": 5,
+  "required_negative_label_swap_strata_per_depth": 2,
+  "required_negative_role_strata_per_depth": 2,
+  "required_negative_history_style_strata_per_depth": 2,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 314159,
+  "failure_action": "keep full behavior gate closed and diagnose heterogeneity",
+  "production_rollout_approved": false
+}

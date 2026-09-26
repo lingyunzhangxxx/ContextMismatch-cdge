@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-5-9b-cdge-v4-2-native-discovery-v1",
+  "created_utc": "2026-07-31T06:30:00Z",
+  "frozen_utc": "2026-07-31T06:30:00Z",
+  "status": "frozen_before_qwen3_5_native_discovery_forward",
+  "method_name": "Model-Native Composite Directional Governance Editor",
+  "method_short_name": "C-DGE-V4.2",
+  "scientific_change_from_v4_1": "replace the Qwen3-8B-derived fixed layer-27 recipe with prospectively frozen model-native residual, component, rank, and correction-cap discovery on Qwen3.5 subspace_fit only",
+  "base_model": {
+    "repository": "Qwen/Qwen3.5-9B",
+    "revision": "e8885939589b1e032d291a1ceefd21b775e6277e",
+    "architecture": "Qwen3_5ForConditionalGeneration",
+    "parameters": 9409813744,
+    "hidden_size": 4096,
+    "num_hidden_layers": 32,
+    "quantization": "none",
+    "weight_dtype": "BF16"
+  },
+  "frozen_lineage": {
+    "model_contract_sha256": "1716bc9ef0dadb7f2d8438b633cf275b21508c9d9bf533bb80975afca67cb4e6",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "crossover_contract_sha256": "eb05dbccdeb4fc97ba077cd3a6b1f6fcf54a95bd8c6412e4dd1e470b37bbaa4e",
+    "fixed_structure_v4_1_archive_sha256": "e295ed35ee6bbc49df2e58f1e1a1531316aad4204865598a68df53ca5c54bf73"
+  },
+  "native_discovery": {
+    "partition": "subspace_fit",
+    "site_scan_folds": [0, 1, 2, 3, 4],
+    "items_per_benchmark": 8,
+    "item_selection": "lowest item_id values whose frozen item hash is in site_scan_folds, exactly eight per benchmark",
+    "residual_layers": "all layers read from the verified model contract; no inherited numerical layer IDs",
+    "residual_top_k": 4,
+    "components": ["self_attn", "mlp"],
+    "component_tie_order": ["self_attn", "mlp"],
+    "final_site_top_k": 3,
+    "patch_coefficients": [0.0, 1.0],
+    "factorial": {
+      "declared_roles": ["collaborator", "assistant"],
+      "history_styles": ["lexical_matched"],
+      "source_regimes": ["verification", "obedience"],
+      "label_swaps": [0, 1],
+      "same_item_same_foil_same_suffix": true
+    },
+    "ranking_rule": {
+      "primary_score": "equal-weight mean over benchmark-by-direction-by-label-swap cells of abs(patch_effect / paired_target_gap), clipped to [0,1] within cell",
+      "secondary_score": "fraction of direction-label cells with positive rescue and negative reverse induction",
+      "residual_tie_break": "earlier layer",
+      "component_tie_break": "earlier layer then self_attn then mlp",
+      "coefficient_zero_max_error": 0.0,
+      "all_rows_unique_and_finite": true
+    },
+    "candidate_grid": {
+      "rank_profiles": [
+        {"name": "compact", "boundary_rank": 8, "context_rank": 16, "positive_output_rank": 8, "negative_output_rank": 8},
+        {"name": "balanced", "boundary_rank": 16, "context_rank": 32, "positive_output_rank": 16, "negative_output_rank": 16},
+        {"name": "wide", "boundary_rank": 32, "context_rank": 64, "positive_output_rank": 32, "negative_output_rank": 32}
+      ],
+      "protected_rank": 32,
+      "maximum_relative_corrections": [0.025, 0.05, 0.075],
+      "candidate_count": 27,
+      "candidate_id": "first 16 hexadecimal characters of SHA256(canonical candidate config)",
+      "fit_each_site_rank_profile_once_then_evaluate_all_three_frozen_caps": true
+    },
+    "fit_split": {
+      "group_unit": "benchmark item",
+      "fold_rule": "uint64_be(first_8_bytes(SHA256(item_id_utf8))) mod 8",
+      "train_folds": [0, 1, 2, 3, 4],
+      "calibration_fold": 5,
+      "structural_audit_fold": 6,
+      "direct_behavior_audit_fold": 7,
+      "all_cells_for_an_item_stay_together": true
+    },
+    "behavior_selection_rule": {
+      "candidate_grid_frozen_before_fold_7_behavior": true,
+      "fit_and_structural_gates_must_pass": true,
+      "both_mismatch_direction_point_estimates_positive": true,
+      "both_label_swap_point_estimates_positive": true,
+      "all_six_benchmark_point_estimates_nonnegative": true,
+      "matched_selected_logit_max_error": 0.0,
+      "selection_order": [
+        "largest lower 95 percent bound on normalized gap reduction",
+        "largest lower 95 percent bound on raw gap reduction",
+        "smallest protected forced-on relative correction",
+        "smallest maximum relative correction cap",
+        "smallest learned rank profile",
+        "earliest layer"
+      ],
+      "if_no_candidate_passes": "retain the complete scientific falsifier and do not weaken thresholds"
+    }
+  },
+  "scientific_scope": {
+    "base_model_weights_frozen": true,
+    "activation_and_hidden_state_editing_authorized": true,
+    "permanent_base_weight_edit_authorized": false,
+    "reversible_hooks_required": true,
+    "checkpoint_may_contain_base_weights": false,
+    "answer_label_feature_forbidden": true,
+    "benchmark_identity_feature_forbidden": true,
+    "correctness_feature_forbidden": true,
+    "operator_dev_access_during_discovery_forbidden": true,
+    "existing_operator_dev_is_developmental_not_untouched_confirmation": true,
+    "final_test_access_forbidden_until_sha_bound_pareto_lock": true
+  },
+  "evidence_contract": {
+    "live_slurm_completed_exit_0_0_required": true,
+    "three_sha_verified_copies_required": true,
+    "partial_rows_may_not_support_efficacy_claims": true,
+    "valid_negative_results_must_archive": true
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false
+}

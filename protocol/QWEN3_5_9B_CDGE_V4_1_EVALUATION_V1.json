@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "contract_id": "context-mismatch-qwen3-5-9b-cdge-v4-1-evaluation-v1",
+  "created_utc": "2026-07-31T06:00:00Z",
+  "status": "frozen_before_operator_dev_behavior",
+  "method": "C-DGE-V4.1",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "bound_lineage": {
+    "cross_model_protocol_sha256": "070d3eee84083ce2698bf66292ec271023fd22e642aa0ad2b9c5b267b59138a3",
+    "crossover_contract_sha256": "1430e433388d58d351564c451b0fdbf7a5df69c55651f191d47cfe615465327e",
+    "benchmark_manifest_sha256": "9c8c5886059f405eb14fca085458ea3b0a75891e4ee8654efbb2ebd8584d10a9",
+    "benchmark_manifest_report_sha256": "5265c5838cf0eedc22d97b2120376e57ef637179ddb8f254a19844c11431ee0b",
+    "model_contract_sha256": "1716bc9ef0dadb7f2d8438b633cf275b21508c9d9bf533bb80975afca67cb4e6",
+    "operator_dev_design_audit_sha256": "a05f93492d800720282b684c27bcef653bf9f7bf2d02200969e3c34653d69b33",
+    "controls_sha256": "b24794c6ce2e79b93c095f5a45d543a0e36dfb866b202c86ccf53e3320348c08",
+    "fit_archive_sha256": "c4d726abd4c8e23a2930a25df54bcc7b135ac32d3b5428ab00f3814c5ac32963",
+    "fit_receipt_sha256": "dec592f2740f697e4a0487941c04ab21d35e036de3fba953a8d37c994f204874",
+    "fit_report_sha256": "c4ce8b56930cdfd2ac12b95f9aada2fb5284381998e30b35ca3b80cbefc8ae71",
+    "directional_checkpoint_sha256": "c4e2f1e65c470461e4bab3e07155f1c11b06eec966d314440f13476c358d25f9",
+    "applicability_checkpoint_sha256": "54e4af065dc129212afd97a0989a1a96f8c119274d73a9dc8c5308c5725289b6",
+    "directional_contract_sha256": "dc4d974afb3df183befbc70855a269817b4f853946ae94c574f0751c79e6fe4e",
+    "applicability_contract_sha256": "e97ee8e35fd75c913987fcc8c2ce14b226b5357e68ff5edd5a05d5b42601933c",
+    "composite_contract_sha256": "b1c16c49317222530e373d8d2e8ca4f42feff37525855a39fc3b415551df5451",
+    "composite_report_sha256": "a779d9f52008314465b5ab0ab7d8900d023ebfdca57468ee311dae309577c63c"
+  },
+  "operator_dev": {
+    "partition": "operator_dev",
+    "selection_half": "remaining 16 item_id-sorted items per benchmark",
+    "expected_rows": 3072,
+    "expected_key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+    "bootstrap_replicates": 10000
+  },
+  "protected_controls": {
+    "expected_rows": 2856,
+    "expected_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "families": [
+      "fresh_verification",
+      "matched_verification",
+      "matched_delegated_choice",
+      "explicit_governance_reset",
+      "supported_user_authority",
+      "factual_boundary_memory"
+    ],
+    "forced_directions": ["positive", "negative"],
+    "application_gated_exact_identity_required": true
+  },
+  "performance": {
+    "stage": "governance_composite_performance",
+    "expected_cells": 24,
+    "expected_measurements": 720,
+    "methods": ["baseline", "DSGE-V3", "C-DGE-V4.1"],
+    "warmup_repeats": 5,
+    "timed_repeats": 10,
+    "batch_size": 1,
+    "attn_implementation": "eager",
+    "same_model_and_prompt_tokens_required": true,
+    "selection_rule": "lexicographically first operator_dev selection job in each benchmark x task_requirement x label_swap cell",
+    "peak_memory_reset_after_model_load_required": true,
+    "finite_measurements_required": true
+  },
+  "developmental_gates": {
+    "gap_reduction_lower_95_minimum": 0.25,
+    "normalized_gap_reduction_lower_95_minimum": 0.10,
+    "both_mismatch_direction_point_estimates_positive": true,
+    "both_label_swap_point_estimates_positive": true,
+    "all_six_benchmark_point_estimates_nonnegative": true,
+    "matched_selected_logit_max_error": 0.0,
+    "protected_application_gated_selected_logit_max_error": 0.0
+  },
+  "final_test": {
+    "expected_rows": 6144,
+    "expected_key_sha256": "42520481f1fb73449f45c18604a72c32736a8eb3ba238b501f78a0575e4cf6ea",
+    "design_audit": "governance_crossover_final_test_design_audit_v1.json",
+    "one_time_authorization_required": true
+  },
+  "evidence": {
+    "slurm_completed_exit_0_0_required": true,
+    "three_sha_verified_copies_required": true,
+    "terminal_audited_evidence_only": true
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "production_rollout_approved": false
+}

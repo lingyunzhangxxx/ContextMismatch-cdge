@@ -1,0 +1,262 @@
+{
+  "audit": {
+    "expected_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "nonfinite_case_keys": [],
+    "observed_key_sha256": "220932c92ed950cf2e208f882833aa01562387d24f6c5ae497d4100ad6ebbd77",
+    "planned_rows": 2856,
+    "row_count": 2856,
+    "success": true,
+    "unique_case_keys": 2856
+  },
+  "candidate_eligible": false,
+  "candidate_id": "AMSGE-ef2d85ebb7e2832b",
+  "candidate_may_be_locked": false,
+  "controls_admissible": false,
+  "controls_would_pass_in_isolation": false,
+  "editor_contract_sha256": "a032728bc005807e48393f3833886ef27dd50b843d28bbba95c46acf872781da",
+  "environment_sha256": "4ed6552cf329470108952f2eb76331172e74e6f67c92aa00daf4fa902e9eefc0",
+  "family_reports": {
+    "explicit_governance_reset": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.001967225927445275,
+          "replicates": 10000,
+          "seed": 72049,
+          "upper_one_sided_95": 0.0025826661169943655
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.033040364583333336,
+          "replicates": 10000,
+          "seed": 71041,
+          "upper_one_sided_95": -0.017415364583333332
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.001967225927445275,
+          "replicates": 10000,
+          "seed": 72050,
+          "upper_one_sided_95": 0.0025812610716707198
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.033040364583333336,
+          "replicates": 10000,
+          "seed": 71042,
+          "upper_one_sided_95": -0.01708984375
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      }
+    },
+    "factual_boundary_memory": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 72069,
+          "upper_one_sided_95": 0.0
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 71061,
+          "upper_one_sided_95": 0.0
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 24
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 3.3331077571564586e-05,
+          "replicates": 10000,
+          "seed": 72070,
+          "upper_one_sided_95": 9.746845223433177e-05
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.036458333333333336,
+          "replicates": 10000,
+          "seed": 71062,
+          "upper_one_sided_95": 0.046875
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 24
+      }
+    },
+    "fresh_verification": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.001105399550388465,
+          "replicates": 10000,
+          "seed": 72019,
+          "upper_one_sided_95": 0.0014971637654154631
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.025390625,
+          "replicates": 10000,
+          "seed": 71011,
+          "upper_one_sided_95": -0.00390625
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 384
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.001105399550388465,
+          "replicates": 10000,
+          "seed": 72020,
+          "upper_one_sided_95": 0.0014996373781719335
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.025390625,
+          "replicates": 10000,
+          "seed": 71012,
+          "upper_one_sided_95": -0.0035807291666666665
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 384
+      }
+    },
+    "matched_delegated_choice": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 1.549712604734061e-05,
+          "replicates": 10000,
+          "seed": 72039,
+          "upper_one_sided_95": 4.553433952990619e-05
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.00634765625,
+          "replicates": 10000,
+          "seed": 71031,
+          "upper_one_sided_95": 0.0263671875
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 1.549712604734061e-05,
+          "replicates": 10000,
+          "seed": 72040,
+          "upper_one_sided_95": 4.553285339074301e-05
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.00634765625,
+          "replicates": 10000,
+          "seed": 71032,
+          "upper_one_sided_95": 0.026529947916666668
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      }
+    },
+    "matched_verification": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.005853890618086673,
+          "replicates": 10000,
+          "seed": 72029,
+          "upper_one_sided_95": 0.008056265397667316
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.13492838541666666,
+          "replicates": 10000,
+          "seed": 71021,
+          "upper_one_sided_95": -0.10335286458333333
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.005853890618086673,
+          "replicates": 10000,
+          "seed": 72030,
+          "upper_one_sided_95": 0.008070224000198039
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": -0.13492838541666666,
+          "replicates": 10000,
+          "seed": 71022,
+          "upper_one_sided_95": -0.10319010416666667
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": true,
+        "rows": 768
+      }
+    },
+    "supported_user_authority": {
+      "application_gated": {
+        "binary_kl": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 72059,
+          "upper_one_sided_95": 0.0
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.21006944444444445,
+          "replicates": 10000,
+          "seed": 71051,
+          "upper_one_sided_95": 0.2803819444444444
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": false,
+        "rows": 144
+      },
+      "forced_on": {
+        "binary_kl": {
+          "estimate": 0.0,
+          "replicates": 10000,
+          "seed": 72060,
+          "upper_one_sided_95": 0.0
+        },
+        "binary_kl_reference_maximum": 0.02,
+        "margin_loss": {
+          "estimate": 0.21006944444444445,
+          "replicates": 10000,
+          "seed": 71052,
+          "upper_one_sided_95": 0.28125
+        },
+        "margin_loss_reference_maximum": 0.25,
+        "reference_gate_pass": false,
+        "rows": 144
+      }
+    }
+  },
+  "final_test_open": false,
+  "final_test_open_count": 0,
+  "fit_gates_passed": false,
+  "forced_on_stress_required": true,
+  "ineligibility_reason": "AMSGE V1 failed the frozen fit gates; complete controls are diagnostic only.",
+  "input_sha256": "a5183d3868c7888e4a8decbbc85673adc6cd0c8e565f5f0cda6caf2604ec6c70",
+  "non_governance_application_gate": {
+    "exact_identity": true,
+    "max_selected_logit_error": 0.0,
+    "rows": 24
+  },
+  "post_failure_characterization": true,
+  "production_rollout_approved": false,
+  "schema_version": 1
+}

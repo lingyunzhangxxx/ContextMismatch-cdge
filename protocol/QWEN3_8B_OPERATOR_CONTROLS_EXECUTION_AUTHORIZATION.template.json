@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "authorization_id": "FILL_AFTER_CANDIDATE_AND_IDENTITY_REPORT_ARE_IMMUTABLE",
+  "created_utc": "FILL",
+  "stage": "FILL: operator_controls_screening | operator_controls_selection",
+  "execution_allowed": false,
+  "production_rollout_approved": false,
+  "final_test_open": false,
+  "candidate_manifest_sha256": "FILL",
+  "candidate_tensor_sha256": "FILL",
+  "identity_report_sha256": "FILL",
+  "crossover_contract_sha256": "FILL",
+  "benchmark_manifest_sha256": "FILL",
+  "controls_sha256": "FILL",
+  "expected_key_sha256": "FILL",
+  "expected_rows": 2088,
+  "immutable_code_bundle_sha256": "FILL"
+}

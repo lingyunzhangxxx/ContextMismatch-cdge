@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "erratum_id": "context-mismatch-qwen3-8b-mechanism-discovery-v1-erratum-1",
+  "frozen_utc": "2026-07-27T15:11:26Z",
+  "status": "frozen_after_zero-row_preflight_failure_and_before_any_qwen3_8b_full_mechanism_forward",
+  "production_rollout_approved": false,
+  "mechanism_contract_sha256": "febc90928cc1bf6fc2d4e05a55183dd16eb7f9951c61fd6940ac013c40d6eda1",
+  "affected_field": "data_split.items_per_benchmark",
+  "audit_finding": {
+    "issue": "The original contract specifies 32 items per benchmark but freezes 27,648 residual rows and 18,432 component rows. With six benchmarks and the frozen factorial, 32 items imply 55,296 residual rows and 36,864 component rows.",
+    "detected_by": "Job 8946 full-runner expected-row preflight",
+    "detected_before_affected_forward": true,
+    "failed_job_scientific_rows": 0,
+    "failed_job_exit_code": 1,
+    "risk_if_unmodified": "Execution would either violate the authorized row budget or require silently dropping a frozen factorial cell."
+  },
+  "replacement": {
+    "items_per_benchmark": 16,
+    "total_component_discovery_items": 96,
+    "item_selection": "the first 16 items per benchmark under the runner's frozen item_id ordering within component_discovery",
+    "residual_expected_full_rows": 27648,
+    "component_expected_full_rows": 18432,
+    "residual_row_formula": "6 benchmarks * 16 items * 2 roles * 2 styles * 2 label swaps * 2 source regimes * 9 layers * 1 component * 2 coefficients",
+    "component_row_formula": "6 benchmarks * 16 items * 2 roles * 2 styles * 2 label swaps * 2 source regimes * 3 nominated layers * 2 components * 2 coefficients"
+  },
+  "unchanged_fields": {
+    "partition": "component_discovery",
+    "benchmark_families": true,
+    "factorial": true,
+    "layer_and_component_sets": true,
+    "component_nomination_rule": true,
+    "numerical_gates": true,
+    "later_partitions_remain_closed": true,
+    "final_test_open": false,
+    "production_rollout_approved": false
+  },
+  "interpretation": "This erratum resolves an arithmetic inconsistency in the frozen execution size. It does not use mechanism outcomes, change a scientific threshold, open a later split, or authorize production use."
+}

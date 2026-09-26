@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "publication_method_name": "Directional Governance Editing (DGE)",
+  "source_method_name": "DSGE-V3",
+  "candidate_id": "DSGE-V3-27:mlp",
+  "site": "27:mlp",
+  "parameters": {
+    "editor_trainable": 25586,
+    "base_model_trainable": 0,
+    "base_model_weights_in_checkpoint": false
+  },
+  "checkpoint": {
+    "bytes": 1458935,
+    "mebibytes": 1.3913488388061523,
+    "sha256": "ed5262bbd27470047c3379172e58de23e6bb98a542b9fb5101f828138b11d752"
+  },
+  "intervention_norm": {
+    "mean_sum_site_relative_norm": 0.0006922183245852883,
+    "max_sum_site_relative_norm": 0.00420125899836421,
+    "trust_region_cap": 0.05
+  },
+  "developmental_comparison_identity": {
+    "dge": {
+      "rows": 3072,
+      "items": 96,
+      "job_key_sha256": "74fb3f84b166068a04cb9f0d61ad331651793510f6688000c54dc1d51d66a12e",
+      "item_identity_sha256": "75736c347fa005ce1148918dcfb9b59e376b130f89cadf89087b6eb751706b10"
+    },
+    "fixed_negative_vector": {
+      "rows": 3072,
+      "items": 96,
+      "job_key_sha256": "b039292f6b16aae9efcd40e34178f894a5d8317cf5f37cd532ac73b410931521",
+      "item_identity_sha256": "90c6d279d3d5ca033b377a395872f4cd7e855666e54270c505e8ae0883bab98e"
+    },
+    "exact_job_identity_intersection": 0,
+    "item_identity_intersection": 0,
+    "valid_description": "matched-size, item-disjoint developmental comparison",
+    "same_identity_head_to_head_complete": false
+  },
+  "provenance": {
+    "dge_behavior_analysis_sha256": "b8e34396dab744208c505f92d3f915a8a7107dc73785b378ba7baf7f14aae0e7",
+    "negative_vector_behavior_analysis_sha256": "7f85c1d83fa84e1adb6550568f8c0d6aaf028943df6b6a465938413ee9e1a995",
+    "editor_contract_sha256": "a531ad1b3cb20b964f240f6eb3c513f6e1a1b7d749c61b79796833193129873d",
+    "fit_report_sha256": "0cda38b3f3ad44460e6f91278277bc1cd66349a5d34f128890d6bc60f60a5f0c"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "mechanism_execution_allowed": false,
+  "production_rollout_approved": false,
+  "mechanism_contract_sha256": "TO_BE_FILLED_AFTER_FULL_BEHAVIOR_GATE",
+  "full_behavior_run_dir": "TO_BE_FILLED_AFTER_FULL_BEHAVIOR_GATE",
+  "full_behavior_rows_sha256": "TO_BE_FILLED_AFTER_FULL_BEHAVIOR_GATE",
+  "full_behavior_environment_sha256": "TO_BE_FILLED_AFTER_FULL_BEHAVIOR_GATE",
+  "full_behavior_analysis_sha256": "TO_BE_FILLED_AFTER_FULL_BEHAVIOR_GATE",
+  "full_behavior_model_manifest_sha256": "TO_BE_FILLED_AFTER_FULL_BEHAVIOR_GATE",
+  "component_manifest_sha256": null,
+  "allowed_stages": {
+    "competence_control": false,
+    "residual_smoke": false,
+    "residual_full": false,
+    "component_smoke": false,
+    "component_full": false
+  },
+  "final_test_open": false
+}
